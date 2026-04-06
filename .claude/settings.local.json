@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --app --eslint --no-src-dir --use-npm)",
+      "Bash(npm init:*)",
+      "Bash(cp \"C:/Users/Jacob Rucker/Downloads/CCS Logo.png\" \"C:/CCSGitHubSetup/CCS_Website/public/logo.png\")",
+      "Bash(cp \"C:/Users/Jacob Rucker/Downloads/CCS Logo \\(1\\).png\" \"C:/CCSGitHubSetup/CCS_Website/public/logo-alt.png\")",
+      "Bash(cp \"C:/Users/Jacob Rucker/Downloads/CCS Logo \\(2\\).png\" \"C:/CCSGitHubSetup/CCS_Website/public/logo-alt2.png\")",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
