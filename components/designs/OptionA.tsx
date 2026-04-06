@@ -3,12 +3,14 @@
 import { useState } from "react";
 import TeamModal from "@/components/TeamModal";
 import { teamData } from "@/components/TeamModal";
+import useIsMobile from "@/hooks/useIsMobile";
 
 /* Option A — Editorial Authority
    Dark theme, Playfair Display serif, gold/warm accents, luxury editorial feel */
 
 export default function OptionA() {
   const [modalMember, setModalMember] = useState<"tom" | "brent" | null>(null);
+  const m = useIsMobile();
 
   return (
     <div
@@ -30,7 +32,7 @@ export default function OptionA() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "1.5rem 4rem",
+          padding: m ? "1rem 1.5rem" : "1.5rem 4rem",
           background: "rgba(10,10,10,0.85)",
           backdropFilter: "blur(20px)",
           borderBottom: "1px solid rgba(200,168,130,0.2)",
@@ -56,7 +58,7 @@ export default function OptionA() {
             <span style={{ color: "#f5f0eb", fontWeight: 400 }}>Solutions</span>
           </span>
         </div>
-        <div style={{ display: "flex", gap: "2.5rem", alignItems: "center" }}>
+        <div style={{ display: m ? "none" : "flex", gap: "2.5rem", alignItems: "center" }}>
           {["Services", "Approach", "Results", "Team"].map((item) => (
             <a
               key={item}
@@ -111,7 +113,7 @@ export default function OptionA() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "8rem 4rem 4rem",
+          padding: m ? "6rem 1.5rem 2rem" : "8rem 4rem 4rem",
           position: "relative",
         }}
       >
@@ -180,8 +182,9 @@ export default function OptionA() {
             style={{
               marginTop: "3rem",
               display: "flex",
+              flexDirection: m ? "column" : "row",
               gap: "1.5rem",
-              alignItems: "center",
+              alignItems: m ? "flex-start" : "center",
             }}
           >
             <a
@@ -224,8 +227,9 @@ export default function OptionA() {
             className="animate-fade-up animate-fade-up-5"
             style={{
               display: "flex",
-              gap: "4rem",
-              marginTop: "5rem",
+              flexWrap: "wrap",
+              gap: m ? "2rem" : "4rem",
+              marginTop: m ? "3rem" : "5rem",
               paddingTop: "3rem",
               borderTop: "1px solid rgba(200,168,130,0.2)",
             }}
@@ -235,17 +239,17 @@ export default function OptionA() {
               { num: "25+", label: "Years Leadership Experience" },
               { num: "6", label: "Industries Served" },
               { num: "100%", label: "Referral-Based Growth" },
-            ].map((m) => (
-              <div key={m.label}>
+            ].map((metric) => (
+              <div key={metric.label} style={{ width: m ? "45%" : "auto" }}>
                 <div
                   style={{
                     fontFamily: "'Playfair Display', serif",
-                    fontSize: "2.8rem",
+                    fontSize: m ? "2.2rem" : "2.8rem",
                     fontWeight: 400,
                     color: "#c8a882",
                   }}
                 >
-                  {m.num}
+                  {metric.num}
                 </div>
                 <div
                   style={{
@@ -256,7 +260,7 @@ export default function OptionA() {
                     marginTop: "0.3rem",
                   }}
                 >
-                  {m.label}
+                  {metric.label}
                 </div>
               </div>
             ))}
@@ -265,7 +269,7 @@ export default function OptionA() {
       </section>
 
       {/* FOUR PILLARS */}
-      <section id="a-services" style={{ padding: "6rem 4rem", background: "#2a2a2a" }}>
+      <section id="a-services" style={{ padding: m ? "3rem 1.5rem" : "6rem 4rem", background: "#2a2a2a" }}>
         <div
           style={{
             fontSize: "0.7rem",
@@ -293,9 +297,9 @@ export default function OptionA() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateColumns: m ? "1fr" : "repeat(4, 1fr)",
             gap: 0,
-            marginTop: "4rem",
+            marginTop: m ? "2rem" : "4rem",
             border: "1px solid rgba(200,168,130,0.2)",
           }}
         >
@@ -324,9 +328,13 @@ export default function OptionA() {
             <div
               key={pillar.num}
               style={{
-                padding: "3rem 2.5rem",
-                borderRight:
-                  i < 3 ? "1px solid rgba(200,168,130,0.2)" : "none",
+                padding: m ? "2rem 1.5rem" : "3rem 2.5rem",
+                borderRight: m
+                  ? "none"
+                  : i < 3
+                    ? "1px solid rgba(200,168,130,0.2)"
+                    : "none",
+                borderBottom: m && i < 3 ? "1px solid rgba(200,168,130,0.2)" : "none",
                 position: "relative",
                 transition: "all 0.4s",
                 cursor: "default",
@@ -375,7 +383,7 @@ export default function OptionA() {
       </section>
 
       {/* APPROACH */}
-      <section id="a-approach" style={{ padding: "6rem 4rem" }}>
+      <section id="a-approach" style={{ padding: m ? "3rem 1.5rem" : "6rem 4rem" }}>
         <div style={{ maxWidth: 700 }}>
           <div
             style={{
@@ -436,7 +444,7 @@ export default function OptionA() {
       {/* RESULTS */}
       <section
         id="a-results"
-        style={{ padding: "6rem 4rem", background: "#2a2a2a" }}
+        style={{ padding: m ? "3rem 1.5rem" : "6rem 4rem", background: "#2a2a2a" }}
       >
         <div
           style={{
@@ -466,8 +474,8 @@ export default function OptionA() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "3rem",
+            gridTemplateColumns: m ? "1fr" : "1fr 1fr",
+            gap: m ? "2rem" : "3rem",
             marginTop: "3rem",
           }}
         >
@@ -528,7 +536,7 @@ export default function OptionA() {
       </section>
 
       {/* TEAM */}
-      <section id="a-team" style={{ padding: "6rem 4rem" }}>
+      <section id="a-team" style={{ padding: m ? "3rem 1.5rem" : "6rem 4rem" }}>
         <div
           style={{
             fontSize: "0.7rem",
@@ -557,9 +565,9 @@ export default function OptionA() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "4rem",
-            marginTop: "4rem",
+            gridTemplateColumns: m ? "1fr" : "1fr 1fr",
+            gap: m ? "2.5rem" : "4rem",
+            marginTop: m ? "2.5rem" : "4rem",
           }}
         >
           {(["tom", "brent"] as const).map((key) => {
@@ -655,7 +663,7 @@ export default function OptionA() {
       </section>
 
       {/* VALUES */}
-      <section style={{ padding: "6rem 4rem", background: "#2a2a2a" }}>
+      <section style={{ padding: m ? "3rem 1.5rem" : "6rem 4rem", background: "#2a2a2a" }}>
         <div
           style={{
             fontSize: "0.7rem",
@@ -685,7 +693,7 @@ export default function OptionA() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
+            gridTemplateColumns: m ? "1fr 1fr" : "repeat(5, 1fr)",
             gap: 0,
             border: "1px solid rgba(200,168,130,0.2)",
           }}
@@ -700,8 +708,11 @@ export default function OptionA() {
             <div
               key={v.name}
               style={{
-                padding: "2.5rem 1.5rem",
-                borderRight: i < 4 ? "1px solid rgba(200,168,130,0.2)" : "none",
+                padding: m ? "1.5rem 1rem" : "2.5rem 1.5rem",
+                borderRight: m
+                  ? i % 2 === 0 ? "1px solid rgba(200,168,130,0.2)" : "none"
+                  : i < 4 ? "1px solid rgba(200,168,130,0.2)" : "none",
+                borderBottom: m && i < 4 ? "1px solid rgba(200,168,130,0.2)" : "none",
                 textAlign: "center",
               }}
             >
@@ -734,7 +745,7 @@ export default function OptionA() {
       {/* OCEAN IMAGE DIVIDER */}
       <div
         style={{
-          height: "320px",
+          height: m ? "200px" : "320px",
           backgroundImage: "url(/TalentManagementImage.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -754,7 +765,7 @@ export default function OptionA() {
       <section
         style={{
           textAlign: "center",
-          padding: "8rem 4rem",
+          padding: m ? "4rem 1.5rem" : "8rem 4rem",
           background: "linear-gradient(180deg, #0a0a0a 0%, #2a2a2a 100%)",
           position: "relative",
         }}
@@ -834,11 +845,14 @@ export default function OptionA() {
       {/* FOOTER */}
       <footer
         style={{
-          padding: "3rem 4rem",
+          padding: m ? "2rem 1.5rem" : "3rem 4rem",
           borderTop: "1px solid rgba(200,168,130,0.2)",
           display: "flex",
+          flexDirection: m ? "column" : "row",
           justifyContent: "space-between",
           alignItems: "center",
+          gap: m ? "1rem" : undefined,
+          textAlign: m ? "center" : undefined,
         }}
       >
         <div

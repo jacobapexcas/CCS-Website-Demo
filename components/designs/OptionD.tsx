@@ -3,9 +3,11 @@
 import { useState } from "react";
 import TeamModal from "@/components/TeamModal";
 import { teamData } from "@/components/TeamModal";
+import useIsMobile from "@/hooks/useIsMobile";
 
 export default function OptionD() {
   const [modalMember, setModalMember] = useState<"tom" | "brent" | null>(null);
+  const m = useIsMobile();
 
   return (
     <div
@@ -22,7 +24,7 @@ export default function OptionD() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "1.5rem 4rem",
+          padding: m ? "1rem 1.5rem" : "1.5rem 4rem",
           background: "rgba(250,249,246,0.95)",
           backdropFilter: "blur(12px)",
           position: "sticky",
@@ -64,7 +66,7 @@ export default function OptionD() {
         </div>
         <div
           style={{
-            display: "flex",
+            display: m ? "none" : "flex",
             gap: "2.5rem",
             fontFamily: "'DM Sans', sans-serif",
             fontSize: "0.8rem",
@@ -105,7 +107,7 @@ export default function OptionD() {
       {/* Hero */}
       <section
         style={{
-          padding: "8rem 4rem 6rem",
+          padding: m ? "5rem 1.5rem 3rem" : "8rem 4rem 6rem",
           maxWidth: "1100px",
           margin: "0 auto",
         }}
@@ -124,7 +126,7 @@ export default function OptionD() {
         </div>
         <h1
           style={{
-            fontSize: "4.2rem",
+            fontSize: m ? "2.4rem" : "4.2rem",
             fontWeight: 300,
             lineHeight: 1.1,
             color: "#1a1f36",
@@ -153,7 +155,7 @@ export default function OptionD() {
           through executive coaching, talent strategy, and AI-powered
           organizational transformation.
         </p>
-        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+        <div style={{ display: "flex", flexDirection: m ? "column" : "row", gap: "1rem", alignItems: m ? "stretch" : "center" }}>
           <a
             href="#contact"
             style={{
@@ -194,14 +196,16 @@ export default function OptionD() {
         style={{
           borderTop: "1px solid rgba(26,31,54,0.06)",
           borderBottom: "1px solid rgba(26,31,54,0.06)",
-          padding: "2.5rem 4rem",
+          padding: m ? "2rem 1.5rem" : "2.5rem 4rem",
         }}
       >
         <div
           style={{
             maxWidth: "1100px",
             margin: "0 auto",
-            display: "flex",
+            display: m ? "grid" : "flex",
+            gridTemplateColumns: m ? "1fr 1fr" : undefined,
+            gap: m ? "1.5rem" : undefined,
             justifyContent: "space-between",
             alignItems: "center",
           }}
@@ -243,7 +247,7 @@ export default function OptionD() {
       <section
         id="approach"
         style={{
-          padding: "7rem 4rem",
+          padding: m ? "3rem 1.5rem" : "7rem 4rem",
           maxWidth: "1100px",
           margin: "0 auto",
         }}
@@ -251,8 +255,8 @@ export default function OptionD() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1.4fr",
-            gap: "5rem",
+            gridTemplateColumns: m ? "1fr" : "1fr 1.4fr",
+            gap: m ? "2.5rem" : "5rem",
             alignItems: "start",
           }}
         >
@@ -298,7 +302,7 @@ export default function OptionD() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: m ? "1fr" : "1fr 1fr",
               gap: "2rem",
             }}
           >
@@ -371,7 +375,7 @@ export default function OptionD() {
         id="services"
         style={{
           background: "#1a1f36",
-          padding: "7rem 4rem",
+          padding: m ? "3rem 1.5rem" : "7rem 4rem",
         }}
       >
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
@@ -403,7 +407,7 @@ export default function OptionD() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
+              gridTemplateColumns: m ? "1fr" : "repeat(4, 1fr)",
               gap: "1px",
               background: "rgba(250,249,246,0.08)",
             }}
@@ -494,7 +498,7 @@ export default function OptionD() {
       <section
         id="results"
         style={{
-          padding: "7rem 4rem",
+          padding: m ? "3rem 1.5rem" : "7rem 4rem",
           maxWidth: "1100px",
           margin: "0 auto",
         }}
@@ -566,7 +570,7 @@ export default function OptionD() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
+              gridTemplateColumns: m ? "1fr" : "repeat(3, 1fr)",
               borderTop: "none",
             }}
           >
@@ -581,9 +585,13 @@ export default function OptionD() {
               <div
                 key={i}
                 style={{
-                  padding: "2rem 3rem",
-                  borderRight:
-                    i < 2 ? "1px solid rgba(26,31,54,0.06)" : "none",
+                  padding: m ? "1.5rem" : "2rem 3rem",
+                  borderRight: m
+                    ? "none"
+                    : i < 2
+                      ? "1px solid rgba(26,31,54,0.06)"
+                      : "none",
+                  borderBottom: m && i < 2 ? "1px solid rgba(26,31,54,0.06)" : "none",
                 }}
               >
                 <div
@@ -617,7 +625,7 @@ export default function OptionD() {
       <section
         style={{
           borderTop: "1px solid rgba(26,31,54,0.06)",
-          padding: "5rem 4rem",
+          padding: m ? "3rem 1.5rem" : "5rem 4rem",
         }}
       >
         <div
@@ -625,8 +633,10 @@ export default function OptionD() {
             maxWidth: "1100px",
             margin: "0 auto",
             display: "flex",
+            flexDirection: m ? "column" : "row",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: m ? "flex-start" : "center",
+            gap: m ? "1.5rem" : undefined,
           }}
         >
           <div>
@@ -654,7 +664,8 @@ export default function OptionD() {
           <div
             style={{
               display: "flex",
-              gap: "2.5rem",
+              flexDirection: m ? "column" : "row",
+              gap: m ? "0.75rem" : "2.5rem",
               fontFamily: "'DM Sans', sans-serif",
               fontSize: "0.78rem",
               color: "#5a5e6e",
@@ -678,7 +689,7 @@ export default function OptionD() {
       <section
         id="leadership"
         style={{
-          padding: "7rem 4rem",
+          padding: m ? "3rem 1.5rem" : "7rem 4rem",
           background: "#f5f3ef",
         }}
       >
@@ -710,8 +721,8 @@ export default function OptionD() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "3rem",
+              gridTemplateColumns: m ? "1fr" : "1fr 1fr",
+              gap: m ? "2rem" : "3rem",
             }}
           >
             {(["tom", "brent"] as const).map((key) => {
@@ -834,7 +845,7 @@ export default function OptionD() {
       {/* VALUES */}
       <section
         style={{
-          padding: "7rem 4rem",
+          padding: m ? "3rem 1.5rem" : "7rem 4rem",
           maxWidth: "1100px",
           margin: "0 auto",
         }}
@@ -865,7 +876,7 @@ export default function OptionD() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
+            gridTemplateColumns: m ? "1fr 1fr" : "repeat(5, 1fr)",
             gap: "1px",
             background: "rgba(26,31,54,0.06)",
             border: "1px solid rgba(26,31,54,0.06)",
@@ -917,7 +928,7 @@ export default function OptionD() {
       {/* AUSTIN IMAGE DIVIDER */}
       <div
         style={{
-          height: "300px",
+          height: m ? "180px" : "300px",
           backgroundImage: "url(/HomePageBackground.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center 40%",
@@ -937,7 +948,7 @@ export default function OptionD() {
       <section
         id="contact"
         style={{
-          padding: "7rem 4rem",
+          padding: m ? "3rem 1.5rem" : "7rem 4rem",
           maxWidth: "800px",
           margin: "0 auto",
           textAlign: "center",
@@ -985,8 +996,10 @@ export default function OptionD() {
         <div
           style={{
             display: "flex",
+            flexDirection: m ? "column" : "row",
             gap: "1rem",
             justifyContent: "center",
+            alignItems: m ? "stretch" : undefined,
             flexWrap: "wrap",
           }}
         >
@@ -1002,6 +1015,7 @@ export default function OptionD() {
               color: "#faf9f6",
               textDecoration: "none",
               borderRadius: "4px",
+              textAlign: m ? "center" : undefined,
             }}
           >
             ttriolo@completecareersolutions.com
@@ -1018,6 +1032,7 @@ export default function OptionD() {
               color: "#1a1f36",
               textDecoration: "none",
               borderRadius: "4px",
+              textAlign: m ? "center" : undefined,
             }}
           >
             (512) 579-1819
@@ -1029,10 +1044,12 @@ export default function OptionD() {
       <footer
         style={{
           borderTop: "1px solid rgba(26,31,54,0.06)",
-          padding: "3rem 4rem",
+          padding: m ? "2rem 1.5rem" : "3rem 4rem",
           display: "flex",
+          flexDirection: m ? "column" : "row",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: m ? "center" : "center",
+          gap: m ? "1rem" : undefined,
           maxWidth: "1100px",
           margin: "0 auto",
         }}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import TeamModal from "@/components/TeamModal";
 import { teamData } from "@/components/TeamModal";
+import useIsMobile from "@/hooks/useIsMobile";
 
 /* Option B — Modern Warmth
    Light warm theme, Fraunces + Plus Jakarta Sans, terracotta accents */
@@ -23,6 +24,7 @@ const css = {
 
 export default function OptionB() {
   const [modalMember, setModalMember] = useState<"tom" | "brent" | null>(null);
+  const m = useIsMobile();
 
   return (
     <div
@@ -44,7 +46,7 @@ export default function OptionB() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "1.2rem 4rem",
+          padding: m ? "1rem 1.5rem" : "1.2rem 4rem",
           background: "rgba(250,248,245,0.92)",
           backdropFilter: "blur(16px)",
           borderBottom: `1px solid ${css.warmBorder}`,
@@ -63,7 +65,7 @@ export default function OptionB() {
             Complete Career<span style={{ color: css.terracotta }}>.</span>
           </span>
         </div>
-        <div style={{ display: "flex", gap: "2.2rem", alignItems: "center" }}>
+        <div style={{ display: m ? "none" : "flex", gap: "2.2rem", alignItems: "center" }}>
           {["Services", "Our Approach", "Results", "Team"].map((item) => (
             <a
               key={item}
@@ -103,7 +105,7 @@ export default function OptionB() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "8rem 4rem 4rem",
+          padding: m ? "6rem 1.5rem 2rem" : "8rem 4rem 4rem",
           position: "relative",
         }}
       >
@@ -192,8 +194,9 @@ export default function OptionB() {
             style={{
               marginTop: "2.5rem",
               display: "flex",
+              flexDirection: m ? "column" : "row",
               gap: "1rem",
-              alignItems: "center",
+              alignItems: m ? "stretch" : "center",
             }}
           >
             <a
@@ -238,7 +241,8 @@ export default function OptionB() {
               paddingTop: "2.5rem",
               borderTop: `1px solid ${css.warmBorder}`,
               display: "flex",
-              gap: "3.5rem",
+              flexWrap: m ? "wrap" : "nowrap",
+              gap: m ? "1.5rem" : "3.5rem",
               alignItems: "center",
             }}
           >
@@ -289,8 +293,8 @@ export default function OptionB() {
         style={{
           background: css.surface,
           borderRadius: 24,
-          margin: "0 2rem",
-          padding: "5rem",
+          margin: m ? "0 0.75rem" : "0 2rem",
+          padding: m ? "2.5rem 1.5rem" : "5rem",
         }}
       >
         <div
@@ -320,7 +324,7 @@ export default function OptionB() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
+            gridTemplateColumns: m ? "1fr" : "repeat(2, 1fr)",
             gap: "2rem",
             marginTop: "3rem",
           }}
@@ -407,12 +411,12 @@ export default function OptionB() {
       </section>
 
       {/* METHODOLOGY */}
-      <section id="b-ourapproach" style={{ padding: "5rem 4rem" }}>
+      <section id="b-ourapproach" style={{ padding: m ? "3rem 1.5rem" : "5rem 4rem" }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "5rem",
+            gridTemplateColumns: m ? "1fr" : "1fr 1fr",
+            gap: m ? "2.5rem" : "5rem",
             alignItems: "center",
           }}
         >
@@ -610,8 +614,8 @@ export default function OptionB() {
           background: css.ink,
           color: css.bg,
           borderRadius: 24,
-          margin: "0 2rem",
-          padding: "5rem",
+          margin: m ? "0 0.75rem" : "0 2rem",
+          padding: m ? "2.5rem 1.5rem" : "5rem",
         }}
       >
         <div
@@ -641,7 +645,7 @@ export default function OptionB() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateColumns: m ? "1fr 1fr" : "repeat(4, 1fr)",
             gap: "2rem",
             marginTop: "3rem",
             marginBottom: "3rem",
@@ -724,7 +728,7 @@ export default function OptionB() {
       </section>
 
       {/* TEAM */}
-      <section id="b-team" style={{ padding: "5rem 4rem" }}>
+      <section id="b-team" style={{ padding: m ? "3rem 1.5rem" : "5rem 4rem" }}>
         <div
           style={{
             fontSize: "0.72rem",
@@ -751,7 +755,7 @@ export default function OptionB() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: m ? "1fr" : "1fr 1fr",
             gap: "2.5rem",
             marginTop: "3rem",
           }}
@@ -838,10 +842,10 @@ export default function OptionB() {
       {/* VALUES */}
       <section
         style={{
-          padding: "5rem",
+          padding: m ? "2.5rem 1.5rem" : "5rem",
           background: css.surface,
           borderRadius: 24,
-          margin: "0 2rem 2rem",
+          margin: m ? "0 0.75rem 0.75rem" : "0 2rem 2rem",
         }}
       >
         <div
@@ -872,7 +876,7 @@ export default function OptionB() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
+            gridTemplateColumns: m ? "1fr 1fr" : "repeat(5, 1fr)",
             gap: "1.5rem",
           }}
         >
@@ -928,8 +932,8 @@ export default function OptionB() {
       {/* AUSTIN IMAGE */}
       <div
         style={{
-          height: "280px",
-          margin: "0 2rem",
+          height: m ? "180px" : "280px",
+          margin: m ? "0 0.75rem" : "0 2rem",
           borderRadius: 24,
           overflow: "hidden",
           backgroundImage: "url(/HomePageBackground.jpg)",
@@ -951,10 +955,10 @@ export default function OptionB() {
       <section
         style={{
           textAlign: "center",
-          padding: "6rem 4rem",
+          padding: m ? "3rem 1.5rem" : "6rem 4rem",
           background: css.surface,
           borderRadius: 24,
-          margin: "2rem",
+          margin: m ? "0.75rem" : "2rem",
         }}
       >
         <div
@@ -1018,10 +1022,13 @@ export default function OptionB() {
       {/* FOOTER */}
       <footer
         style={{
-          padding: "2.5rem 4rem",
+          padding: m ? "2rem 1.5rem" : "2.5rem 4rem",
           display: "flex",
+          flexDirection: m ? "column" : "row",
           justifyContent: "space-between",
           alignItems: "center",
+          textAlign: m ? "center" : undefined,
+          gap: m ? "1rem" : undefined,
         }}
       >
         <div style={{ fontSize: "0.75rem", color: css.muted }}>
