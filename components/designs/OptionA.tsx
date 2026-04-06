@@ -1,9 +1,15 @@
 "use client";
 
+import { useState } from "react";
+import TeamModal from "@/components/TeamModal";
+import { teamData } from "@/components/TeamModal";
+
 /* Option A — Editorial Authority
    Dark theme, Playfair Display serif, gold/warm accents, luxury editorial feel */
 
 export default function OptionA() {
+  const [modalMember, setModalMember] = useState<"tom" | "brent" | null>(null);
+
   return (
     <div
       style={{
@@ -556,73 +562,193 @@ export default function OptionA() {
             marginTop: "4rem",
           }}
         >
+          {(["tom", "brent"] as const).map((key) => {
+            const person = teamData[key];
+            return (
+              <div key={key}>
+                {person.photo ? (
+                  <img
+                    src={person.photo}
+                    alt={person.name}
+                    style={{
+                      width: 90,
+                      height: 90,
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                      border: "2px solid rgba(200,168,130,0.3)",
+                      marginBottom: "1.5rem",
+                    }}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      width: 90,
+                      height: 90,
+                      background: "#2a2a2a",
+                      border: "1px solid rgba(200,168,130,0.2)",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontFamily: "'Playfair Display', serif",
+                      fontSize: "1.4rem",
+                      color: "#c8a882",
+                      marginBottom: "1.5rem",
+                    }}
+                  >
+                    {person.name.split(" ").map((n) => n[0]).join("")}
+                  </div>
+                )}
+                <div
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "1.5rem",
+                    fontWeight: 500,
+                  }}
+                >
+                  {person.name}
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "#c8a882",
+                    textTransform: "uppercase" as const,
+                    letterSpacing: "0.12em",
+                    marginTop: "0.3rem",
+                  }}
+                >
+                  {person.role}
+                </div>
+                <p
+                  style={{
+                    fontSize: "0.88rem",
+                    lineHeight: 1.7,
+                    color: "#8a8a8a",
+                    fontWeight: 300,
+                    marginTop: "1rem",
+                  }}
+                >
+                  {person.shortBio}
+                </p>
+                <button
+                  onClick={() => setModalMember(key)}
+                  style={{
+                    marginTop: "0.75rem",
+                    background: "none",
+                    border: "none",
+                    color: "#c8a882",
+                    fontSize: "0.78rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase" as const,
+                    cursor: "pointer",
+                    padding: 0,
+                    fontFamily: "inherit",
+                    fontWeight: 500,
+                  }}
+                >
+                  Read Full Bio &rarr;
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* VALUES */}
+      <section style={{ padding: "6rem 4rem", background: "#2a2a2a" }}>
+        <div
+          style={{
+            fontSize: "0.7rem",
+            letterSpacing: "0.3em",
+            textTransform: "uppercase" as const,
+            color: "#c8a882",
+            marginBottom: "1.5rem",
+            fontWeight: 500,
+          }}
+        >
+          Our Values
+        </div>
+        <div
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "clamp(2rem, 4vw, 3.2rem)",
+            fontWeight: 400,
+            lineHeight: 1.15,
+            marginBottom: "3.5rem",
+            maxWidth: 600,
+          }}
+        >
+          The foundation of{" "}
+          <em style={{ fontStyle: "italic", color: "#c8a882" }}>everything</em>{" "}
+          we do.
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(5, 1fr)",
+            gap: 0,
+            border: "1px solid rgba(200,168,130,0.2)",
+          }}
+        >
           {[
-            {
-              name: "Tom Triolo",
-              role: "CEO & Executive Coach",
-              bio: "Nearly 25 years of senior-level HR and business leadership across technology, financial services, medical devices, professional services, and consumer products. Tom has partnered with C-suite leaders at global enterprises and mid-market organizations to drive executive coaching, organizational design, and talent strategy.",
-              initials: "TT",
-            },
-            {
-              name: "Brent Triolo",
-              role: "Co-Founder & Senior Recruitment Advisor",
-              bio: "Co-Founder of CCS Staffing with deep expertise in talent acquisition and servant leadership. Brent brings cross-industry recruitment knowledge and a values-driven approach to building leadership pipelines and high-performing teams.",
-              initials: "BT",
-            },
-          ].map((person) => (
-            <div key={person.name}>
-              <div
-                style={{
-                  width: 80,
-                  height: 80,
-                  background: "#2a2a2a",
-                  border: "1px solid rgba(200,168,130,0.2)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: "1.4rem",
-                  color: "#c8a882",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                {person.initials}
-              </div>
-              <div
+            { name: "Courage", desc: "Acting with trust, presence, faith, and vulnerability." },
+            { name: "Intention & Quality", desc: "Purposeful work that maximizes impact." },
+            { name: "Integrity", desc: "Honesty, transparency, and accountability at our core." },
+            { name: "Partnership", desc: "Meaningful, long-term relationships over transactions." },
+            { name: "Tenacity", desc: "Resilience, grit, and unwavering passion for success." },
+          ].map((v, i) => (
+            <div
+              key={v.name}
+              style={{
+                padding: "2.5rem 1.5rem",
+                borderRight: i < 4 ? "1px solid rgba(200,168,130,0.2)" : "none",
+                textAlign: "center",
+              }}
+            >
+              <h4
                 style={{
                   fontFamily: "'Playfair Display', serif",
-                  fontSize: "1.5rem",
+                  fontSize: "1.1rem",
                   fontWeight: 500,
+                  marginBottom: "0.75rem",
+                  color: "#f5f0eb",
                 }}
               >
-                {person.name}
-              </div>
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  color: "#c8a882",
-                  textTransform: "uppercase" as const,
-                  letterSpacing: "0.12em",
-                  marginTop: "0.3rem",
-                }}
-              >
-                {person.role}
-              </div>
+                {v.name}
+              </h4>
               <p
                 style={{
-                  fontSize: "0.88rem",
-                  lineHeight: 1.7,
+                  fontSize: "0.82rem",
+                  lineHeight: 1.6,
                   color: "#8a8a8a",
                   fontWeight: 300,
-                  marginTop: "1rem",
                 }}
               >
-                {person.bio}
+                {v.desc}
               </p>
             </div>
           ))}
         </div>
       </section>
+
+      {/* OCEAN IMAGE DIVIDER */}
+      <div
+        style={{
+          height: "320px",
+          backgroundImage: "url(/TalentManagementImage.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to bottom, rgba(10,10,10,0.5), rgba(10,10,10,0.7))",
+          }}
+        />
+      </div>
 
       {/* CTA */}
       <section
@@ -747,6 +873,8 @@ export default function OptionA() {
           ))}
         </div>
       </footer>
+
+      <TeamModal member={modalMember} onClose={() => setModalMember(null)} />
     </div>
   );
 }

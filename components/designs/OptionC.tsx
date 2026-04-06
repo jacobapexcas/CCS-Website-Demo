@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import TeamModal from "@/components/TeamModal";
+import { teamData } from "@/components/TeamModal";
 
 /* Option C — Full Website
    Multi-page version with tab navigation (Home, Coaching, Consulting, Talent, AI, About, Contact) */
@@ -25,10 +27,14 @@ const css = {
 
 type Page = "home" | "coaching" | "consulting" | "talent" | "ai" | "about" | "contact";
 
-function PageHero({ overline, title, desc, cta }: { overline: string; title: React.ReactNode; desc: string; cta?: { label: string; onClick: () => void } }) {
+function PageHero({ overline, title, desc, cta, bgImage }: { overline: string; title: React.ReactNode; desc: string; cta?: { label: string; onClick: () => void }; bgImage?: string }) {
   return (
-    <section style={{ padding: "8rem 0 4rem", position: "relative" }}>
-      <div style={{ position: "absolute", top: 0, right: 0, width: "40%", height: "100%", background: `radial-gradient(ellipse at 60% 40%, ${css.terracottaLight} 0%, transparent 70%)`, zIndex: 0 }} />
+    <section style={{ padding: "8rem 0 4rem", position: "relative", overflow: "hidden" }}>
+      {bgImage ? (
+        <div style={{ position: "absolute", top: 0, right: 0, width: "45%", height: "100%", backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center", zIndex: 0, opacity: 0.2, maskImage: "linear-gradient(to left, rgba(0,0,0,1), transparent)" }} />
+      ) : (
+        <div style={{ position: "absolute", top: 0, right: 0, width: "40%", height: "100%", background: `radial-gradient(ellipse at 60% 40%, ${css.terracottaLight} 0%, transparent 70%)`, zIndex: 0 }} />
+      )}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", position: "relative", zIndex: 1 }}>
         <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>{overline}</div>
         <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2rem,4vw,3.2rem)", fontWeight: 400, lineHeight: 1.15, maxWidth: 650 }}>{title}</h1>
@@ -155,7 +161,7 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
 function CoachingPage({ nav }: { nav: (p: Page) => void }) {
   return (
     <>
-      <PageHero overline="Executive Coaching" title={<>Transform capable leaders into <strong style={{ fontWeight: 600, color: css.terracotta }}>catalytic</strong> ones.</>} desc="Our coaching programs are designed to elevate leadership performance through personalized, results-driven engagement. We work closely with senior leaders to enhance decision-making, emotional intelligence, and strategic thinking." cta={{ label: "Start a Coaching Engagement", onClick: () => nav("contact") }} />
+      <PageHero overline="Executive Coaching" title={<>Transform capable leaders into <strong style={{ fontWeight: 600, color: css.terracotta }}>catalytic</strong> ones.</>} desc="Our coaching programs are designed to elevate leadership performance through personalized, results-driven engagement. We work closely with senior leaders to enhance decision-making, emotional intelligence, and strategic thinking." cta={{ label: "Start a Coaching Engagement", onClick: () => nav("contact") }} bgImage="/ExecutiveCoachingImage.jpg" />
       <section style={{ padding: "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Coaching Outcomes</div>
@@ -197,7 +203,7 @@ function ConsultingPage({ nav }: { nav: (p: Page) => void }) {
 function TalentPage({ nav }: { nav: (p: Page) => void }) {
   return (
     <>
-      <PageHero overline="Talent Management" title={<>Your external talent team that works like an <strong style={{ fontWeight: 600, color: css.terracotta }}>internal one.</strong></>} desc="CCS Staffing is not a traditional recruitment firm. Our full-desk recruiters are deeply engaged in every step — from sourcing to onboarding." cta={{ label: "Discuss Your Talent Needs", onClick: () => nav("contact") }} />
+      <PageHero overline="Talent Management" title={<>Your external talent team that works like an <strong style={{ fontWeight: 600, color: css.terracotta }}>internal one.</strong></>} desc="CCS Staffing is not a traditional recruitment firm. Our full-desk recruiters are deeply engaged in every step — from sourcing to onboarding." cta={{ label: "Discuss Your Talent Needs", onClick: () => nav("contact") }} bgImage="/TalentManagementImage.jpg" />
       <section style={{ padding: "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>How We&apos;re Different</div>
@@ -243,7 +249,7 @@ function AIPage({ nav }: { nav: (p: Page) => void }) {
   );
 }
 
-function AboutPage({ nav }: { nav: (p: Page) => void }) {
+function AboutPage({ nav, setModal }: { nav: (p: Page) => void; setModal: (m: "tom" | "brent") => void }) {
   return (
     <>
       <PageHero overline="About CCS" title={<>A modern, trusted firm grounded in <strong style={{ fontWeight: 600, color: css.terracotta }}>human-centered values.</strong></>} desc="Founded in 2010 in Austin, Texas, Complete Career Solutions empowers organizations to surpass their business objectives by unlocking the full potential of their people." />
@@ -272,21 +278,27 @@ function AboutPage({ nav }: { nav: (p: Page) => void }) {
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Leadership</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>25 years of experience. One mission: <strong style={{ fontWeight: 600 }}>enabling your success.</strong></div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", marginTop: "3rem" }}>
-            {[
-              { name: "Tom Triolo", role: "CEO & Executive Coach", initials: "TT", bg: css.terracottaLight, color: css.terracotta, bio: "Tom is the Founder of CCS, channeling nearly 25 years of senior-level HR and business leadership into helping organizations achieve lasting success. His career spans technology, professional services, financial services, commercial development, medical devices, and consumer products." },
-              { name: "Brent Triolo", role: "Co-Founder & Senior Recruitment Advisor", initials: "BT", bg: css.sageLight, color: css.sage, bio: "Brent is the Co-Founder of CCS Staffing, driven by a passion for helping others and a deep commitment to servant leadership. The core values of CCS were thoughtfully crafted by Brent, reflecting his personal dedication to integrity, partnership, and excellence." },
-            ].map((p) => (
-              <div key={p.name} style={{ background: css.surface, borderRadius: 20, padding: "2.5rem", border: `1px solid ${css.warmBorder}` }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", marginBottom: "1.2rem" }}>
-                  <div style={{ width: 64, height: 64, borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Fraunces', serif", fontSize: "1.1rem", fontWeight: 700, background: p.bg, color: p.color }}>{p.initials}</div>
-                  <div>
-                    <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.2rem", fontWeight: 600 }}>{p.name}</div>
-                    <div style={{ fontSize: "0.76rem", color: css.terracotta, fontWeight: 600, marginTop: "0.1rem" }}>{p.role}</div>
+            {(["tom", "brent"] as const).map((key) => {
+              const person = teamData[key];
+              const colors = key === "tom" ? { bg: css.terracottaLight, accent: css.terracotta } : { bg: css.sageLight, accent: css.sage };
+              return (
+                <div key={key} style={{ background: css.surface, borderRadius: 20, padding: "2.5rem", border: `1px solid ${css.warmBorder}` }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", marginBottom: "1.2rem" }}>
+                    {person.photo ? (
+                      <img src={person.photo} alt={person.name} style={{ width: 64, height: 64, borderRadius: 14, objectFit: "cover" }} />
+                    ) : (
+                      <div style={{ width: 64, height: 64, borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Fraunces', serif", fontSize: "1.1rem", fontWeight: 700, background: colors.bg, color: colors.accent }}>{person.name.split(" ").map((n) => n[0]).join("")}</div>
+                    )}
+                    <div>
+                      <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.2rem", fontWeight: 600 }}>{person.name}</div>
+                      <div style={{ fontSize: "0.76rem", color: css.terracotta, fontWeight: 600, marginTop: "0.1rem" }}>{person.role}</div>
+                    </div>
                   </div>
+                  <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: css.inkSoft }}>{person.shortBio}</p>
+                  <button onClick={() => setModal(key)} style={{ marginTop: "0.75rem", background: "none", border: "none", color: css.terracotta, fontSize: "0.82rem", fontWeight: 600, cursor: "pointer", padding: 0, fontFamily: "inherit" }}>Read Full Bio &rarr;</button>
                 </div>
-                <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: css.inkSoft }}>{p.bio}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -340,6 +352,7 @@ function ContactPage() {
 
 export default function OptionC() {
   const [page, setPage] = useState<Page>("home");
+  const [modal, setModal] = useState<"tom" | "brent" | null>(null);
   const nav = (p: Page) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); };
 
   const pages: Record<Page, string> = { home: "Home", coaching: "Coaching", consulting: "Consulting", talent: "Talent", ai: "AI Solutions", about: "About", contact: "Book a Call" };
@@ -374,7 +387,7 @@ export default function OptionC() {
       {page === "consulting" && <ConsultingPage nav={nav} />}
       {page === "talent" && <TalentPage nav={nav} />}
       {page === "ai" && <AIPage nav={nav} />}
-      {page === "about" && <AboutPage nav={nav} />}
+      {page === "about" && <AboutPage nav={nav} setModal={setModal} />}
       {page === "contact" && <ContactPage />}
 
       {/* FOOTER */}
@@ -386,6 +399,8 @@ export default function OptionC() {
           ))}
         </div>
       </footer>
+
+      <TeamModal member={modal} onClose={() => setModal(null)} />
     </div>
   );
 }

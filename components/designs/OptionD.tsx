@@ -1,6 +1,12 @@
 "use client";
 
+import { useState } from "react";
+import TeamModal from "@/components/TeamModal";
+import { teamData } from "@/components/TeamModal";
+
 export default function OptionD() {
+  const [modalMember, setModalMember] = useState<"tom" | "brent" | null>(null);
+
   return (
     <div
       style={{
@@ -708,106 +714,224 @@ export default function OptionD() {
               gap: "3rem",
             }}
           >
-            {[
-              {
-                name: "Tom Triolo",
-                role: "CEO & Executive Coach",
-                bio: "25 years partnering with Fortune 500 C-suite leaders. Tom's coaching methodology integrates behavioral science, organizational psychology, and real-world executive experience. He founded CCS on the belief that the best consulting is invisible — deeply embedded, personally accountable, and measured by the client's outcomes, not the consultant's hours.",
-                credentials:
-                  "ICF Certified · Executive MBA · Former VP, Fortune 100",
-              },
-              {
-                name: "Brent Triolo",
-                role: "Co-Founder & Senior Recruitment Advisor",
-                bio: "A recognized authority in executive talent acquisition and succession architecture. Brent has placed hundreds of senior leaders across technology, financial services, and healthcare organizations. His approach combines rigorous assessment methodology with deep relationship networks built over two decades.",
-                credentials:
-                  "Executive Search · Succession Planning · Talent Architecture",
-              },
-            ].map((person, i) => (
-              <div
-                key={i}
-                style={{
-                  background: "#faf9f6",
-                  padding: "3rem",
-                  borderRadius: "8px",
-                  border: "1px solid rgba(26,31,54,0.06)",
-                }}
-              >
+            {(["tom", "brent"] as const).map((key) => {
+              const person = teamData[key];
+              return (
                 <div
+                  key={key}
                   style={{
-                    width: "64px",
-                    height: "64px",
-                    borderRadius: "50%",
-                    background: "#1a1f36",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: "1.5rem",
+                    background: "#faf9f6",
+                    padding: "3rem",
+                    borderRadius: "8px",
+                    border: "1px solid rgba(26,31,54,0.06)",
                   }}
                 >
-                  <span
+                  {person.photo ? (
+                    <img
+                      src={person.photo}
+                      alt={person.name}
+                      style={{
+                        width: "72px",
+                        height: "72px",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        marginBottom: "1.5rem",
+                      }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        width: "72px",
+                        height: "72px",
+                        borderRadius: "50%",
+                        background: "#1a1f36",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginBottom: "1.5rem",
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#b8a88a",
+                          fontSize: "1.3rem",
+                          fontWeight: 300,
+                        }}
+                      >
+                        {person.name.split(" ").map((n) => n[0]).join("")}
+                      </span>
+                    </div>
+                  )}
+                  <h3
                     style={{
-                      color: "#b8a88a",
-                      fontSize: "1.3rem",
-                      fontWeight: 300,
+                      fontSize: "1.5rem",
+                      fontWeight: 400,
+                      marginBottom: "0.25rem",
                     }}
                   >
-                    {person.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
+                    {person.name}
+                  </h3>
+                  <div
+                    style={{
+                      fontSize: "0.75rem",
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: "#b8a88a",
+                      letterSpacing: "0.06em",
+                      fontWeight: 500,
+                      marginBottom: "1.25rem",
+                    }}
+                  >
+                    {person.role}
+                  </div>
+                  <p
+                    style={{
+                      fontSize: "0.88rem",
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontWeight: 300,
+                      lineHeight: 1.8,
+                      color: "#5a5e6e",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    {person.shortBio}
+                  </p>
+                  <button
+                    onClick={() => setModalMember(key)}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: "#b8a88a",
+                      fontSize: "0.78rem",
+                      fontFamily: "'DM Sans', sans-serif",
+                      letterSpacing: "0.06em",
+                      fontWeight: 500,
+                      cursor: "pointer",
+                      padding: 0,
+                      marginBottom: "1.5rem",
+                    }}
+                  >
+                    Read Full Bio &rarr;
+                  </button>
+                  <div
+                    style={{
+                      fontSize: "0.7rem",
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: "#8a8e9e",
+                      letterSpacing: "0.04em",
+                      borderTop: "1px solid rgba(26,31,54,0.06)",
+                      paddingTop: "1rem",
+                    }}
+                  >
+                    {person.credentials}
+                  </div>
                 </div>
-                <h3
-                  style={{
-                    fontSize: "1.5rem",
-                    fontWeight: 400,
-                    marginBottom: "0.25rem",
-                  }}
-                >
-                  {person.name}
-                </h3>
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    fontFamily: "'DM Sans', sans-serif",
-                    color: "#b8a88a",
-                    letterSpacing: "0.06em",
-                    fontWeight: 500,
-                    marginBottom: "1.25rem",
-                  }}
-                >
-                  {person.role}
-                </div>
-                <p
-                  style={{
-                    fontSize: "0.88rem",
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: 300,
-                    lineHeight: 1.8,
-                    color: "#5a5e6e",
-                    marginBottom: "1.5rem",
-                  }}
-                >
-                  {person.bio}
-                </p>
-                <div
-                  style={{
-                    fontSize: "0.7rem",
-                    fontFamily: "'DM Sans', sans-serif",
-                    color: "#8a8e9e",
-                    letterSpacing: "0.04em",
-                    borderTop: "1px solid rgba(26,31,54,0.06)",
-                    paddingTop: "1rem",
-                  }}
-                >
-                  {person.credentials}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* VALUES */}
+      <section
+        style={{
+          padding: "7rem 4rem",
+          maxWidth: "1100px",
+          margin: "0 auto",
+        }}
+      >
+        <div
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "0.65rem",
+            letterSpacing: "0.18em",
+            color: "#b8a88a",
+            fontWeight: 500,
+            marginBottom: "1.5rem",
+          }}
+        >
+          OUR VALUES
+        </div>
+        <h2
+          style={{
+            fontSize: "2.8rem",
+            fontWeight: 300,
+            lineHeight: 1.15,
+            marginBottom: "3.5rem",
+          }}
+        >
+          The principles that{" "}
+          <span style={{ fontStyle: "italic" }}>guide us</span>
+        </h2>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(5, 1fr)",
+            gap: "1px",
+            background: "rgba(26,31,54,0.06)",
+            border: "1px solid rgba(26,31,54,0.06)",
+            borderRadius: "8px",
+            overflow: "hidden",
+          }}
+        >
+          {[
+            { name: "Courage", desc: "Acting with trust, presence, faith, and vulnerability." },
+            { name: "Intention & Quality", desc: "Purposeful work that maximizes impact." },
+            { name: "Integrity", desc: "Honesty, transparency, and accountability at our core." },
+            { name: "Partnership", desc: "Meaningful, long-term relationships over transactions." },
+            { name: "Tenacity", desc: "Resilience, grit, and unwavering passion for success." },
+          ].map((v) => (
+            <div
+              key={v.name}
+              style={{
+                padding: "2rem 1.5rem",
+                background: "#faf9f6",
+                textAlign: "center",
+              }}
+            >
+              <h4
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 400,
+                  marginBottom: "0.75rem",
+                  color: "#1a1f36",
+                }}
+              >
+                {v.name}
+              </h4>
+              <p
+                style={{
+                  fontSize: "0.8rem",
+                  fontFamily: "'DM Sans', sans-serif",
+                  lineHeight: 1.6,
+                  color: "#5a5e6e",
+                  fontWeight: 300,
+                }}
+              >
+                {v.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* AUSTIN IMAGE DIVIDER */}
+      <div
+        style={{
+          height: "300px",
+          backgroundImage: "url(/HomePageBackground.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center 40%",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to bottom, rgba(250,249,246,0.3), rgba(250,249,246,0.1))",
+          }}
+        />
+      </div>
 
       {/* CTA */}
       <section
@@ -935,6 +1059,8 @@ export default function OptionD() {
           555 E 5th St, Austin, TX 78701
         </div>
       </footer>
+
+      <TeamModal member={modalMember} onClose={() => setModalMember(null)} />
     </div>
   );
 }

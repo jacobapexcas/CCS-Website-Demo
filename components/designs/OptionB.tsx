@@ -1,5 +1,9 @@
 "use client";
 
+import { useState } from "react";
+import TeamModal from "@/components/TeamModal";
+import { teamData } from "@/components/TeamModal";
+
 /* Option B — Modern Warmth
    Light warm theme, Fraunces + Plus Jakarta Sans, terracotta accents */
 
@@ -18,6 +22,8 @@ const css = {
 };
 
 export default function OptionB() {
+  const [modalMember, setModalMember] = useState<"tom" | "brent" | null>(null);
+
   return (
     <div
       style={{
@@ -750,66 +756,196 @@ export default function OptionB() {
             marginTop: "3rem",
           }}
         >
-          {[
-            {
-              name: "Tom Triolo",
-              role: "CEO & Executive Coach",
-              initials: "TT",
-              bg: css.terracottaLight,
-              color: css.terracotta,
-              bio: "Nearly 25 years of senior-level HR and business leadership across technology, financial services, medical devices, professional services, and consumer products. Tom partners with C-suite leaders at global enterprises and mid-market organizations to drive executive coaching, organizational design, and talent strategy.",
-            },
-            {
-              name: "Brent Triolo",
-              role: "Co-Founder & Senior Recruitment Advisor",
-              initials: "BT",
-              bg: css.sageLight,
-              color: css.sage,
-              bio: "Co-Founder of CCS Staffing with deep expertise in talent acquisition and servant leadership. Brent brings cross-industry recruitment knowledge and a values-driven approach to building leadership pipelines and high-performing teams.",
-            },
-          ].map((p) => (
-            <div
-              key={p.name}
-              style={{
-                background: css.surface,
-                borderRadius: 16,
-                padding: "2.5rem",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
-                border: `1px solid ${css.warmBorder}`,
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", marginBottom: "1.2rem" }}>
-                <div
+          {(["tom", "brent"] as const).map((key) => {
+            const person = teamData[key];
+            const colors = key === "tom"
+              ? { bg: css.terracottaLight, accent: css.terracotta }
+              : { bg: css.sageLight, accent: css.sage };
+            return (
+              <div
+                key={key}
+                style={{
+                  background: css.surface,
+                  borderRadius: 16,
+                  padding: "2.5rem",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+                  border: `1px solid ${css.warmBorder}`,
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", marginBottom: "1.2rem" }}>
+                  {person.photo ? (
+                    <img
+                      src={person.photo}
+                      alt={person.name}
+                      style={{
+                        width: 64,
+                        height: 64,
+                        borderRadius: 14,
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        width: 64,
+                        height: 64,
+                        borderRadius: 14,
+                        background: colors.bg,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontFamily: "'Fraunces', serif",
+                        fontSize: "1.2rem",
+                        fontWeight: 600,
+                        color: colors.accent,
+                      }}
+                    >
+                      {person.name.split(" ").map((n) => n[0]).join("")}
+                    </div>
+                  )}
+                  <div>
+                    <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.2rem", fontWeight: 600 }}>
+                      {person.name}
+                    </div>
+                    <div style={{ fontSize: "0.78rem", color: css.terracotta, fontWeight: 600, marginTop: "0.15rem" }}>
+                      {person.role}
+                    </div>
+                  </div>
+                </div>
+                <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: css.inkSoft }}>{person.shortBio}</p>
+                <button
+                  onClick={() => setModalMember(key)}
                   style={{
-                    width: 64,
-                    height: 64,
-                    borderRadius: 14,
-                    background: p.bg,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontFamily: "'Fraunces', serif",
-                    fontSize: "1.2rem",
+                    marginTop: "0.75rem",
+                    background: "none",
+                    border: "none",
+                    color: css.terracotta,
+                    fontSize: "0.82rem",
                     fontWeight: 600,
-                    color: p.color,
+                    cursor: "pointer",
+                    padding: 0,
+                    fontFamily: "inherit",
                   }}
                 >
-                  {p.initials}
-                </div>
-                <div>
-                  <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.2rem", fontWeight: 600 }}>
-                    {p.name}
-                  </div>
-                  <div style={{ fontSize: "0.78rem", color: css.terracotta, fontWeight: 600, marginTop: "0.15rem" }}>
-                    {p.role}
-                  </div>
-                </div>
+                  Read Full Bio &rarr;
+                </button>
               </div>
-              <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: css.inkSoft }}>{p.bio}</p>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* VALUES */}
+      <section
+        style={{
+          padding: "5rem",
+          background: css.surface,
+          borderRadius: 24,
+          margin: "0 2rem 2rem",
+        }}
+      >
+        <div
+          style={{
+            fontSize: "0.72rem",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase" as const,
+            color: css.terracotta,
+            marginBottom: "1rem",
+            fontWeight: 700,
+          }}
+        >
+          Our Values
+        </div>
+        <div
+          style={{
+            fontFamily: "'Fraunces', serif",
+            fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
+            fontWeight: 400,
+            lineHeight: 1.2,
+            marginBottom: "3rem",
+            maxWidth: 500,
+          }}
+        >
+          More than words — the{" "}
+          <strong style={{ fontWeight: 600 }}>foundation</strong> of everything we do.
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(5, 1fr)",
+            gap: "1.5rem",
+          }}
+        >
+          {[
+            { name: "Courage", desc: "Acting with trust, presence, faith, and vulnerability.", icon: "🦁", bg: css.terracottaLight },
+            { name: "Intention & Quality", desc: "Purposeful work that maximizes impact.", icon: "🎯", bg: css.sageLight },
+            { name: "Integrity", desc: "Honesty, transparency, and accountability.", icon: "⚖️", bg: "rgba(196,154,62,0.1)" },
+            { name: "Partnership", desc: "Meaningful, long-term relationships.", icon: "🤝", bg: css.terracottaLight },
+            { name: "Tenacity", desc: "Resilience, grit, and passion for success.", icon: "🔥", bg: css.sageLight },
+          ].map((v) => (
+            <div
+              key={v.name}
+              style={{
+                padding: "1.5rem",
+                borderRadius: 16,
+                border: `1px solid ${css.warmBorder}`,
+                textAlign: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 12,
+                  background: v.bg,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "1.2rem",
+                  margin: "0 auto 1rem",
+                }}
+              >
+                {v.icon}
+              </div>
+              <h4
+                style={{
+                  fontFamily: "'Fraunces', serif",
+                  fontSize: "1rem",
+                  fontWeight: 600,
+                  marginBottom: "0.5rem",
+                }}
+              >
+                {v.name}
+              </h4>
+              <p style={{ fontSize: "0.8rem", lineHeight: 1.6, color: css.inkSoft }}>
+                {v.desc}
+              </p>
             </div>
           ))}
         </div>
       </section>
+
+      {/* AUSTIN IMAGE */}
+      <div
+        style={{
+          height: "280px",
+          margin: "0 2rem",
+          borderRadius: 24,
+          overflow: "hidden",
+          backgroundImage: "url(/HomePageBackground.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to right, rgba(250,248,245,0.3), rgba(250,248,245,0.1))",
+          }}
+        />
+      </div>
 
       {/* CTA */}
       <section
@@ -904,6 +1040,8 @@ export default function OptionB() {
           ))}
         </div>
       </footer>
+
+      <TeamModal member={modalMember} onClose={() => setModalMember(null)} />
     </div>
   );
 }
