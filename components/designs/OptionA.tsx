@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import TeamModal from "@/components/TeamModal";
 import { teamData } from "@/components/TeamModal";
 import useIsMobile from "@/hooks/useIsMobile";
@@ -10,6 +11,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 
 export default function OptionA() {
   const [modalMember, setModalMember] = useState<"tom" | "brent" | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const m = useIsMobile();
 
   return (
@@ -39,10 +41,12 @@ export default function OptionA() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-          <img
+          <Image
             src="/logo.png"
             alt="CCS"
-            style={{ width: 36, height: 36, borderRadius: 8 }}
+            width={36}
+            height={36}
+            style={{ borderRadius: 8 }}
           />
           <span
             style={{
@@ -58,6 +62,36 @@ export default function OptionA() {
             <span style={{ color: "#f5f0eb", fontWeight: 400 }}>Solutions</span>
           </span>
         </div>
+        {m && (
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "0.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "5px",
+            }}
+          >
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                style={{
+                  width: "22px",
+                  height: "2px",
+                  background: "#c8a882",
+                  transition: "all 0.3s",
+                  transform: menuOpen
+                    ? i === 0 ? "rotate(45deg) translate(5px, 5px)" : i === 1 ? "none" : "rotate(-45deg) translate(5px, -5px)"
+                    : "none",
+                  opacity: menuOpen && i === 1 ? 0 : 1,
+                }}
+              />
+            ))}
+          </button>
+        )}
         <div style={{ display: m ? "none" : "flex", gap: "2.5rem", alignItems: "center" }}>
           {["Services", "Approach", "Results", "Team"].map((item) => (
             <a
@@ -105,6 +139,63 @@ export default function OptionA() {
           </a>
         </div>
       </nav>
+
+      {m && menuOpen && (
+        <div
+          style={{
+            position: "fixed",
+            top: "60px",
+            left: 0,
+            right: 0,
+            zIndex: 99,
+            background: "rgba(10,10,10,0.97)",
+            backdropFilter: "blur(20px)",
+            borderBottom: "1px solid rgba(200,168,130,0.2)",
+            padding: "1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+          }}
+        >
+          {["Services", "Approach", "Results", "Team"].map((item) => (
+            <a
+              key={item}
+              href={`#a-${item.toLowerCase()}`}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                color: "#f5f0eb",
+                textDecoration: "none",
+                fontSize: "0.9rem",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                fontWeight: 400,
+                padding: "0.75rem 0",
+                borderBottom: "1px solid rgba(200,168,130,0.1)",
+              }}
+            >
+              {item}
+            </a>
+          ))}
+          <a
+            href="mailto:ttriolo@completecareersolutions.com"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              marginTop: "0.5rem",
+              padding: "0.75rem 1.5rem",
+              background: "#c8a882",
+              color: "#0a0a0a",
+              textDecoration: "none",
+              fontSize: "0.8rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              fontWeight: 600,
+              textAlign: "center",
+            }}
+          >
+            Book a Call
+          </a>
+        </div>
+      )}
 
       {/* HERO */}
       <section
@@ -575,12 +666,12 @@ export default function OptionA() {
             return (
               <div key={key}>
                 {person.photo ? (
-                  <img
+                  <Image
                     src={person.photo}
                     alt={person.name}
+                    width={90}
+                    height={90}
                     style={{
-                      width: 90,
-                      height: 90,
                       borderRadius: "50%",
                       objectFit: "cover",
                       border: "2px solid rgba(200,168,130,0.3)",

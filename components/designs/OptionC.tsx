@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import TeamModal from "@/components/TeamModal";
 import { teamData } from "@/components/TeamModal";
 import useIsMobile from "@/hooks/useIsMobile";
@@ -286,7 +287,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
                 <div key={key} style={{ background: css.surface, borderRadius: 20, padding: "2.5rem", border: `1px solid ${css.warmBorder}` }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", marginBottom: "1.2rem" }}>
                     {person.photo ? (
-                      <img src={person.photo} alt={person.name} style={{ width: 64, height: 64, borderRadius: 14, objectFit: "cover" }} />
+                      <Image src={person.photo} alt={person.name} width={64} height={64} style={{ borderRadius: 14, objectFit: "cover" }} />
                     ) : (
                       <div style={{ width: 64, height: 64, borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Fraunces', serif", fontSize: "1.1rem", fontWeight: 700, background: colors.bg, color: colors.accent }}>{person.name.split(" ").map((n) => n[0]).join("")}</div>
                     )}
@@ -354,6 +355,7 @@ function ContactPage({ m }: { m: boolean }) {
 export default function OptionC() {
   const [page, setPage] = useState<Page>("home");
   const [modal, setModal] = useState<"tom" | "brent" | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const m = useIsMobile();
   const nav = (p: Page) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); };
 
@@ -364,11 +366,41 @@ export default function OptionC() {
       {/* NAV */}
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, display: "flex", alignItems: "center", justifyContent: "space-between", padding: m ? "0.75rem 1rem" : "1rem 3rem", background: "rgba(250,248,245,0.92)", backdropFilter: "blur(20px)", borderBottom: `1px solid ${css.warmBorder}` }}>
         <div onClick={() => nav("home")} style={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer" }}>
-          <img src="/logo.png" alt="CCS" style={{ width: m ? 28 : 32, height: m ? 28 : 32, borderRadius: 8 }} />
+          <Image src="/logo.png" alt="CCS" width={32} height={32} style={{ borderRadius: 8 }} />
           {!m && <span style={{ fontFamily: "'Fraunces', serif", fontSize: "1.1rem", fontWeight: 600 }}>Complete Career Solutions</span>}
           {m && <span style={{ fontFamily: "'Fraunces', serif", fontSize: "0.9rem", fontWeight: 600 }}>CCS</span>}
         </div>
-        <div style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}>
+        {m && (
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "0.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "5px",
+            }}
+          >
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                style={{
+                  width: "22px",
+                  height: "2px",
+                  background: css.terracotta,
+                  transition: "all 0.3s",
+                  transform: menuOpen
+                    ? i === 0 ? "rotate(45deg) translate(5px, 5px)" : i === 2 ? "rotate(-45deg) translate(5px, -5px)" : "none"
+                    : "none",
+                  opacity: menuOpen && i === 1 ? 0 : 1,
+                }}
+              />
+            ))}
+          </button>
+        )}
+        <div style={{ display: m ? "none" : "flex", gap: "0.3rem", alignItems: "center" }}>
           {(Object.keys(pages) as Page[]).map((key) => (
             <button key={key} onClick={() => nav(key)} style={{
               background: key === "contact" ? css.terracotta : page === key ? css.terracottaLight : "none",
@@ -383,6 +415,46 @@ export default function OptionC() {
           ))}
         </div>
       </nav>
+
+      {m && menuOpen && (
+        <div
+          style={{
+            position: "fixed",
+            top: "52px",
+            left: 0,
+            right: 0,
+            zIndex: 99,
+            background: "rgba(250,248,245,0.98)",
+            backdropFilter: "blur(20px)",
+            borderBottom: `1px solid ${css.warmBorder}`,
+            padding: "1rem 1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.25rem",
+          }}
+        >
+          {(Object.keys(pages) as Page[]).map((key) => (
+            <button
+              key={key}
+              onClick={() => { nav(key); setMenuOpen(false); }}
+              style={{
+                background: page === key ? css.terracottaLight : "transparent",
+                border: "none",
+                padding: "0.75rem 1rem",
+                fontSize: "0.88rem",
+                fontWeight: page === key ? 600 : 500,
+                color: key === "contact" ? css.terracotta : css.ink,
+                textAlign: "left",
+                cursor: "pointer",
+                borderRadius: 8,
+                fontFamily: "inherit",
+              }}
+            >
+              {pages[key]}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Page Content */}
       {page === "home" && <HomePage nav={nav} m={m} />}

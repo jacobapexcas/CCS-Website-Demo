@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 
 interface TeamMember {
   name: string;
@@ -127,12 +128,12 @@ export default function TeamModal({
           }}
         >
           {person.photo ? (
-            <img
+            <Image
               src={person.photo}
               alt={person.name}
+              width={80}
+              height={80}
               style={{
-                width: "80px",
-                height: "80px",
                 borderRadius: "50%",
                 objectFit: "cover",
               }}

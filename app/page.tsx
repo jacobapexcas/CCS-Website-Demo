@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import DesignSwitcher from "@/components/DesignSwitcher";
 import OptionA from "@/components/designs/OptionA";
 import OptionB from "@/components/designs/OptionB";
@@ -38,12 +39,12 @@ export default function Home() {
         }}
       >
         <div style={{ textAlign: "center", maxWidth: "380px", padding: "2rem" }}>
-          <img
+          <Image
             src="/logo.png"
             alt="CCS"
+            width={72}
+            height={72}
             style={{
-              width: "72px",
-              height: "72px",
               borderRadius: "50%",
               marginBottom: "2rem",
             }}

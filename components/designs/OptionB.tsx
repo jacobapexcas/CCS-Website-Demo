@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import TeamModal from "@/components/TeamModal";
 import { teamData } from "@/components/TeamModal";
 import useIsMobile from "@/hooks/useIsMobile";
@@ -24,6 +25,7 @@ const css = {
 
 export default function OptionB() {
   const [modalMember, setModalMember] = useState<"tom" | "brent" | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const m = useIsMobile();
 
   return (
@@ -53,7 +55,7 @@ export default function OptionB() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-          <img src="/logo.png" alt="CCS" style={{ width: 36, height: 36, borderRadius: 8 }} />
+          <Image src="/logo.png" alt="CCS" width={36} height={36} style={{ borderRadius: 8 }} />
           <span
             style={{
               fontFamily: "'Fraunces', serif",
@@ -65,6 +67,36 @@ export default function OptionB() {
             Complete Career<span style={{ color: css.terracotta }}>.</span>
           </span>
         </div>
+        {m && (
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "0.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "5px",
+            }}
+          >
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                style={{
+                  width: "22px",
+                  height: "2px",
+                  background: css.terracotta,
+                  transition: "all 0.3s",
+                  transform: menuOpen
+                    ? i === 0 ? "rotate(45deg) translate(5px, 5px)" : i === 1 ? "none" : "rotate(-45deg) translate(5px, -5px)"
+                    : "none",
+                  opacity: menuOpen && i === 1 ? 0 : 1,
+                }}
+              />
+            ))}
+          </button>
+        )}
         <div style={{ display: m ? "none" : "flex", gap: "2.2rem", alignItems: "center" }}>
           {["Services", "Our Approach", "Results", "Team"].map((item) => (
             <a
@@ -97,6 +129,60 @@ export default function OptionB() {
           </a>
         </div>
       </nav>
+
+      {m && menuOpen && (
+        <div
+          style={{
+            position: "fixed",
+            top: "56px",
+            left: 0,
+            right: 0,
+            zIndex: 99,
+            background: "rgba(250,248,245,0.98)",
+            backdropFilter: "blur(20px)",
+            borderBottom: `1px solid ${css.warmBorder}`,
+            padding: "1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+          }}
+        >
+          {["Services", "Our Approach", "Results", "Team"].map((item) => (
+            <a
+              key={item}
+              href={`#b-${item.toLowerCase().replace(/\s/g, "")}`}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                color: css.ink,
+                textDecoration: "none",
+                fontSize: "0.9rem",
+                fontWeight: 500,
+                padding: "0.75rem 0",
+                borderBottom: `1px solid ${css.warmBorder}`,
+              }}
+            >
+              {item}
+            </a>
+          ))}
+          <a
+            href="mailto:ttriolo@completecareersolutions.com"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              marginTop: "0.5rem",
+              padding: "0.75rem 1.5rem",
+              background: css.terracotta,
+              color: "white",
+              textDecoration: "none",
+              fontSize: "0.82rem",
+              fontWeight: 600,
+              borderRadius: 6,
+              textAlign: "center",
+            }}
+          >
+            Book a Call
+          </a>
+        </div>
+      )}
 
       {/* HERO */}
       <section
@@ -778,12 +864,12 @@ export default function OptionB() {
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", marginBottom: "1.2rem" }}>
                   {person.photo ? (
-                    <img
+                    <Image
                       src={person.photo}
                       alt={person.name}
+                      width={64}
+                      height={64}
                       style={{
-                        width: 64,
-                        height: 64,
                         borderRadius: 14,
                         objectFit: "cover",
                       }}

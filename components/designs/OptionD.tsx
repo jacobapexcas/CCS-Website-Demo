@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import TeamModal from "@/components/TeamModal";
 import { teamData } from "@/components/TeamModal";
 import useIsMobile from "@/hooks/useIsMobile";
 
 export default function OptionD() {
   const [modalMember, setModalMember] = useState<"tom" | "brent" | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const m = useIsMobile();
 
   return (
@@ -34,10 +36,12 @@ export default function OptionD() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-          <img
+          <Image
             src="/logo.png"
             alt="CCS"
-            style={{ height: "42px", width: "42px", borderRadius: "50%" }}
+            width={42}
+            height={42}
+            style={{ borderRadius: "50%" }}
           />
           <div>
             <div
@@ -64,6 +68,36 @@ export default function OptionD() {
             </div>
           </div>
         </div>
+        {m && (
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "0.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "5px",
+            }}
+          >
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                style={{
+                  width: "22px",
+                  height: "2px",
+                  background: "#b8a88a",
+                  transition: "all 0.3s",
+                  transform: menuOpen
+                    ? i === 0 ? "rotate(45deg) translate(5px, 5px)" : i === 2 ? "rotate(-45deg) translate(5px, -5px)" : "none"
+                    : "none",
+                  opacity: menuOpen && i === 1 ? 0 : 1,
+                }}
+              />
+            ))}
+          </button>
+        )}
         <div
           style={{
             display: m ? "none" : "flex",
@@ -103,6 +137,68 @@ export default function OptionD() {
           </a>
         </div>
       </nav>
+
+      {m && menuOpen && (
+        <div
+          style={{
+            position: "fixed",
+            top: "62px",
+            left: 0,
+            right: 0,
+            zIndex: 99,
+            background: "rgba(250,249,246,0.98)",
+            backdropFilter: "blur(20px)",
+            borderBottom: "1px solid rgba(26,31,54,0.06)",
+            padding: "1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+          }}
+        >
+          {[
+            { label: "Approach", href: "#approach" },
+            { label: "Services", href: "#services" },
+            { label: "Results", href: "#results" },
+            { label: "Leadership", href: "#leadership" },
+          ].map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                color: "#1a1f36",
+                textDecoration: "none",
+                fontSize: "0.9rem",
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 400,
+                padding: "0.75rem 0",
+                borderBottom: "1px solid rgba(26,31,54,0.06)",
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              marginTop: "0.5rem",
+              padding: "0.75rem 1.5rem",
+              background: "#1a1f36",
+              color: "#faf9f6",
+              textDecoration: "none",
+              fontSize: "0.8rem",
+              fontFamily: "'DM Sans', sans-serif",
+              letterSpacing: "0.06em",
+              fontWeight: 500,
+              borderRadius: "4px",
+              textAlign: "center",
+            }}
+          >
+            Begin a Conversation
+          </a>
+        </div>
+      )}
 
       {/* Hero */}
       <section
@@ -738,12 +834,12 @@ export default function OptionD() {
                   }}
                 >
                   {person.photo ? (
-                    <img
+                    <Image
                       src={person.photo}
                       alt={person.name}
+                      width={72}
+                      height={72}
                       style={{
-                        width: "72px",
-                        height: "72px",
                         borderRadius: "50%",
                         objectFit: "cover",
                         marginBottom: "1.5rem",

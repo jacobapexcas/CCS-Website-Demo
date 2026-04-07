@@ -11,7 +11,8 @@
       "Bash(git commit:*)",
       "Bash(gh repo:*)",
       "Bash(npx vercel:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(find /c/CCSGitHubSetup/CCS_Website -maxdepth 2 \\\\\\(-name vercel.json -o -name .github -o -name .gitlab-ci.yml -o -name .env* \\\\\\))"
     ]
   }
 }
