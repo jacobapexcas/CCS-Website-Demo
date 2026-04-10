@@ -1085,8 +1085,8 @@ export default function OptionD() {
             margin: "0 auto 2.5rem",
           }}
         >
-          We work with a select number of organizations each quarter. If you're
-          ready to accelerate your leadership team's impact, we'd welcome the
+          We work with a select number of organizations each quarter. If you&apos;re
+          ready to accelerate your leadership team&apos;s impact, we&apos;d welcome the
           opportunity to explore how we can help.
         </p>
         <div

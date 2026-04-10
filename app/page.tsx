@@ -7,14 +7,18 @@ import OptionA from "@/components/designs/OptionA";
 import OptionB from "@/components/designs/OptionB";
 import OptionC from "@/components/designs/OptionC";
 import OptionD from "@/components/designs/OptionD";
+import OptionE from "@/components/designs/OptionE";
+import OptionF from "@/components/designs/OptionF";
 
-type Design = "a" | "b" | "c" | "d";
+type Design = "a" | "b" | "c" | "d" | "e" | "f";
 
 const designs: Record<Design, React.ComponentType> = {
   a: OptionA,
   b: OptionB,
   c: OptionC,
   d: OptionD,
+  e: OptionE,
+  f: OptionF,
 };
 
 const PASSWORD = "ccsdemo";

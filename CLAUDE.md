@@ -64,7 +64,7 @@ For architecturally significant decisions, ask me before committing. For everyth
 - **Framework:** Next.js 15.3.1 (App Router) + React 19.1
 - **Language:** TypeScript 5.8 (strict mode)
 - **Styling:** Tailwind CSS 4.1 via `@tailwindcss/postcss` + inline styles per design
-- **Fonts:** 5 Google Fonts loaded via `<link>` in layout: Fraunces, Plus Jakarta Sans, Playfair Display, DM Sans, Cormorant Garamond
+- **Fonts:** 7 Google Fonts loaded via `<link>` in layout: Fraunces, Plus Jakarta Sans, Playfair Display, DM Sans, Cormorant Garamond, Syne, Source Sans 3, Bebas Neue, Karla
 - **Deployment:** Vercel (auto-deploy from GitHub on push to `master`)
 - **Repo:** github.com/jacobapexcas/CCS-Website-Demo
 - **Live URL:** ccs-website-demo.vercel.app (password: `ccsdemo`)
@@ -80,15 +80,17 @@ app/                    → Next.js App Router pages and global styles
   page.tsx              → Password gate + design switcher (main entry)
   globals.css           → Tailwind import, font theme vars, fadeUp animations
 components/             → React components
-  DesignSwitcher.tsx    → Floating bottom pill to toggle designs A/B/C/D
+  DesignSwitcher.tsx    → Floating bottom pill to toggle designs A/B/C/D/E/F
   TeamModal.tsx         → Shared bio popup + centralized team data (Tom & Brent)
-  designs/              → One file per design option (~900-1100 lines each)
+  designs/              → One file per design option (~800-1100 lines each)
     OptionA.tsx          → "Editorial Authority" — dark, Playfair Display, gold
     OptionB.tsx          → "Modern Warmth" — light cream, Fraunces, terracotta
     OptionC.tsx          → "Full Website" — multi-page with internal tab nav
     OptionD.tsx          → "Premium Executive" — navy/cream, Cormorant Garamond
+    OptionE.tsx          → "Swiss Precision" — white/black, Syne, red accent, oversized section numbers
+    OptionF.tsx          → "Warm Brutalist" — paper/charcoal, Bebas Neue, thick 3px borders, earthy greens
 hooks/                  → Custom React hooks
-  useIsMobile.ts        → Media query hook (breakpoint: 768px)
+  useIsMobile.ts        → Media query hook via useSyncExternalStore (breakpoint: 768px)
 public/                 → Static assets served by CDN
   logo.png              → Primary CCS logo (circular navy, ocean waves)
   logo-alt.png          → Logo variant
@@ -154,7 +156,7 @@ No API routes exist. This is a fully static, client-rendered site. The password 
 - **Components:** PascalCase (`DesignSwitcher`, `TeamModal`)
 - **Hooks:** camelCase prefixed with `use` (`useIsMobile`)
 - **CSS variables:** kebab-case with `--font-` prefix
-- **Design keys:** lowercase letters (`"a"`, `"b"`, `"c"`, `"d"`)
+- **Design keys:** lowercase letters (`"a"`, `"b"`, `"c"`, `"d"`, `"e"`, `"f"`)
 - **Image files:** PascalCase descriptive names (`TomTriolo.jpg`, `HomePageBackground.jpg`)
 
 ### Build & Deploy
@@ -203,13 +205,15 @@ None required. No `.env` files needed for any environment.
 <!-- Initial audit 2026-04-06 -->
 1. **Password gate is client-side only** — the password `"ccsdemo"` is visible in the JS bundle. Not a real security measure. Fine for a demo.
 2. **No tests** — zero test coverage. Build verification only.
-3. **Design files are 900-1100 lines each** — large single files with all inline styles. Works for a demo but would need component extraction for production.
+3. **Design files are 800-1100 lines each** — large single files with all inline styles. Works for a demo but would need component extraction for production.
 4. **Team data is partially duplicated** — centralized in `TeamModal.tsx` but each design still has its own layout code for team cards. Not DRY but acceptable for isolated design demos.
 5. ~~**No CI/CD pipeline**~~ — **RESOLVED 2026-04-07**: Added `.github/workflows/ci.yml` with type check, lint, and build gates on PRs.
 6. ~~**Images served unoptimized**~~ — **RESOLVED 2026-04-07**: All `<img>` tags replaced with `next/Image` across all files.
-7. **Google Fonts via `<link>` instead of `next/font`** — intentional choice (5 font families across 4 designs), but adds render-blocking requests.
-8. ~~**No mobile hamburger menu**~~ — **RESOLVED 2026-04-07**: All 4 designs now have hamburger menus on mobile with animated dropdowns.
+7. **Google Fonts via `<link>` instead of `next/font`** — intentional choice (9 font families across 6 designs), but adds render-blocking requests.
+8. ~~**No mobile hamburger menu**~~ — **RESOLVED 2026-04-07**: All 6 designs now have hamburger menus on mobile with animated dropdowns.
 9. **No analytics** — no tracking of which design Tom prefers.
+10. ~~**ESLint not configured**~~ — **RESOLVED 2026-04-10**: Added `eslint-config-next` with flat config (`eslint.config.mjs`). CI lint step now functional.
+11. ~~**useIsMobile hydration mismatch**~~ — **RESOLVED 2026-04-10**: Rewrote hook using `useSyncExternalStore` with proper server snapshot.
 
 ---
 
@@ -246,5 +250,5 @@ If a single task triggers 3+ of the above conditions, add a summary note:
 <!-- Major update: [date] — [what changed and why] -->
 
 ---
-Last analyzed: 2026-04-07
+Last analyzed: 2026-04-10
 To re-scan this project, paste the scan-and-maintain prompt from your project setup files.
