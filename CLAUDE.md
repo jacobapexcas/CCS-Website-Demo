@@ -77,15 +77,15 @@ For architecturally significant decisions, ask me before committing. For everyth
 ```
 app/                    → Next.js App Router pages and global styles
   layout.tsx            → Root layout, metadata, favicon, Google Fonts
-  page.tsx              → Password gate + design switcher (main entry)
+  page.tsx              → Password gate + renders OptionC directly (the live design)
   globals.css           → Tailwind import, font theme vars, fadeUp animations
 components/             → React components
-  DesignSwitcher.tsx    → Floating bottom pill — now shows only the two finalist designs (C and D) labeled "Option 1 · Multi-Page" and "Option 2 · Single-Page" for team review
+  DesignSwitcher.tsx    → No longer imported by page.tsx — kept on disk for future re-introduction of multi-option toggle
   TeamModal.tsx         → Shared bio popup + centralized team data (Tom & Brent)
   designs/              → One file per design option (~800-1700 lines each)
-    OptionC.tsx          → ★ Option 1 (Multi-Page) — terracotta/sage warm palette, Fraunces serif, internal multi-page nav with verbatim copy from current site PDFs: Home / Coaching / Consulting / Talent / AI Solutions / About / Contact. Each page substantially expanded with Inside-out/Outside-in approach, Successor & Onboarding, Executive Team Coaching 5 Key Offerings, Consulting "Who We Work With" + "How We Engage" 4-step process, AI Solutions phase deliverables + Who It's For, Talent "What We Deliver" + "Our Process" 5 steps, About "Our Story" + verbatim values + "Ready to Transform Your Business" CTA
-    OptionD.tsx          → ★ Option 2 (Single-Page) — navy/cream, Cormorant Garamond serif + DM Sans, sophisticated executive advisory feel. Hero uses verbatim "Empowering organizations through strategic consulting" tagline + verbatim mission, 4-pillar Inside-Out/Outside-In/Assess→Implement→Optimize/Coaching-Informed methodology grid, 4 service columns with verbatim descriptions, anonymized Fortune 500 case study (no named clients per voice guide §6), verbatim Our Values, Tom + Brent team cards, Partner With Us contact with full address + Brent's email
-    OptionA.tsx, OptionB.tsx, OptionE.tsx, OptionF.tsx, OptionG.tsx → Earlier exploratory designs kept on disk for reference but no longer wired into the switcher
+    OptionC.tsx          → ★ The live design — Petrona serif + Inter body (matches Tom's Change Management deck), navy/cream/bronze boutique palette aligned to CCS brand colors, multi-page internal nav (Home / Coaching / Consulting / Talent / AI Solutions / About / Contact), verbatim copy from current site PDFs, Austin skyline hero
+    OptionD.tsx          → Single-page alternative kept on disk after team agreed Option 1 (C) was the right direction. Cormorant Garamond + DM Sans, navy/cream/bronze.
+    OptionA.tsx, OptionB.tsx, OptionE.tsx, OptionF.tsx, OptionG.tsx → Earlier exploratory designs kept on disk for reference but no longer imported
 hooks/                  → Custom React hooks
   useIsMobile.ts        → Media query hook via useSyncExternalStore (breakpoint: 768px)
 public/                 → Static assets served by CDN

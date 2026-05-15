@@ -2,29 +2,18 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import DesignSwitcher from "@/components/DesignSwitcher";
 import OptionC from "@/components/designs/OptionC";
-import OptionD from "@/components/designs/OptionD";
 
-// Final two designs for team review. Earlier exploratory designs
-// (A Editorial, B Warmth, E Swiss, F Brutalist, G Brand-Aligned) remain
-// in components/designs/ but are no longer wired into the switcher.
-
-type Design = "c" | "d";
-
-const designs: Record<Design, React.ComponentType> = {
-  c: OptionC,
-  d: OptionD,
-};
+// Multi-page design (formerly "Option 1") is now the only design wired up.
+// Earlier exploratory designs (A, B, D, E, F, G) remain in components/designs/
+// for reference but are no longer imported.
 
 const PASSWORD = "ccsdemo";
 
 export default function Home() {
-  const [current, setCurrent] = useState<Design>("c");
   const [unlocked, setUnlocked] = useState(false);
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
-  const ActiveDesign = designs[current];
 
   if (!unlocked) {
     return (
@@ -68,7 +57,7 @@ export default function Home() {
               lineHeight: 1.6,
             }}
           >
-            Enter the password to view the design concepts.
+            Enter the password to view the redesign draft.
           </p>
           <form
             onSubmit={(e) => {
@@ -121,7 +110,7 @@ export default function Home() {
                 transition: "opacity 0.2s",
               }}
             >
-              View Designs
+              View Site
             </button>
           </form>
           {error && (
@@ -140,10 +129,5 @@ export default function Home() {
     );
   }
 
-  return (
-    <>
-      <ActiveDesign />
-      <DesignSwitcher current={current} onChange={setCurrent} />
-    </>
-  );
+  return <OptionC />;
 }
