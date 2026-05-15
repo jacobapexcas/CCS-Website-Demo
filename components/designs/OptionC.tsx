@@ -649,6 +649,46 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
           </div>
         </div>
       </section>
+      {/* Powerful Partners — trusted external collaborators
+          Edit the partners array below to add/remove. Names and short
+          descriptions only; full bios live with each partner separately. */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Powerful Partners</div>
+          <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Trusted collaborators who <strong style={{ fontWeight: 600 }}>extend what we deliver.</strong></div>
+          <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.25rem", maxWidth: 820, marginBottom: "2.5rem" }}>
+            CCS works alongside a small network of independent specialists and partner firms that round out every engagement. Each partner is chosen for fit — culture, craft, and the same outcomes-first standard we hold ourselves to.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(2, 1fr)", gap: "1.25rem" }}>
+            {[
+              {
+                name: "JRucker",
+                role: "AI Enablement & Operations",
+                desc: "Builds the AI-powered systems and operational infrastructure that accelerate CCS engagements end-to-end.",
+              },
+              {
+                name: "Brainard Strategy",
+                role: "Strategic Consulting Partner",
+                desc: "Extends CCS's executive coaching and organizational design capacity on larger and more complex engagements.",
+              },
+            ].map((partner) => (
+              <div key={partner.name} style={{ padding: "2rem", borderRadius: 12, background: css.bg, border: `1px solid ${css.warmBorder}` }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
+                  <div style={{ width: 52, height: 52, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Petrona', Georgia, serif", fontSize: "1rem", fontWeight: 700, background: css.terracottaLight, color: css.navy, letterSpacing: "0.04em" }}>
+                    {partner.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "1.1rem", fontWeight: 600, color: css.navy, lineHeight: 1.1 }}>{partner.name}</div>
+                    <div style={{ fontSize: "0.72rem", color: css.sage, fontWeight: 600, marginTop: "0.3rem", letterSpacing: "0.04em" }}>{partner.role}</div>
+                  </div>
+                </div>
+                <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: css.inkSoft, margin: 0 }}>{partner.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CtaBanner m={m} overline="Ready to Transform Your Business?" title={<>Let&apos;s partner <strong style={{ fontWeight: 600 }}>for success.</strong></>} desc="Take the first step towards unlocking your business's true potential. Partner with Complete Career Solutions today and embark on a journey towards sustainable growth and success." onClick={() => nav("contact")} />
     </>
   );
