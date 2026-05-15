@@ -85,13 +85,13 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", position: "relative", zIndex: 1 }}>
           <div className="animate-fade-up animate-fade-up-1" style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "0.45rem 1rem", background: css.terracottaLight, borderRadius: 100, fontSize: "0.76rem", fontWeight: 600, color: css.terracotta, marginBottom: "2rem" }}>
             <span style={{ width: 6, height: 6, background: css.terracotta, borderRadius: "50%", display: "inline-block" }} />
-            Austin, Texas · Partnering with Leaders Since 2010
+            Driving Impactful Change Since 2010 · Austin, Texas
           </div>
           <h1 className="animate-fade-up animate-fade-up-2" style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.4rem,5vw,4.2rem)", fontWeight: 400, lineHeight: 1.12, maxWidth: 780 }}>
-            Your people are the strategy. We help you <strong style={{ fontWeight: 600, color: css.terracotta, textDecoration: "underline", textDecorationColor: css.terracottaMid, textUnderlineOffset: "5px", textDecorationThickness: "3px" }}>prove it.</strong>
+            Empowering organizations through <strong style={{ fontWeight: 600, color: css.terracotta, textDecoration: "underline", textDecorationColor: css.terracottaMid, textUnderlineOffset: "5px", textDecorationThickness: "3px" }}>strategic consulting.</strong>
           </h1>
           <p className="animate-fade-up animate-fade-up-3" style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 640, marginTop: "1.5rem" }}>
-            CCS partners with CEOs, CHROs, and executive teams to transform leadership performance through coaching, human capital consulting, talent management, and AI-powered enablement.
+            CCS partners with CEOs, CHROs, and executive teams to drive impactful change that resonates throughout entire organizations — always rooted in the power of the individual. Coaching, consulting, talent management, and AI enablement, under one roof.
           </p>
           <div className="animate-fade-up animate-fade-up-4" style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
             <button onClick={() => nav("contact")} style={{ padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 12px rgba(196,93,62,0.25)" }}>Schedule a Discovery Call</button>
@@ -254,7 +254,7 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (member: "tom" | "brent") => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="About CCS" title={<>A modern, trusted firm grounded in <strong style={{ fontWeight: 600, color: css.terracotta }}>human-centered values.</strong></>} desc="Founded in 2010 in Austin, Texas, Complete Career Solutions empowers organizations to surpass their business objectives by unlocking the full potential of their people." />
+      <PageHero m={m} overline="About CCS" title={<>A modern, trusted firm grounded in <strong style={{ fontWeight: 600, color: css.terracotta }}>human-centered values.</strong></>} desc="Founded in 2010 in Austin, Texas, Complete Career Solutions specializes in driving impactful change that resonates throughout entire organizations — always rooted in the power of the individual. We empower superior performance through your most valuable asset: your people." />
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Values</div>

@@ -507,7 +507,7 @@ export default function OptionG() {
               fontVariationSettings: "'opsz' 144, 'SOFT' 100",
             }}
           >
-            Accelerating outcomes for the leaders building{" "}
+            Empowering organizations through{" "}
             <span
               style={{
                 fontStyle: "italic",
@@ -515,9 +515,26 @@ export default function OptionG() {
                 fontWeight: 400,
               }}
             >
-              what&apos;s next.
+              strategic consulting.
             </span>
           </h1>
+
+          <div
+            className="g-fade g-fade-3"
+            style={{
+              fontFamily: display,
+              fontSize: m ? "1.05rem" : "1.3rem",
+              fontStyle: "italic",
+              fontWeight: 400,
+              lineHeight: 1.4,
+              color: brand.orange,
+              maxWidth: "640px",
+              marginTop: m ? "1.25rem" : "1.5rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Accelerating outcomes for the leaders building what&apos;s next.
+          </div>
 
           <p
             className="g-fade g-fade-3"
@@ -1871,8 +1888,16 @@ export default function OptionG() {
               >
                 Headquarters
               </div>
-              <div style={{ fontSize: "0.95rem", color: brand.white }}>
-                Austin, Texas
+              <div
+                style={{
+                  fontSize: "0.95rem",
+                  color: brand.white,
+                  lineHeight: 1.5,
+                }}
+              >
+                555 E 5th Street
+                <br />
+                Austin, Texas 78701
               </div>
             </div>
             <div>
@@ -1886,18 +1911,32 @@ export default function OptionG() {
                   marginBottom: "0.45rem",
                 }}
               >
-                Email
+                Leadership
               </div>
               <a
                 href="mailto:ttriolo@completecareersolutions.com"
                 style={{
-                  fontSize: "0.95rem",
+                  fontSize: "0.9rem",
                   color: brand.white,
                   textDecoration: "none",
+                  display: "block",
+                  marginBottom: "0.35rem",
                   borderBottom: `1px solid rgba(247,243,236,0.3)`,
                 }}
               >
                 ttriolo@completecareersolutions.com
+              </a>
+              <a
+                href="mailto:brent.triolo@completecareersolutions.com"
+                style={{
+                  fontSize: "0.9rem",
+                  color: brand.white,
+                  textDecoration: "none",
+                  display: "block",
+                  borderBottom: `1px solid rgba(247,243,236,0.3)`,
+                }}
+              >
+                brent.triolo@completecareersolutions.com
               </a>
             </div>
             <div>
@@ -1913,8 +1952,16 @@ export default function OptionG() {
               >
                 Web
               </div>
-              <div style={{ fontSize: "0.95rem", color: brand.white }}>
+              <div
+                style={{
+                  fontSize: "0.95rem",
+                  color: brand.white,
+                  lineHeight: 1.5,
+                }}
+              >
                 completecareersolutions.com
+                <br />
+                <span style={{ color: brand.teal }}>+1 (512) 579-1819</span>
               </div>
             </div>
           </div>
