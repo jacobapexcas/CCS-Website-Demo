@@ -9,8 +9,9 @@ import OptionC from "@/components/designs/OptionC";
 import OptionD from "@/components/designs/OptionD";
 import OptionE from "@/components/designs/OptionE";
 import OptionF from "@/components/designs/OptionF";
+import OptionG from "@/components/designs/OptionG";
 
-type Design = "a" | "b" | "c" | "d" | "e" | "f";
+type Design = "a" | "b" | "c" | "d" | "e" | "f" | "g";
 
 const designs: Record<Design, React.ComponentType> = {
   a: OptionA,
@@ -19,12 +20,13 @@ const designs: Record<Design, React.ComponentType> = {
   d: OptionD,
   e: OptionE,
   f: OptionF,
+  g: OptionG,
 };
 
 const PASSWORD = "ccsdemo";
 
 export default function Home() {
-  const [current, setCurrent] = useState<Design>("d");
+  const [current, setCurrent] = useState<Design>("g");
   const [unlocked, setUnlocked] = useState(false);
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);

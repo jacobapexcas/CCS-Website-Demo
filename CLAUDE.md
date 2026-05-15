@@ -80,7 +80,7 @@ app/                    → Next.js App Router pages and global styles
   page.tsx              → Password gate + design switcher (main entry)
   globals.css           → Tailwind import, font theme vars, fadeUp animations
 components/             → React components
-  DesignSwitcher.tsx    → Floating bottom pill to toggle designs A/B/C/D/E/F
+  DesignSwitcher.tsx    → Floating bottom pill to toggle designs A/B/C/D/E/F/G
   TeamModal.tsx         → Shared bio popup + centralized team data (Tom & Brent)
   designs/              → One file per design option (~800-1100 lines each)
     OptionA.tsx          → "Editorial Authority" — dark, Playfair Display, gold
@@ -89,6 +89,7 @@ components/             → React components
     OptionD.tsx          → "Premium Executive" — navy/cream, Cormorant Garamond
     OptionE.tsx          → "Swiss Precision" — white/black, Syne, red accent, oversized section numbers
     OptionF.tsx          → "Warm Brutalist" — paper/charcoal, Bebas Neue, thick 3px borders, earthy greens
+    OptionG.tsx          → "Brand Aligned" — exact CCS palette (Navy #1B2838 / Teal #3AAFB5 / Orange #E8943A), Fraunces + Plus Jakarta Sans, copy from locked CCS Brand Voice Guide v2.1 (consulting house, four service lines, Inside-Out/Outside-In, Assess→Implement→Optimize, five core values)
 hooks/                  → Custom React hooks
   useIsMobile.ts        → Media query hook via useSyncExternalStore (breakpoint: 768px)
 public/                 → Static assets served by CDN
@@ -250,5 +251,5 @@ If a single task triggers 3+ of the above conditions, add a summary note:
 <!-- Major update: [date] — [what changed and why] -->
 
 ---
-Last analyzed: 2026-04-10
+Last analyzed: 2026-05-14 — added OptionG (brand-aligned design using locked CCS palette + Brand Voice Guide v2.1 copy)
 To re-scan this project, paste the scan-and-maintain prompt from your project setup files.
