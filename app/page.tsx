@@ -3,30 +3,24 @@
 import { useState } from "react";
 import Image from "next/image";
 import DesignSwitcher from "@/components/DesignSwitcher";
-import OptionA from "@/components/designs/OptionA";
-import OptionB from "@/components/designs/OptionB";
 import OptionC from "@/components/designs/OptionC";
 import OptionD from "@/components/designs/OptionD";
-import OptionE from "@/components/designs/OptionE";
-import OptionF from "@/components/designs/OptionF";
-import OptionG from "@/components/designs/OptionG";
 
-type Design = "a" | "b" | "c" | "d" | "e" | "f" | "g";
+// Final two designs for team review. Earlier exploratory designs
+// (A Editorial, B Warmth, E Swiss, F Brutalist, G Brand-Aligned) remain
+// in components/designs/ but are no longer wired into the switcher.
+
+type Design = "c" | "d";
 
 const designs: Record<Design, React.ComponentType> = {
-  a: OptionA,
-  b: OptionB,
   c: OptionC,
   d: OptionD,
-  e: OptionE,
-  f: OptionF,
-  g: OptionG,
 };
 
 const PASSWORD = "ccsdemo";
 
 export default function Home() {
-  const [current, setCurrent] = useState<Design>("g");
+  const [current, setCurrent] = useState<Design>("c");
   const [unlocked, setUnlocked] = useState(false);
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);

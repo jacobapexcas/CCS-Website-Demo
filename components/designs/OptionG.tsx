@@ -40,25 +40,25 @@ const services = [
     title: "Executive Coaching",
     sub: "& Leadership Development",
     desc:
-      "Inside-Out and Outside-In coaching for C-suite leaders, senior teams, and high-potentials. We build catalytic leaders — clearer decisions, sharper presence, teams that move with them.",
+      "Enhance leadership skills and maximize potential through personalized coaching programs tailored to your organization's needs. Inside-out and outside-in coaching across the executive lifecycle.",
     deliverables: [
       "Leadership Acceleration",
       "Successor & First-100-Day Coaching",
-      "Team Cohesion Workshops",
-      "Executive Onboarding",
+      "Executive Team Coaching",
+      "Onboarding Coaching",
     ],
   },
   {
     num: "02",
-    title: "Business Consulting",
-    sub: "Strategy & Operating Design",
+    title: "Consulting",
+    sub: "Human Capital Strategy & Solutions",
     desc:
-      "Operations and process redesign focused on real outcomes. We rebuild the workflows around what the business actually needs — not what the org chart says it does.",
+      "Optimize your business operations and processes for efficiency and profitability under expert guidance. We help you drive transformation, elevate the workforce experience, and enhance your leadership team's capabilities.",
     deliverables: [
-      "Outcome-Driven Operating Models",
-      "Role & Workflow Redesign",
-      "Leadership Capability Build",
-      "Performance Management Rebuild",
+      "Outcome-Driven Human Capital Solutions",
+      "Flexible Human Capital Operations",
+      "Digital Human Capital Transformation",
+      "Workforce Experience Assessment",
     ],
   },
   {
@@ -66,12 +66,12 @@ const services = [
     title: "Talent Management",
     sub: "CCS Staffing",
     desc:
-      "Outsourced recruiting rooted in coaching methodology. We sit down with candidates before they reach you — surfacing the gaps a resume hides in week one, not month three.",
+      "Foster a culture of strong leadership and professional growth through our outsourced talent acquisition. Our full-desk recruiters find the right person, at the right time, for the right role.",
     deliverables: [
-      "Embedded Recruitment Pods",
+      "Outsourced Talent Acquisition",
       "Executive Search",
-      "Candidate Validation Frameworks",
-      "Pipeline & Pre-Hire Coaching",
+      "Coaching-Informed Candidate Validation",
+      "Workforce Development",
     ],
   },
   {
@@ -92,23 +92,23 @@ const services = [
 const values = [
   {
     name: "Courage",
-    desc: "Acting with trust, presence, and vulnerability.",
+    desc: "Embracing trust, staying present-minded, and acting with faith and vulnerability.",
   },
   {
     name: "Intention & Quality",
-    desc: "Purposeful work that maximizes impact.",
+    desc: "Everything we do has purpose — striving to maximize impact in every engagement.",
   },
   {
     name: "Integrity",
-    desc: "Honesty, transparency, and accountability.",
+    desc: "At the heart of our business — honesty, transparency, and accountability.",
   },
   {
     name: "Partnership",
-    desc: "Long-term relationships over transactions.",
+    desc: "Meaningful, long-term relationships with clients, candidates, and collaborators.",
   },
   {
     name: "Tenacity",
-    desc: "Resilience, grit, and unwavering commitment.",
+    desc: "Competitive spirit, resilience, and unwavering passion for success.",
   },
 ];
 
@@ -549,10 +549,10 @@ export default function OptionG() {
               fontWeight: 400,
             }}
           >
-            CCS is a consulting house — not a job shop, not a coaching house, not an
-            AI product team. We self-select the clients we work with and solve the
-            problem in the way best suited for that moment. Singles and doubles,
-            every quarter.
+            At Complete Career Solutions, we specialize in driving impactful change
+            that resonates throughout entire organizations — always rooted in the
+            power of the individual. We empower superior performance through your
+            most valuable asset: your people.
           </p>
 
           <div
