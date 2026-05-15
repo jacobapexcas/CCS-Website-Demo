@@ -87,11 +87,14 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
             <span style={{ width: 6, height: 6, background: css.terracotta, borderRadius: "50%", display: "inline-block" }} />
             Driving Impactful Change Since 2010 · Austin, Texas
           </div>
-          <h1 className="animate-fade-up animate-fade-up-2" style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.4rem,5vw,4.2rem)", fontWeight: 400, lineHeight: 1.12, maxWidth: 780 }}>
-            Empowering organizations through <strong style={{ fontWeight: 600, color: css.terracotta, textDecoration: "underline", textDecorationColor: css.terracottaMid, textUnderlineOffset: "5px", textDecorationThickness: "3px" }}>strategic consulting.</strong>
+          <h1 className="animate-fade-up animate-fade-up-2" style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.4rem,5vw,4.2rem)", fontWeight: 400, lineHeight: 1.12, maxWidth: 820 }}>
+            Empowering Organizations through <strong style={{ fontWeight: 600, color: css.terracotta, textDecoration: "underline", textDecorationColor: css.terracottaMid, textUnderlineOffset: "5px", textDecorationThickness: "3px" }}>Strategic Consulting.</strong>
           </h1>
-          <p className="animate-fade-up animate-fade-up-3" style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 640, marginTop: "1.5rem" }}>
-            CCS partners with CEOs, CHROs, and executive teams to drive impactful change that resonates throughout entire organizations — always rooted in the power of the individual. Coaching, consulting, talent management, and AI enablement, under one roof.
+          <p className="animate-fade-up animate-fade-up-3" style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 720, marginTop: "1.5rem" }}>
+            At Complete Career Solutions, we specialize in driving impactful change that resonates throughout entire organizations, always rooted in the power of the individual. Our mission is to guide you in surpassing your business objectives.
+          </p>
+          <p className="animate-fade-up animate-fade-up-3" style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 720, marginTop: "1rem" }}>
+            Positioned uniquely as an organizational consulting firm, we prioritize four key pillars of success: <strong style={{ fontWeight: 600, color: css.ink }}>Executive Coaching, Leadership Development, Operational Consulting,</strong> and <strong style={{ fontWeight: 600, color: css.ink }}>Talent Management</strong> — with AI Enablement now woven through every engagement. We empower superior performance through your most valuable asset: your people.
           </p>
           <div className="animate-fade-up animate-fade-up-4" style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
             <button onClick={() => nav("contact")} style={{ padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 12px rgba(196,93,62,0.25)" }}>Schedule a Discovery Call</button>
@@ -117,10 +120,10 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(2, 1fr)", gap: "1.5rem", marginTop: "3rem" }}>
             {[
-              { icon: "🎯", bg: css.terracottaLight, page: "coaching" as Page, title: "Executive Coaching", desc: "Inside-out and outside-in coaching for C-suite leaders, new executives, and high-potentials." },
-              { icon: "📐", bg: css.sageLight, page: "consulting" as Page, title: "Business Consulting", desc: "Human capital strategy, organizational design, workforce experience assessment, and operational optimization." },
-              { icon: "🤝", bg: css.goldLight, page: "talent" as Page, title: "Talent Management", desc: "Full-desk recruiters who function like your internal talent team. Coaching-informed candidate assessment." },
-              { icon: "⚡", bg: css.navyLight, page: "ai" as Page, title: "AI Solutions", desc: "AI readiness assessments, secure workspace setup, leadership AI workshops, and ongoing optimization." },
+              { icon: "🎯", bg: css.terracottaLight, page: "coaching" as Page, title: "Executive Coaching", desc: "Enhance leadership skills and maximize potential through personalized coaching programs tailored to your organization's needs." },
+              { icon: "📐", bg: css.sageLight, page: "consulting" as Page, title: "Consulting", desc: "Optimize your business operations and processes for efficiency and profitability under expert guidance." },
+              { icon: "🤝", bg: css.goldLight, page: "talent" as Page, title: "Talent Management", desc: "Foster a culture of strong leadership and professional growth with our tailored development solutions." },
+              { icon: "⚡", bg: css.navyLight, page: "ai" as Page, title: "AI Solutions", desc: "Build confident leaders in the age of AI through readiness assessments, secure workspace setup, and ongoing enablement." },
             ].map((p) => (
               <div key={p.title} onClick={() => nav(p.page)} style={{ background: css.surface, borderRadius: 20, padding: "2.5rem", border: `1px solid ${css.warmBorder}`, cursor: "pointer", transition: "all 0.35s" }}
                 onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.06)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
@@ -130,6 +133,23 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
                 <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: css.inkSoft }}>{p.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partnering for Success */}
+      <section style={{ padding: m ? "3rem 0" : "6rem 0", background: css.surface }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "center" }}>
+          <div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Partnering for Success</div>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, color: css.ink, margin: 0 }}>
+              Driving Impactful Change <strong style={{ fontWeight: 600 }}>Since 2010.</strong>
+            </h2>
+          </div>
+          <div>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, margin: 0 }}>
+              With a focus on intention, integrity, and excellence, we build lasting partnerships that foster growth and resilience. By partnering with us, you gain access to a wealth of knowledge and trusted advisors committed to driving your business forward. Our unique approach will ensure your organization stays well-positioned for success in an ever-changing market.
+            </p>
           </div>
         </div>
       </section>
@@ -163,20 +183,83 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="Executive Coaching" title={<>Transform capable leaders into <strong style={{ fontWeight: 600, color: css.terracotta }}>catalytic</strong> ones.</>} desc="Our coaching programs are designed to elevate leadership performance through personalized, results-driven engagement. We work closely with senior leaders to enhance decision-making, emotional intelligence, and strategic thinking." cta={{ label: "Start a Coaching Engagement", onClick: () => nav("contact") }} bgImage="/ExecutiveCoachingImage.jpg" />
+      <PageHero m={m} overline="Executive Coaching" title={<>Unlock the Potential of <strong style={{ fontWeight: 600, color: css.terracotta }}>Executive Coaching.</strong></>} desc="Experience a transformative journey with our Executive coaching services, designed to empower leaders to excel in the face of today's challenges and capitalize on future opportunities within their organizations. Our expert coaches leverage a diverse range of assessment tools and blend established methodologies with a personalized approach to cater to the unique needs, expectations, and preferences of each leader." cta={{ label: "Start a Coaching Engagement", onClick: () => nav("contact") }} bgImage="/ExecutiveCoachingImage.jpg" />
+
+      {/* Outcomes */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Coaching Outcomes</div>
-          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>What leaders gain from working with <strong style={{ fontWeight: 600 }}>CCS.</strong></div>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>This powerful fusion equips us with unparalleled capabilities to <strong style={{ fontWeight: 600 }}>elevate leadership effectiveness.</strong></div>
           <FeatureGrid m={m} items={[
-            { title: "Accelerated Leadership Impact", desc: "Develop the mindsets and skillsets essential for leadership success through structured development that compounds over time." },
-            { title: "Enhanced Communication", desc: "Cultivate impactful communication techniques that strengthen engagement with teams, boards, and stakeholders at every level." },
-            { title: "Elevated Executive Presence", desc: "Build a commanding presence that garners respect and inspires confidence — the authentic expression of clarity and conviction." },
-            { title: "Heightened Self-Awareness", desc: "Gain deeper insight into strengths, blind spots, and growth edges. Self-awareness is the foundation of every other leadership competency." },
+            { title: "Accelerated Leadership Impact", desc: "Propel your leadership journey forward by honing the mindsets and skillsets crucial for success." },
+            { title: "Enhanced Communication Skills", desc: "Cultivate more impactful communication techniques to engage effectively with your team and stakeholders." },
+            { title: "Elevated Executive Presence", desc: "Develop a commanding executive presence that garners respect and inspires confidence." },
+            { title: "Heightened Self-Awareness", desc: "Gain deeper insights into your strengths, weaknesses, and blind spots, fostering personal growth and resilience." },
           ]} />
         </div>
       </section>
-      <CtaBanner m={m} overline="Get Started" title={<>What leadership challenge are your executives <strong style={{ fontWeight: 600 }}>facing today?</strong></>} desc="Let's explore how coaching can create measurable leadership transformation." onClick={() => nav("contact")} />
+
+      {/* Our Approach — Inside-out / Outside-in */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Approach</div>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, marginBottom: "2rem" }}>
+            Integrating <strong style={{ fontWeight: 600 }}>&ldquo;inside-out&rdquo;</strong> and <strong style={{ fontWeight: 600 }}>&ldquo;outside-in&rdquo;</strong> coaching.
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: "1.5rem" }}>
+            <div style={{ padding: "2rem", background: css.bg, borderRadius: 12, borderTop: `3px solid ${css.terracotta}` }}>
+              <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.2rem", fontWeight: 600, marginBottom: "0.6rem" }}>&ldquo;Inside-out&rdquo; Coaching</h4>
+              <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: css.inkSoft, margin: 0 }}>Delves into personal traits and motivations, enabling leaders to align their goals with their core beliefs and values.</p>
+            </div>
+            <div style={{ padding: "2rem", background: css.bg, borderRadius: 12, borderTop: `3px solid ${css.sage}` }}>
+              <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.2rem", fontWeight: 600, marginBottom: "0.6rem" }}>&ldquo;Outside-in&rdquo; Coaching</h4>
+              <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: css.inkSoft, margin: 0 }}>Focuses on organizational objectives, providing leaders with a holistic understanding of success criteria and how they are perceived by others.</p>
+            </div>
+          </div>
+          <p style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "2rem", maxWidth: 820 }}>
+            By harmonizing these dual perspectives, we empower leaders to excel on personal, interpersonal, and organizational levels — driving holistic transformation and performance enhancement.
+          </p>
+        </div>
+      </section>
+
+      {/* Successor and Onboarding Coaching */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Specialized Program</div>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Successor & <strong style={{ fontWeight: 600 }}>Onboarding Coaching.</strong></div>
+          <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
+            Our tailored successor and onboarding coaching programs are meticulously crafted to accelerate performance and amplify the impact of new leaders during their critical initial 100 days. Whether navigating a new organizational landscape or stepping into a recent promotion, our coaching is custom-built for each leader, addressing key organizational challenges and paving the way for success.
+          </p>
+        </div>
+      </section>
+
+      {/* Executive Team Coaching — Leadership Team Development content */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Executive Team Coaching</div>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Unlocking <strong style={{ fontWeight: 600 }}>High Performance.</strong></div>
+          <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
+            At CCS, we understand that executive leadership teams are the driving force behind achieving exceptional results. A high-performance leadership team doesn&apos;t just happen — it is a deliberate effort that requires the collective commitment of every team member. In an effective team, each leader is aligned with their role, possesses clear goals, and understands what is expected of them.
+          </p>
+          <div style={{ marginTop: "2rem", fontSize: "0.78rem", letterSpacing: "0.18em", textTransform: "uppercase" as const, color: css.muted, fontWeight: 600 }}>Key Offerings</div>
+          <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(2, 1fr)", gap: "1rem", marginTop: "1rem" }}>
+            {[
+              { title: "Cohesive Alignment", desc: "Our coaching sessions create a space for executive teams to align on goals, strategies, and stakeholder perceptions — fostering a united front." },
+              { title: "Reflective Dialogue", desc: "Through guided reflection and open dialogue, team members gain insights into what works well and what impedes effectiveness, driving continuous improvement." },
+              { title: "Enhanced Relationships", desc: "We facilitate the development of stronger relationships, trust, and connectedness among team members, leading to greater team effectiveness." },
+              { title: "Learning and Development", desc: "Team members learn and grow together, with a direct impact on organizational success and performance." },
+              { title: "Constructive Communication", desc: "Our coaching encourages constructive communication, effective conflict resolution, and successful meetings that drive results and foster a positive team dynamic." },
+            ].map((item) => (
+              <div key={item.title} style={{ padding: "1.75rem", borderRadius: 12, background: css.bg, border: `1px solid ${css.warmBorder}` }}>
+                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.05rem", fontWeight: 600, marginBottom: "0.5rem" }}>{item.title}</h4>
+                <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: css.inkSoft, margin: 0 }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner m={m} overline="Get Started" title={<>What leadership challenge are your executives <strong style={{ fontWeight: 600 }}>facing today?</strong></>} desc="Let's explore how coaching can create measurable leadership impact." onClick={() => nav("contact")} />
     </>
   );
 }
@@ -184,20 +267,21 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="Business Consulting" title={<>Human capital strategy that drives <strong style={{ fontWeight: 600, color: css.terracotta }}>measurable results.</strong></>} desc="From digitalization to remote work to organizational restructuring, disruption demands innovative solutions. CCS specializes in human capital strategies that empower leaders to navigate change." cta={{ label: "Start a Consulting Engagement", onClick: () => nav("contact") }} />
+      <PageHero m={m} overline="Consulting · Est. 2010" title={<>Human Capital Strategy <strong style={{ fontWeight: 600, color: css.terracotta }}>& Solutions.</strong></>} desc="In today's fast-paced business landscape, disruption is inevitable. From digitalization to remote work arrangements, organizations are facing numerous challenges that demand innovative solutions. At Complete Career Solutions Consulting (CCS), we specialize in Human Capital strategies and solutions that empower leaders to navigate disruption effectively. Our goal is to help you drive transformation, elevate the workforce experience, and enhance the capabilities of your leadership team." cta={{ label: "Start a Consulting Engagement", onClick: () => nav("contact") }} />
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Consulting Offerings</div>
-          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Designing adaptive systems that empower <strong style={{ fontWeight: 600 }}>people and performance.</strong></div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Consulting Offerings</div>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Embrace disruption <strong style={{ fontWeight: 600 }}>with confidence.</strong></div>
           <FeatureGrid m={m} items={[
-            { title: "Outcome-Driven Human Capital Solutions", desc: "Reimagine tasks that can be automated, optimize workforce allocation, and reshape where and how work is performed." },
-            { title: "Flexible Human Capital Operations", desc: "Design, build, implement, and maintain agile human capital operations aligned with your strategic objectives." },
-            { title: "Digital Transformation", desc: "Accelerate your digital journey with expertise in leveraging new technologies, platforms, and work methodologies." },
-            { title: "Workforce Experience Assessment", desc: "Quickly gauge workforce sentiment and identify improvement opportunities aligned with modern disruption." },
+            { title: "Outcome-Driven Human Capital Solutions", desc: "We focus on outcomes, not just outputs, to redefine the possibilities of work. Our approach involves reimagining tasks that can be automated, optimizing workforce allocation, and reshaping where and how work is performed." },
+            { title: "Flexible Human Capital Operations", desc: "We assist in designing, building, implementing, and maintaining flexible human capital operations that align with your strategic objectives. Our goal is to support agile ways of working that drive business results." },
+            { title: "Digital Human Capital Transformation", desc: "Accelerate your digital transformation journey with our expertise in leveraging new technologies, platforms, and work methodologies. We help you harness the power of digital tools to enhance productivity and efficiency." },
+            { title: "Workforce Experience Assessment", desc: "Quickly gauge the sentiment of your workforce and identify opportunities for improvement. We develop comprehensive strategies that drive positive employee experiences and align with the new norms of disruption." },
+            { title: "Leadership Capability Development", desc: "Equip your leadership team with the right skills and capabilities to deliver sustainable value to your organization and workforce. We focus on building strong leadership foundations that drive success in dynamic environments." },
           ]} />
         </div>
       </section>
-      <CtaBanner m={m} overline="Get Started" title={<>What business processes could benefit from a <strong style={{ fontWeight: 600 }}>fresh perspective?</strong></>} desc="We tailor every engagement to your budget and goals." onClick={() => nav("contact")} />
+      <CtaBanner m={m} overline="Get Started" title={<>What business processes could benefit from a <strong style={{ fontWeight: 600 }}>fresh perspective?</strong></>} desc="We tailor every engagement to your goals and timeline." onClick={() => nav("contact")} />
     </>
   );
 }
@@ -205,20 +289,32 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="Talent Management" title={<>Your external talent team that works like an <strong style={{ fontWeight: 600, color: css.terracotta }}>internal one.</strong></>} desc="CCS Staffing is not a traditional recruitment firm. Our full-desk recruiters are deeply engaged in every step — from sourcing to onboarding." cta={{ label: "Discuss Your Talent Needs", onClick: () => nav("contact") }} bgImage="/TalentManagementImage.jpg" />
+      <PageHero m={m} overline="Talent Management · CCS Staffing" title={<>The right person, at the right time, for the <strong style={{ fontWeight: 600, color: css.terracotta }}>right role.</strong></>} desc="At CCS Staffing, we are your strategic partner in achieving talent management excellence. We pride ourselves on being a unique outsourced talent acquisition firm. Our full-desk recruiters focus on more than just filling positions — they aim to find the right person, at the right time, for the right role. Unlike traditional recruitment firms that simply send resumes over the wall, our team of talent acquisition professionals are deeply engaged in every step of the recruitment process. We act as an external talent acquisition arm that functions like an internal staffing team." cta={{ label: "Discuss Your Talent Needs", onClick: () => nav("contact") }} bgImage="/TalentManagementImage.jpg" />
+
+      {/* Strategic Approach */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>How We&apos;re Different</div>
-          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Recruitment powered by <strong style={{ fontWeight: 600 }}>coaching insight.</strong></div>
-          <FeatureGrid m={m} items={[
-            { title: "Outsourced Talent Acquisition", desc: "We function as your embedded recruitment team — involved in every step, not just resume forwarding." },
-            { title: "Coaching-Informed Assessment", desc: "Our CCS coaches assess each candidate's long-term viability and potential before submission." },
-            { title: "Strategic Recruitment", desc: "We align recruitment strategy with your business goals — not just job descriptions." },
-            { title: "Workforce Development", desc: "A strategic approach to developing your workforce beyond the hire with pipelines and succession plans." },
-          ]} />
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: m ? "2rem" : "4rem", alignItems: "start" }}>
+          <div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Strategic Workforce Development</div>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, margin: 0 }}>
+              Talent management is the strategic approach to recruiting and developing a workforce that maximizes productivity and retains top talent for the long term. When executed effectively, this process enhances overall business performance and ensures competitiveness in the market.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, marginTop: "1.25rem" }}>
+              Our talent acquisition professionals also leverage the expertise of CCS coaches to assess a candidate&apos;s long-term viability and potential for success at your company before submission. This additional layer of validation ensures that we provide you with the best possible candidates for long-term success.
+            </p>
+          </div>
+          <div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Client Engagement</div>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, margin: 0 }}>
+              Client engagement is our priority. We strive to understand every detail of your talent management goals and the objectives of your hiring managers. This client-first approach enables our recruiters to source, assess, and evaluate candidates thoroughly before presenting them to you.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, marginTop: "1.25rem" }}>
+              As a result, you receive a selection of qualified candidates who meet or exceed the job description&apos;s requirements and possess the qualities of a successful employee within your organization.
+            </p>
+          </div>
         </div>
       </section>
-      <CtaBanner m={m} overline="Get Started" title={<>What would an ideal recruitment partner look like <strong style={{ fontWeight: 600 }}>for your team?</strong></>} desc="Let's talk about your hiring challenges and how CCS Staffing can help." onClick={() => nav("contact")} />
+      <CtaBanner m={m} overline="Partner with CCS Staffing" title={<>What would an ideal recruitment partner look like <strong style={{ fontWeight: 600 }}>for your team?</strong></>} desc="At CCS Staffing, we look forward to partnering with you to help you achieve your business goals through effective talent management strategies." onClick={() => nav("contact")} />
     </>
   );
 }
@@ -254,22 +350,25 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (member: "tom" | "brent") => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="About CCS" title={<>A modern, trusted firm grounded in <strong style={{ fontWeight: 600, color: css.terracotta }}>human-centered values.</strong></>} desc="Founded in 2010 in Austin, Texas, Complete Career Solutions specializes in driving impactful change that resonates throughout entire organizations — always rooted in the power of the individual. We empower superior performance through your most valuable asset: your people." />
+      <PageHero m={m} overline="About CCS · Est. 2010" title={<>A dynamic blend of seasoned experts and <strong style={{ fontWeight: 600, color: css.terracotta }}>innovative thinkers.</strong></>} desc="Our team is dedicated to delivering tailored solutions that drive success. With a diverse range of backgrounds and specialties, we bring a wealth of knowledge and a fresh perspective to every project. Our collaborative approach ensures that we leverage each team member's unique strengths, fostering an environment of continuous learning and growth. Client-centric and committed to excellence, we pride ourselves on our ability to navigate complex challenges and deliver impactful results that exceed expectations." />
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Values</div>
-          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>These aren&apos;t just words. They shape every <strong style={{ fontWeight: 600 }}>interaction and decision.</strong></div>
-          <div style={{ display: "grid", gridTemplateColumns: m ? "repeat(2, 1fr)" : "repeat(5, 1fr)", gap: "1rem", marginTop: "2.5rem" }}>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>More than words — the <strong style={{ fontWeight: 600 }}>foundation of everything we do.</strong></div>
+          <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.25rem", maxWidth: 820 }}>
+            At CCS, our values shape our decisions, guide our actions, and inspire our strategies. We believe in living our values through every interaction and partnership.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(5, 1fr)", gap: "1rem", marginTop: "2.5rem" }}>
             {[
-              { title: "Courage", desc: "Acting with trust, presence, faith, and vulnerability." },
-              { title: "Intention & Quality", desc: "Purposeful work that maximizes impact." },
-              { title: "Integrity", desc: "Honesty, transparency, and accountability." },
-              { title: "Partnership", desc: "Meaningful, long-term relationships." },
-              { title: "Tenacity", desc: "Resilience, grit, and passion for success." },
+              { title: "Courage", desc: "Drives us to embrace trust, stay present-minded, and act with faith and vulnerability." },
+              { title: "Intention & Quality", desc: "Ensure that everything we do has purpose, striving to maximize impact." },
+              { title: "Integrity", desc: "At the heart of our business — upholding the highest ethical standards with honesty, transparency, and accountability." },
+              { title: "Partnership", desc: "Our commitment to meaningful, long-term relationships with clients, candidates, and collaborators." },
+              { title: "Tenacity", desc: "Fuels our competitive spirit, resilience, and unwavering passion for success." },
             ].map((v) => (
-              <div key={v.title} style={{ textAlign: "center", padding: "2rem 1rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}` }}>
-                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1rem", fontWeight: 600, marginBottom: "0.5rem" }}>{v.title}</h4>
-                <p style={{ fontSize: "0.78rem", color: css.inkSoft, lineHeight: 1.6 }}>{v.desc}</p>
+              <div key={v.title} style={{ padding: "1.75rem 1.25rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}` }}>
+                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.05rem", fontWeight: 600, marginBottom: "0.5rem", color: css.terracotta }}>{v.title}</h4>
+                <p style={{ fontSize: "0.85rem", color: css.inkSoft, lineHeight: 1.7, margin: 0 }}>{v.desc}</p>
               </div>
             ))}
           </div>
@@ -304,7 +403,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
           </div>
         </div>
       </section>
-      <CtaBanner m={m} overline="Partner With Us" title={<>Ready to build something <strong style={{ fontWeight: 600 }}>extraordinary?</strong></>} desc="Let us show you what a true strategic partnership looks like." onClick={() => nav("contact")} />
+      <CtaBanner m={m} overline="Ready to Transform Your Business?" title={<>Let&apos;s partner <strong style={{ fontWeight: 600 }}>for success.</strong></>} desc="Take the first step towards unlocking your business's true potential. Partner with Complete Career Solutions today and embark on a journey towards sustainable growth and success." onClick={() => nav("contact")} />
     </>
   );
 }
@@ -312,7 +411,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
 function ContactPage({ m }: { m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="Get In Touch" title={<>Every engagement starts with a <strong style={{ fontWeight: 600, color: css.terracotta }}>conversation.</strong></>} desc="Tell us where you are, where you need to be, and we'll explore how CCS can help. No pressure, no pitch deck — just a real conversation about what's possible." />
+      <PageHero m={m} overline="Contact Us" title={<>Partner <strong style={{ fontWeight: 600, color: css.terracotta }}>With Us.</strong></>} desc="We strategically partner with companies and individuals whose values align with ours. We invite you to reach out and explore how we can achieve success together." />
       <section style={{ padding: m ? "0 0 2.5rem" : "0 0 5rem" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: m ? "2rem" : "4rem" }}>
@@ -320,9 +419,9 @@ function ContactPage({ m }: { m: boolean }) {
               <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Reach Out</div>
               <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, marginBottom: "2rem" }}>We&apos;d love to hear <strong style={{ fontWeight: 600 }}>from you.</strong></div>
               {[
-                { name: "Tom Triolo — CEO & Executive Coach", email: "ttriolo@completecareersolutions.com", scope: "Executive Coaching · Business Consulting · AI Solutions" },
-                { name: "Brent Triolo — Co-Founder & Recruitment", email: "brent.triolo@completecareersolutions.com", scope: "Talent Management · CCS Staffing" },
-                { name: "Office", email: "", scope: "555 E 5th Street\nAustin, Texas 78701\n(512) 579-1819" },
+                { name: "Tom Triolo — CEO & Executive Coach", email: "ttriolo@completecareersolutions.com", scope: "Executive Coaching · Consulting · AI Solutions" },
+                { name: "Brent Triolo — Co-Founder, CCS Staffing", email: "brent.triolo@completecareersolutions.com", scope: "Talent Management · Executive Search" },
+                { name: "CCS Main Office", email: "", scope: "555 E 5th St\nAustin, TX 78701-4157, United States\n+1 (512) 579-1819" },
               ].map((c) => (
                 <div key={c.name} style={{ padding: "2rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}`, marginBottom: "1rem" }}>
                   <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1rem", fontWeight: 600, marginBottom: "0.4rem" }}>{c.name}</h4>
