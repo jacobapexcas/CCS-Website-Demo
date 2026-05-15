@@ -80,16 +80,12 @@ app/                    → Next.js App Router pages and global styles
   page.tsx              → Password gate + design switcher (main entry)
   globals.css           → Tailwind import, font theme vars, fadeUp animations
 components/             → React components
-  DesignSwitcher.tsx    → Floating bottom pill to toggle designs A/B/C/D/E/F/G
+  DesignSwitcher.tsx    → Floating bottom pill — now shows only the two finalist designs (C and D) labeled "Option 1 · Multi-Page" and "Option 2 · Single-Page" for team review
   TeamModal.tsx         → Shared bio popup + centralized team data (Tom & Brent)
-  designs/              → One file per design option (~800-1100 lines each)
-    OptionA.tsx          → "Editorial Authority" — dark, Playfair Display, gold
-    OptionB.tsx          → "Modern Warmth" — light cream, Fraunces, terracotta
-    OptionC.tsx          → "Full Website" — multi-page with internal tab nav
-    OptionD.tsx          → "Premium Executive" — navy/cream, Cormorant Garamond
-    OptionE.tsx          → "Swiss Precision" — white/black, Syne, red accent, oversized section numbers
-    OptionF.tsx          → "Warm Brutalist" — paper/charcoal, Bebas Neue, thick 3px borders, earthy greens
-    OptionG.tsx          → "Brand Aligned" — exact CCS palette (Navy #1B2838 / Teal #3AAFB5 / Orange #E8943A), Fraunces + Plus Jakarta Sans, copy from locked CCS Brand Voice Guide v2.1 (consulting house, four service lines, Inside-Out/Outside-In, Assess→Implement→Optimize, five core values)
+  designs/              → One file per design option (~800-1700 lines each)
+    OptionC.tsx          → ★ Option 1 (Multi-Page) — terracotta/sage warm palette, Fraunces serif, internal multi-page nav with verbatim copy from current site PDFs: Home / Coaching / Consulting / Talent / AI Solutions / About / Contact. Each page substantially expanded with Inside-out/Outside-in approach, Successor & Onboarding, Executive Team Coaching 5 Key Offerings, Consulting "Who We Work With" + "How We Engage" 4-step process, AI Solutions phase deliverables + Who It's For, Talent "What We Deliver" + "Our Process" 5 steps, About "Our Story" + verbatim values + "Ready to Transform Your Business" CTA
+    OptionD.tsx          → ★ Option 2 (Single-Page) — navy/cream, Cormorant Garamond serif + DM Sans, sophisticated executive advisory feel. Hero uses verbatim "Empowering organizations through strategic consulting" tagline + verbatim mission, 4-pillar Inside-Out/Outside-In/Assess→Implement→Optimize/Coaching-Informed methodology grid, 4 service columns with verbatim descriptions, anonymized Fortune 500 case study (no named clients per voice guide §6), verbatim Our Values, Tom + Brent team cards, Partner With Us contact with full address + Brent's email
+    OptionA.tsx, OptionB.tsx, OptionE.tsx, OptionF.tsx, OptionG.tsx → Earlier exploratory designs kept on disk for reference but no longer wired into the switcher
 hooks/                  → Custom React hooks
   useIsMobile.ts        → Media query hook via useSyncExternalStore (breakpoint: 768px)
 public/                 → Static assets served by CDN
@@ -251,5 +247,5 @@ If a single task triggers 3+ of the above conditions, add a summary note:
 <!-- Major update: [date] — [what changed and why] -->
 
 ---
-Last analyzed: 2026-05-14 — added OptionG (brand-aligned design using locked CCS palette + Brand Voice Guide v2.1 copy)
+Last analyzed: 2026-05-15 — down-selected from seven designs to two finalists (C Multi-Page, D Single-Page) for team review. Both updated with verbatim copy from the current completecareersolutions.com PDFs. Option C significantly expanded with new sections on every sub-page. Option D rebuilt with verbatim hero, methodology, services, values, and contact details. Earlier exploratory designs (A, B, E, F, G) remain on disk but are no longer wired into the switcher.
 To re-scan this project, paste the scan-and-maintain prompt from your project setup files.

@@ -281,6 +281,60 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
           ]} />
         </div>
       </section>
+      {/* Who We Work With */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "start" }}>
+          <div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Who We Work With</div>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.6rem,3vw,2.4rem)", fontWeight: 400, lineHeight: 1.2, margin: 0 }}>
+              Leaders navigating <strong style={{ fontWeight: 600 }}>real change.</strong>
+            </h2>
+          </div>
+          <div>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, margin: 0 }}>
+              We partner with CEOs, CHROs, COOs, and senior operating leaders inside organizations that are scaling, restructuring, integrating an acquisition, or rebuilding a function after sustained growth. Our engagements concentrate where business performance depends on what people are actually able to do — not just what the strategy slide says.
+            </p>
+            <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: m ? "1fr 1fr" : "repeat(3, 1fr)", gap: "1.25rem" }}>
+              {[
+                { label: "Industries", value: "Technology · Financial Services · Medical Devices · Professional Services · Consumer Products · Commercial Development" },
+                { label: "Engagement Type", value: "Retained advisory · Project-based · Embedded modules" },
+                { label: "Typical Length", value: "30 days to 12 months · Renewable quarter by quarter" },
+              ].map((item) => (
+                <div key={item.label}>
+                  <div style={{ fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase" as const, color: css.muted, fontWeight: 700, marginBottom: "0.5rem" }}>{item.label}</div>
+                  <div style={{ fontSize: "0.85rem", lineHeight: 1.6, color: css.ink }}>{item.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How We Engage */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>How We Engage</div>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>A consulting engagement that <strong style={{ fontWeight: 600 }}>actually transfers.</strong></div>
+          <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
+            We embed alongside your team rather than handing over a deck. Every engagement is built to leave behind the people, frameworks, and decisions your team needs to keep running the new model after we&apos;ve gone. Knowledge transfer over deliverables. Long-term partnership over deal-by-deal.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(4, 1fr)", gap: "1rem", marginTop: "2.5rem" }}>
+            {[
+              { num: "01", title: "Listen", desc: "Stakeholder conversations, current-state mapping, and a candid read on what is actually getting in the way." },
+              { num: "02", title: "Design", desc: "A working model your team helps shape — not a 100-page deck. Specific deliverables, specific owners, specific timing." },
+              { num: "03", title: "Embed", desc: "We work inside the team, not over them. Senior-led, hands-on, accountable to the same outcomes your leaders are." },
+              { num: "04", title: "Transfer", desc: "When we leave, the team owns it. Decisions, cadences, and capability stay behind. No retainer dependency." },
+            ].map((step) => (
+              <div key={step.num} style={{ padding: "1.75rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}` }}>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.4rem", fontWeight: 700, color: css.terracotta, marginBottom: "0.5rem" }}>{step.num}</div>
+                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.1rem", fontWeight: 600, marginBottom: "0.5rem", color: css.ink }}>{step.title}</h4>
+                <p style={{ fontSize: "0.86rem", lineHeight: 1.7, color: css.inkSoft, margin: 0 }}>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CtaBanner m={m} overline="Get Started" title={<>What business processes could benefit from a <strong style={{ fontWeight: 600 }}>fresh perspective?</strong></>} desc="We tailor every engagement to your goals and timeline." onClick={() => nav("contact")} />
     </>
   );
@@ -314,6 +368,43 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
           </div>
         </div>
       </section>
+      {/* What We Deliver */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>What We Deliver</div>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>The CCS Staffing <strong style={{ fontWeight: 600 }}>difference.</strong></div>
+          <FeatureGrid m={m} items={[
+            { title: "Outsourced Talent Acquisition", desc: "We function as your embedded recruitment arm — full-desk recruiters involved in every step from sourcing through onboarding, not just resume forwarding." },
+            { title: "Executive Search", desc: "Retained search for senior leadership roles. We sit down with candidates before they reach you and surface fit signals that a screen call won't surface." },
+            { title: "Coaching-Informed Validation", desc: "Our CCS coaches assess each candidate's long-term viability and potential for success at your company before submission. The gaps a resume hides in week one, surfaced before week one." },
+            { title: "Workforce Development", desc: "Beyond the hire — pipeline planning, candidate care, and the cadences that turn one good hire into a repeatable engine." },
+          ]} />
+        </div>
+      </section>
+
+      {/* Our Process */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Process</div>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>How a CCS Staffing engagement <strong style={{ fontWeight: 600 }}>actually runs.</strong></div>
+          <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(5, 1fr)", gap: "1rem", marginTop: "2.5rem" }}>
+            {[
+              { num: "01", title: "Discovery", desc: "We sit down with hiring managers to understand the role, the team, and the culture beyond the JD." },
+              { num: "02", title: "Sourcing", desc: "Our recruiters work the full desk — passive candidates, network, and active pipeline simultaneously." },
+              { num: "03", title: "Coaching Assessment", desc: "Our CCS coaches assess each shortlisted candidate for long-term viability, not just role fit." },
+              { num: "04", title: "Submission", desc: "You receive a curated slate of qualified candidates who meet or exceed the JD — and possess the qualities of a successful hire at your company." },
+              { num: "05", title: "Close & Onboard", desc: "We support offer construction, candidate close conversations, and first-100-day onboarding alignment." },
+            ].map((step) => (
+              <div key={step.num} style={{ padding: "1.5rem 1.25rem", borderRadius: 12, background: css.bg, border: `1px solid ${css.warmBorder}` }}>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.25rem", fontWeight: 700, color: css.terracotta, marginBottom: "0.4rem" }}>{step.num}</div>
+                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1rem", fontWeight: 600, marginBottom: "0.4rem", color: css.ink }}>{step.title}</h4>
+                <p style={{ fontSize: "0.82rem", lineHeight: 1.65, color: css.inkSoft, margin: 0 }}>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CtaBanner m={m} overline="Partner with CCS Staffing" title={<>What would an ideal recruitment partner look like <strong style={{ fontWeight: 600 }}>for your team?</strong></>} desc="At CCS Staffing, we look forward to partnering with you to help you achieve your business goals through effective talent management strategies." onClick={() => nav("contact")} />
     </>
   );
@@ -342,6 +433,87 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
           </div>
         </div>
       </section>
+      {/* Phase Deliverables */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>What You Get</div>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Tangible deliverables, <strong style={{ fontWeight: 600 }}>not slideware.</strong></div>
+          <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
+            Each phase produces working artifacts your team uses immediately — not deliverables that sit on a shared drive. The goal is leaders who feel confident with AI before the engagement ends.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(3, 1fr)", gap: "1.25rem", marginTop: "2.5rem" }}>
+            {[
+              {
+                phase: "Assess",
+                items: [
+                  "AI Readiness Report",
+                  "Risk & Governance Checklist",
+                  "Opportunity Map (top 10 use cases ranked by impact and effort)",
+                  "Leadership Comfort Survey",
+                ],
+              },
+              {
+                phase: "Implement",
+                items: [
+                  "Secure AI workspace setup (ChatGPT Teams, Microsoft Copilot, or equivalent)",
+                  "Role-based access plan",
+                  "Prompt library tailored to your operating context",
+                  "Privacy configuration and data governance",
+                ],
+              },
+              {
+                phase: "Optimize",
+                items: [
+                  "AI Leadership Essentials Workshop (90 minutes)",
+                  "AI Prompts for Leaders guide",
+                  "Quarterly business review with usage analytics",
+                  "Ongoing learning pathways for the team",
+                ],
+              },
+            ].map((p) => (
+              <div key={p.phase} style={{ padding: "2rem", borderRadius: 12, background: css.bg, border: `1px solid ${css.warmBorder}` }}>
+                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.3rem", fontWeight: 600, marginBottom: "1rem", color: css.terracotta }}>{p.phase}</h4>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "0.6rem" }}>
+                  {p.items.map((item) => (
+                    <li key={item} style={{ fontSize: "0.88rem", color: css.ink, lineHeight: 1.6, display: "flex", gap: "0.6rem" }}>
+                      <span style={{ width: 4, height: 4, background: css.terracotta, borderRadius: "50%", marginTop: "0.55rem", flexShrink: 0 }} />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who It's For */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.2fr", gap: m ? "2rem" : "4rem", alignItems: "start" }}>
+          <div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Who It&apos;s For</div>
+            <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.5rem,2.5vw,2rem)", fontWeight: 400, lineHeight: 1.25, marginBottom: "1.25rem" }}>
+              Senior leaders who want their team focused on the work AI <strong style={{ fontWeight: 600 }}>can&apos;t replace.</strong>
+            </h3>
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: css.inkSoft, margin: 0 }}>
+              The leaders pulling ahead with AI aren&apos;t the ones with the best technology — they&apos;re the ones who decided what they want their teams doing instead. We coach through that question first, then deploy the tools.
+            </p>
+          </div>
+          <div style={{ display: "grid", gap: "1rem" }}>
+            {[
+              { title: "CHROs and HR leaders", desc: "Looking to give the team back the hours they spend on summaries, drafts, and follow-ups — without compromising governance or candidate trust." },
+              { title: "COOs and operating leaders", desc: "Mapping where AI can compress cycle time on internal processes (performance management, planning, reporting) before scaling broadly." },
+              { title: "Sales and revenue leaders", desc: "Looking for AI that supports the rep without replacing the relationship — call analysis, deal review, prep without the busywork." },
+            ].map((p) => (
+              <div key={p.title} style={{ padding: "1.5rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}` }}>
+                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.05rem", fontWeight: 600, color: css.ink, marginBottom: "0.4rem" }}>{p.title}</h4>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: css.inkSoft, margin: 0 }}>{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CtaBanner m={m} overline="Get Started" title={<>What role does AI currently play in <strong style={{ fontWeight: 600 }}>your organization?</strong></>} desc="Whether you're just starting or scaling existing AI initiatives, we'll meet you where you are." onClick={() => nav("contact")} />
     </>
   );
@@ -351,6 +523,29 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
   return (
     <>
       <PageHero m={m} overline="About CCS · Est. 2010" title={<>A dynamic blend of seasoned experts and <strong style={{ fontWeight: 600, color: css.terracotta }}>innovative thinkers.</strong></>} desc="Our team is dedicated to delivering tailored solutions that drive success. With a diverse range of backgrounds and specialties, we bring a wealth of knowledge and a fresh perspective to every project. Our collaborative approach ensures that we leverage each team member's unique strengths, fostering an environment of continuous learning and growth. Client-centric and committed to excellence, we pride ourselves on our ability to navigate complex challenges and deliver impactful results that exceed expectations." />
+
+      {/* Our Story */}
+      <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "start" }}>
+          <div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Story</div>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, margin: 0 }}>
+              Built on one principle: <strong style={{ fontWeight: 600 }}>enabling the success of others.</strong>
+            </h2>
+          </div>
+          <div>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, margin: 0, marginBottom: "1.5rem" }}>
+              CCS was founded in 2010 in Austin, Texas. Nearly 25 years of senior-level leadership across technology, professional services, financial services, commercial development, medical devices, and consumer products went into the way we work today — and into the team we&apos;ve built around it.
+            </p>
+            <p style={{ fontSize: "1rem", lineHeight: 1.85, color: css.inkSoft, margin: 0, marginBottom: "1.5rem" }}>
+              We&apos;re a consulting house. Our point of entry can be coaching, consulting, talent management, or AI enablement — the engagement looks the same once we&apos;re in. We assess the problem, we solve it in a way that fits the moment, and we leave behind the people and capability your team needs to keep running it.
+            </p>
+            <p style={{ fontSize: "1rem", lineHeight: 1.85, color: css.inkSoft, margin: 0 }}>
+              Our growth is 100% referral-driven. We self-select the clients we work with, and we&apos;ve built lasting partnerships with leaders across six industries who keep coming back because the work transfers.
+            </p>
+          </div>
+        </div>
+      </section>
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Values</div>

@@ -218,7 +218,7 @@ export default function OptionD() {
             marginBottom: "2rem",
           }}
         >
-          TRUSTED BY ENTERPRISE LEADERS SINCE 2010
+          DRIVING IMPACTFUL CHANGE SINCE 2010 · AUSTIN, TEXAS
         </div>
         <h1
           style={{
@@ -226,15 +226,15 @@ export default function OptionD() {
             fontWeight: 300,
             lineHeight: 1.1,
             color: "#1a1f36",
-            maxWidth: "850px",
+            maxWidth: "880px",
             marginBottom: "2rem",
           }}
         >
-          The quiet partner behind{" "}
+          Empowering organizations through{" "}
           <span style={{ fontStyle: "italic", fontWeight: 400 }}>
-            exceptional
+            strategic
           </span>{" "}
-          leadership teams.
+          consulting.
         </h1>
         <p
           style={{
@@ -243,13 +243,28 @@ export default function OptionD() {
             fontWeight: 300,
             lineHeight: 1.8,
             color: "#5a5e6e",
-            maxWidth: "620px",
+            maxWidth: "680px",
+            marginBottom: "1.5rem",
+          }}
+        >
+          At Complete Career Solutions, we specialize in driving impactful change
+          that resonates throughout entire organizations — always rooted in the
+          power of the individual. Our mission is to guide you in surpassing your
+          business objectives.
+        </p>
+        <p
+          style={{
+            fontSize: "1.05rem",
+            fontFamily: "'DM Sans', sans-serif",
+            fontWeight: 300,
+            lineHeight: 1.8,
+            color: "#5a5e6e",
+            maxWidth: "680px",
             marginBottom: "3.5rem",
           }}
         >
-          We partner with CEOs and CHROs to accelerate leadership performance
-          through executive coaching, talent strategy, and AI-powered
-          organizational transformation.
+          Positioned uniquely as an organizational consulting firm, we prioritize
+          four key pillars of success: <span style={{ color: "#1a1f36", fontWeight: 400 }}>Executive Coaching, Leadership Development, Operational Consulting,</span> and <span style={{ color: "#1a1f36", fontWeight: 400 }}>Talent Management</span> — with AI Enablement woven through every engagement. We empower superior performance through your most valuable asset: your people.
         </p>
         <div style={{ display: "flex", flexDirection: m ? "column" : "row", gap: "1rem", alignItems: m ? "stretch" : "center" }}>
           <a
@@ -307,10 +322,10 @@ export default function OptionD() {
           }}
         >
           {[
-            { num: "25+", label: "Years Advisory Experience" },
-            { num: "500+", label: "Leaders Coached" },
-            { num: "73%", label: "Faster Performance Cycles" },
-            { num: "Fortune 500", label: "Client Portfolio" },
+            { num: "15+", label: "Years in Practice" },
+            { num: "25+", label: "Yrs Sr. Leadership" },
+            { num: "6", label: "Industries Served" },
+            { num: "100%", label: "Referral-Driven Growth" },
           ].map((s, i) => (
             <div key={i} style={{ textAlign: "center" }}>
               <div
@@ -377,8 +392,8 @@ export default function OptionD() {
                 marginBottom: "1.5rem",
               }}
             >
-              Acceleration through{" "}
-              <span style={{ fontStyle: "italic" }}>precision</span>
+              Partnering for{" "}
+              <span style={{ fontStyle: "italic" }}>success</span>
             </h2>
             <p
               style={{
@@ -389,10 +404,12 @@ export default function OptionD() {
                 color: "#5a5e6e",
               }}
             >
-              We operate in the space between the Big Four consultancies and
-              point-solution vendors — senior-led, deeply embedded, accountable
-              to outcomes. No junior associates. No recycled playbooks. Every
-              engagement is shaped by the specific context of your organization.
+              With a focus on intention, integrity, and excellence, we build lasting
+              partnerships that foster growth and resilience. By partnering with us,
+              you gain access to a wealth of knowledge and trusted advisors committed
+              to driving your business forward. Our unique approach ensures your
+              organization stays well-positioned for success in an ever-changing
+              market.
             </p>
           </div>
           <div
@@ -404,20 +421,20 @@ export default function OptionD() {
           >
             {[
               {
-                title: "Diagnose",
-                text: "Deep organizational assessment through stakeholder interviews, data analysis, and cultural mapping.",
+                title: "Inside-Out",
+                text: "Coaching that delves into personal traits and motivations, enabling leaders to align their goals with their core beliefs and values.",
               },
               {
-                title: "Design",
-                text: "Custom strategy development aligned to your specific business objectives and leadership context.",
+                title: "Outside-In",
+                text: "Coaching focused on organizational objectives, providing leaders with a holistic understanding of success criteria and how they are perceived by others.",
               },
               {
-                title: "Deploy",
-                text: "Embedded execution with your team — we parachute in, deliver, and transfer capability.",
+                title: "Assess → Implement → Optimize",
+                text: "Our three-phase framework for AI Enablement — readiness mapping, secure workspace deployment, and long-term adoption coaching.",
               },
               {
-                title: "Sustain",
-                text: "Ongoing coaching and accountability structures that ensure lasting behavioral change.",
+                title: "Coaching-Informed Recruitment",
+                text: "CCS Staffing leverages our coaches to assess a candidate's long-term viability and potential for success before submission.",
               },
             ].map((item, i) => (
               <div
@@ -511,23 +528,23 @@ export default function OptionD() {
             {[
               {
                 title: "Executive Coaching",
-                text: "One-on-one development partnerships with C-suite and VP-level leaders focused on measurable behavioral change and strategic impact.",
-                details: "ICF-certified methodology · 360 assessments · Board-ready development",
+                text: "Enhance leadership skills and maximize potential through personalized coaching programs tailored to your organization's needs. Inside-out and outside-in coaching across the executive lifecycle.",
+                details: "Leadership Acceleration · Successor & 100-Day Coaching · Executive Team Coaching",
               },
               {
                 title: "Consulting",
-                text: "Organizational design, change management, and performance acceleration for companies navigating transformation.",
-                details: "Culture diagnostics · Change architecture · Operating model design",
+                text: "Optimize your business operations and processes for efficiency and profitability under expert guidance. Human capital strategy and solutions that empower leaders to navigate disruption effectively.",
+                details: "Outcome-Driven Solutions · Workforce Experience · Leadership Capability",
               },
               {
-                title: "Talent Strategy",
-                text: "Executive search, succession planning, and talent architecture that builds leadership pipelines aligned to business strategy.",
-                details: "Executive search · Succession planning · Competency frameworks",
+                title: "Talent Management",
+                text: "Foster a culture of strong leadership and professional growth with our tailored development solutions. CCS Staffing finds the right person, at the right time, for the right role.",
+                details: "Outsourced Talent Acquisition · Executive Search · Coaching-Informed Validation",
               },
               {
-                title: "AI Solutions",
-                text: "Custom AI tools and integrations that give leadership teams a strategic advantage in decision-making and organizational intelligence.",
-                details: "Process automation · AI coaching tools · Decision intelligence",
+                title: "AI Enablement",
+                text: "Build confident leaders in the age of AI through readiness assessments, secure workspace setup, and ongoing enablement — Assess → Implement → Optimize.",
+                details: "AI Readiness Report · Secure Workspaces · Leadership Workshops",
               },
             ].map((svc, i) => (
               <div
@@ -609,7 +626,7 @@ export default function OptionD() {
             marginBottom: "1.5rem",
           }}
         >
-          CASE STUDY
+          THE WORK
         </div>
         <h2
           style={{
@@ -621,7 +638,7 @@ export default function OptionD() {
           }}
         >
           Proof through{" "}
-          <span style={{ fontStyle: "italic" }}>performance</span>
+          <span style={{ fontStyle: "italic" }}>partnership</span>
         </h2>
 
         <div
@@ -647,7 +664,7 @@ export default function OptionD() {
                 fontWeight: 500,
               }}
             >
-              LENOVO — GLOBAL PERFORMANCE TRANSFORMATION
+              A FORTUNE 500 TECHNOLOGY CLIENT
             </div>
             <p
               style={{
@@ -658,9 +675,10 @@ export default function OptionD() {
                 maxWidth: "750px",
               }}
             >
-              &ldquo;CCS helped us redesign our entire performance review
-              architecture — cutting cycle time by 73% while improving manager
-              and employee satisfaction scores across all business units.&rdquo;
+              CCS partnered with a senior HR team to redesign their global
+              performance review architecture — cutting cycle time substantially
+              while improving manager and employee satisfaction across all
+              business units. Every engagement starts where the client is.
             </p>
           </div>
           <div
@@ -672,11 +690,11 @@ export default function OptionD() {
           >
             {[
               {
-                metric: "9 weeks → 2.5 weeks",
-                label: "Review Cycle Reduction",
+                metric: "Cycle time cut",
+                label: "9 weeks → 2.5 weeks",
               },
-              { metric: "73%", label: "Faster Performance Cycles" },
-              { metric: "Global Scale", label: "Deployed Across All BUs" },
+              { metric: "Global scale", label: "Deployed across all BUs" },
+              { metric: "Manager NPS", label: "Improved across the board" },
             ].map((r, i) => (
               <div
                 key={i}
@@ -981,11 +999,11 @@ export default function OptionD() {
           }}
         >
           {[
-            { name: "Courage", desc: "Acting with trust, presence, faith, and vulnerability." },
-            { name: "Intention & Quality", desc: "Purposeful work that maximizes impact." },
-            { name: "Integrity", desc: "Honesty, transparency, and accountability at our core." },
-            { name: "Partnership", desc: "Meaningful, long-term relationships over transactions." },
-            { name: "Tenacity", desc: "Resilience, grit, and unwavering passion for success." },
+            { name: "Courage", desc: "Drives us to embrace trust, stay present-minded, and act with faith and vulnerability." },
+            { name: "Intention & Quality", desc: "Ensure that everything we do has purpose, striving to maximize impact." },
+            { name: "Integrity", desc: "At the heart of our business — honesty, transparency, and accountability." },
+            { name: "Partnership", desc: "Meaningful, long-term relationships with clients, candidates, and collaborators." },
+            { name: "Tenacity", desc: "Fuels our competitive spirit, resilience, and unwavering passion for success." },
           ].map((v) => (
             <div
               key={v.name}
@@ -1060,7 +1078,7 @@ export default function OptionD() {
             marginBottom: "1.5rem",
           }}
         >
-          BEGIN
+          CONTACT US
         </div>
         <h2
           style={{
@@ -1070,8 +1088,8 @@ export default function OptionD() {
             marginBottom: "1.5rem",
           }}
         >
-          Every transformation starts with{" "}
-          <span style={{ fontStyle: "italic" }}>a conversation</span>
+          Partner{" "}
+          <span style={{ fontStyle: "italic" }}>with us</span>
         </h2>
         <p
           style={{
@@ -1081,13 +1099,13 @@ export default function OptionD() {
             lineHeight: 1.8,
             color: "#5a5e6e",
             marginBottom: "2.5rem",
-            maxWidth: "550px",
+            maxWidth: "600px",
             margin: "0 auto 2.5rem",
           }}
         >
-          We work with a select number of organizations each quarter. If you&apos;re
-          ready to accelerate your leadership team&apos;s impact, we&apos;d welcome the
-          opportunity to explore how we can help.
+          We strategically partner with companies and individuals whose values
+          align with ours. We invite you to reach out and explore how we can
+          achieve success together.
         </p>
         <div
           style={{
@@ -1097,6 +1115,7 @@ export default function OptionD() {
             justifyContent: "center",
             alignItems: m ? "stretch" : undefined,
             flexWrap: "wrap",
+            marginBottom: "3rem",
           }}
         >
           <a
@@ -1114,10 +1133,10 @@ export default function OptionD() {
               textAlign: m ? "center" : undefined,
             }}
           >
-            ttriolo@completecareersolutions.com
+            Email Tom Triolo
           </a>
           <a
-            href="tel:5125791819"
+            href="mailto:brent.triolo@completecareersolutions.com"
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: "0.8rem",
@@ -1131,8 +1150,103 @@ export default function OptionD() {
               textAlign: m ? "center" : undefined,
             }}
           >
-            (512) 579-1819
+            Email Brent Triolo
           </a>
+        </div>
+
+        {/* Office details */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: m ? "1fr" : "repeat(3, 1fr)",
+            gap: m ? "1.25rem" : "2rem",
+            paddingTop: "2.5rem",
+            borderTop: "1px solid rgba(26,31,54,0.06)",
+            maxWidth: "850px",
+            margin: "0 auto",
+            textAlign: m ? "center" : ("left" as const),
+          }}
+        >
+          <div>
+            <div
+              style={{
+                fontSize: "0.65rem",
+                letterSpacing: "0.18em",
+                color: "#b8a88a",
+                fontWeight: 500,
+                fontFamily: "'DM Sans', sans-serif",
+                marginBottom: "0.5rem",
+              }}
+            >
+              CCS MAIN OFFICE
+            </div>
+            <div
+              style={{
+                fontSize: "0.9rem",
+                color: "#1a1f36",
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 300,
+                lineHeight: 1.6,
+              }}
+            >
+              555 E 5th St
+              <br />
+              Austin, TX 78701-4157
+            </div>
+          </div>
+          <div>
+            <div
+              style={{
+                fontSize: "0.65rem",
+                letterSpacing: "0.18em",
+                color: "#b8a88a",
+                fontWeight: 500,
+                fontFamily: "'DM Sans', sans-serif",
+                marginBottom: "0.5rem",
+              }}
+            >
+              TELEPHONE
+            </div>
+            <a
+              href="tel:5125791819"
+              style={{
+                fontSize: "0.9rem",
+                color: "#1a1f36",
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 300,
+                textDecoration: "none",
+              }}
+            >
+              +1 (512) 579-1819
+            </a>
+          </div>
+          <div>
+            <div
+              style={{
+                fontSize: "0.65rem",
+                letterSpacing: "0.18em",
+                color: "#b8a88a",
+                fontWeight: 500,
+                fontFamily: "'DM Sans', sans-serif",
+                marginBottom: "0.5rem",
+              }}
+            >
+              EMAIL
+            </div>
+            <a
+              href="mailto:ttriolo@completecareersolutions.com"
+              style={{
+                fontSize: "0.85rem",
+                color: "#1a1f36",
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 300,
+                textDecoration: "none",
+                wordBreak: "break-all" as const,
+              }}
+            >
+              ttriolo@completecareersolutions.com
+            </a>
+          </div>
         </div>
       </section>
 
