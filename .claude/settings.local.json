@@ -12,7 +12,19 @@
       "Bash(gh repo:*)",
       "Bash(npx vercel:*)",
       "Bash(npm run:*)",
-      "Bash(find /c/CCSGitHubSetup/CCS_Website -maxdepth 2 \\\\\\(-name vercel.json -o -name .github -o -name .gitlab-ci.yml -o -name .env* \\\\\\))"
+      "Bash(find /c/CCSGitHubSetup/CCS_Website -maxdepth 2 \\\\\\(-name vercel.json -o -name .github -o -name .gitlab-ci.yml -o -name .env* \\\\\\))",
+      "Bash(npx next:*)",
+      "Bash(echo \"EXIT CODE: $?\")",
+      "Bash(CI=true npx next lint)",
+      "Bash(ls -la .eslintrc* eslint.config.*)",
+      "Bash(node -e \"const lockfile = require\\('./package-lock.json'\\); console.log\\(Object.keys\\(lockfile.packages\\).filter\\(k => k.includes\\('eslint'\\)\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(npx tsc:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npm list:*)",
+      "Bash(node -e \"const pkg = require\\('eslint-config-next/package.json'\\); console.log\\(JSON.stringify\\(pkg.exports || 'no exports', null, 2\\)\\)\")",
+      "Bash(git push:*)",
+      "mcp__9b336c06-2c5c-4136-831c-42a8d7904785__query_granola_meetings",
+      "mcp__9b336c06-2c5c-4136-831c-42a8d7904785__list_meetings"
     ]
   }
 }
