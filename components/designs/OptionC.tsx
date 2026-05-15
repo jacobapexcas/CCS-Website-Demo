@@ -9,22 +9,36 @@ import useIsMobile from "@/hooks/useIsMobile";
 /* Option C — Full Website
    Multi-page version with tab navigation (Home, Coaching, Consulting, Talent, AI, About, Contact) */
 
+/* Brand-aligned boutique palette
+   Primary: CCS Navy #1B2838 (logo color)
+   Background: Warm cream #F8F4ED
+   Accent: Refined bronze #B07C42 (sophisticated, gold-adjacent — replaces the
+     bright #E8943A logo orange for editorial use)
+   Subtle: Muted teal #4A7378 reserved for rare highlights
+   Goal: Bain/McKinsey-style boutique advisory feel — restrained, executive,
+   warm without being playful. */
 const css = {
-  bg: "#faf8f5",
-  surface: "#ffffff",
-  ink: "#1a1a1a",
-  inkSoft: "#4a4a4a",
-  muted: "#8a8580",
-  terracotta: "#c45d3e",
-  terracottaLight: "rgba(196,93,62,0.08)",
-  terracottaMid: "rgba(196,93,62,0.15)",
-  sage: "#5a7a6a",
-  sageLight: "rgba(90,122,106,0.08)",
-  gold: "#c49a3e",
-  goldLight: "rgba(196,154,62,0.08)",
-  navy: "#4a6fa5",
-  navyLight: "rgba(74,111,165,0.08)",
-  warmBorder: "rgba(26,26,26,0.08)",
+  bg: "#F8F4ED",
+  surface: "#FFFFFF",
+  surfaceWarm: "#FCF9F3",
+  ink: "#0F1820",
+  inkSoft: "#3A4554",
+  muted: "#8A93A0",
+  // Primary navy (legacy "terracotta" key stays for diff-minimal refactor — but the color is now navy)
+  terracotta: "#1B2838",
+  terracottaLight: "rgba(27,40,56,0.06)",
+  terracottaMid: "rgba(27,40,56,0.18)",
+  // Bronze accent — replaces sage and gold
+  sage: "#B07C42",
+  sageLight: "rgba(176,124,66,0.08)",
+  gold: "#B07C42",
+  goldLight: "rgba(176,124,66,0.10)",
+  // Navy emphasis variants
+  navy: "#1B2838",
+  navyLight: "rgba(27,40,56,0.06)",
+  // Refined hairline border
+  warmBorder: "rgba(27,40,56,0.10)",
+  warmBorderStrong: "rgba(27,40,56,0.16)",
 };
 
 type Page = "home" | "coaching" | "consulting" | "talent" | "ai" | "about" | "contact";
@@ -38,11 +52,11 @@ function PageHero({ overline, title, desc, cta, bgImage, m }: { overline: string
         <div style={{ position: "absolute", top: 0, right: 0, width: "40%", height: "100%", background: `radial-gradient(ellipse at 60% 40%, ${css.terracottaLight} 0%, transparent 70%)`, zIndex: 0 }} />
       )}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", position: "relative", zIndex: 1 }}>
-        <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>{overline}</div>
+        <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>{overline}</div>
         <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2rem,4vw,3.2rem)", fontWeight: 400, lineHeight: 1.15, maxWidth: 650 }}>{title}</h1>
         <p style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 640, marginTop: "1.5rem" }}>{desc}</p>
         {cta && (
-          <button onClick={cta.onClick} style={{ marginTop: "2rem", display: "inline-block", padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 12px rgba(196,93,62,0.25)" }}>
+          <button onClick={cta.onClick} style={{ marginTop: "2rem", display: "inline-block", padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 6px 20px -8px rgba(27,40,56,0.4)" }}>
             {cta.label}
           </button>
         )}
@@ -67,7 +81,7 @@ function FeatureGrid({ items, m }: { items: { title: string; desc: string }[]; m
 function CtaBanner({ overline, title, desc, onClick, m }: { overline: string; title: React.ReactNode; desc: string; onClick: () => void; m: boolean }) {
   return (
     <section style={{ textAlign: "center", padding: m ? "2.5rem 1rem" : "5rem 2rem", background: css.surface, borderRadius: 20, margin: m ? "1rem" : "2rem" }}>
-      <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>{overline}</div>
+      <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>{overline}</div>
       <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, maxWidth: 550, margin: "0 auto" }}>{title}</div>
       <p style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 640, margin: "1rem auto 0", textAlign: "center" }}>{desc}</p>
       <button onClick={onClick} style={{ marginTop: "2rem", padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit" }}>Schedule a Discovery Call</button>
@@ -80,15 +94,45 @@ function CtaBanner({ overline, title, desc, onClick, m }: { overline: string; ti
 function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
   return (
     <>
-      <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: m ? "3rem" : "5rem", position: "relative" }}>
-        <div style={{ position: "absolute", top: 80, right: 0, width: "45%", height: "85%", background: `radial-gradient(ellipse at 70% 30%, ${css.terracottaLight} 0%, transparent 60%), radial-gradient(ellipse at 30% 80%, ${css.sageLight} 0%, transparent 60%)`, borderRadius: "0 0 0 40%", zIndex: 0 }} />
+      <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: m ? "3rem" : "5rem", position: "relative", overflow: "hidden" }}>
+        {/* Austin skyline backdrop — masked into the top-right quadrant */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: m ? "100%" : "55%",
+            height: "100%",
+            zIndex: 0,
+            opacity: m ? 0.18 : 0.32,
+            backgroundImage: "url(/HomePageBackground.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center right",
+            maskImage: m
+              ? "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 100%)"
+              : "linear-gradient(270deg, rgba(0,0,0,1) 30%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%)",
+            WebkitMaskImage: m
+              ? "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 100%)"
+              : "linear-gradient(270deg, rgba(0,0,0,1) 30%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%)",
+          }}
+        />
+        {/* Warm cream wash so the navy text remains crisp over the image */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(90deg, rgba(248,244,237,0.95) 0%, rgba(248,244,237,0.7) 45%, rgba(248,244,237,0.4) 100%)",
+            zIndex: 0,
+          }}
+        />
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", position: "relative", zIndex: 1 }}>
-          <div className="animate-fade-up animate-fade-up-1" style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "0.45rem 1rem", background: css.terracottaLight, borderRadius: 100, fontSize: "0.76rem", fontWeight: 600, color: css.terracotta, marginBottom: "2rem" }}>
+          <div className="animate-fade-up animate-fade-up-1" style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "0.45rem 1rem", background: css.terracottaLight, borderRadius: 100, fontSize: "0.76rem", fontWeight: 600, color: css.sage, marginBottom: "2rem" }}>
             <span style={{ width: 6, height: 6, background: css.terracotta, borderRadius: "50%", display: "inline-block" }} />
             Driving Impactful Change Since 2010 · Austin, Texas
           </div>
           <h1 className="animate-fade-up animate-fade-up-2" style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.4rem,5vw,4.2rem)", fontWeight: 400, lineHeight: 1.12, maxWidth: 820 }}>
-            Empowering Organizations through <strong style={{ fontWeight: 600, color: css.terracotta, textDecoration: "underline", textDecorationColor: css.terracottaMid, textUnderlineOffset: "5px", textDecorationThickness: "3px" }}>Strategic Consulting.</strong>
+            Empowering Organizations through <strong style={{ fontWeight: 600, color: css.sage, textDecoration: "underline", textDecorationColor: css.terracottaMid, textUnderlineOffset: "5px", textDecorationThickness: "3px" }}>Strategic Consulting.</strong>
           </h1>
           <p className="animate-fade-up animate-fade-up-3" style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 720, marginTop: "1.5rem" }}>
             At Complete Career Solutions, we specialize in driving impactful change that resonates throughout entire organizations, always rooted in the power of the individual. Our mission is to guide you in surpassing your business objectives.
@@ -97,7 +141,7 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
             Positioned uniquely as an organizational consulting firm, we prioritize four key pillars of success: <strong style={{ fontWeight: 600, color: css.ink }}>Executive Coaching, Leadership Development, Operational Consulting,</strong> and <strong style={{ fontWeight: 600, color: css.ink }}>Talent Management</strong> — with AI Enablement now woven through every engagement. We empower superior performance through your most valuable asset: your people.
           </p>
           <div className="animate-fade-up animate-fade-up-4" style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
-            <button onClick={() => nav("contact")} style={{ padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 12px rgba(196,93,62,0.25)" }}>Schedule a Discovery Call</button>
+            <button onClick={() => nav("contact")} style={{ padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 6px 20px -8px rgba(27,40,56,0.4)" }}>Schedule a Discovery Call</button>
             <button onClick={() => nav("coaching")} style={{ padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.surface, color: css.ink, border: `1px solid ${css.warmBorder}`, cursor: "pointer", fontFamily: "inherit" }}>See How We Work</button>
           </div>
           <div className="animate-fade-up animate-fade-up-5" style={{ display: "flex", gap: "3rem", marginTop: "4rem", paddingTop: "2.5rem", borderTop: `1px solid ${css.warmBorder}` }}>
@@ -114,23 +158,30 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       {/* Four Pillars */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>What We Do</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>What We Do</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>
             Four integrated pillars that meet leaders <strong style={{ fontWeight: 600 }}>where they are.</strong>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(2, 1fr)", gap: "1.5rem", marginTop: "3rem" }}>
             {[
-              { icon: "🎯", bg: css.terracottaLight, page: "coaching" as Page, title: "Executive Coaching", desc: "Enhance leadership skills and maximize potential through personalized coaching programs tailored to your organization's needs." },
-              { icon: "📐", bg: css.sageLight, page: "consulting" as Page, title: "Consulting", desc: "Optimize your business operations and processes for efficiency and profitability under expert guidance." },
-              { icon: "🤝", bg: css.goldLight, page: "talent" as Page, title: "Talent Management", desc: "Foster a culture of strong leadership and professional growth with our tailored development solutions." },
-              { icon: "⚡", bg: css.navyLight, page: "ai" as Page, title: "AI Solutions", desc: "Build confident leaders in the age of AI through readiness assessments, secure workspace setup, and ongoing enablement." },
+              { num: "01", page: "coaching" as Page, title: "Executive Coaching", desc: "Enhance leadership skills and maximize potential through personalized coaching programs tailored to your organization's needs." },
+              { num: "02", page: "consulting" as Page, title: "Consulting", desc: "Optimize your business operations and processes for efficiency and profitability under expert guidance." },
+              { num: "03", page: "talent" as Page, title: "Talent Management", desc: "Foster a culture of strong leadership and professional growth with our tailored development solutions." },
+              { num: "04", page: "ai" as Page, title: "AI Solutions", desc: "Build confident leaders in the age of AI through readiness assessments, secure workspace setup, and ongoing enablement." },
             ].map((p) => (
-              <div key={p.title} onClick={() => nav(p.page)} style={{ background: css.surface, borderRadius: 20, padding: "2.5rem", border: `1px solid ${css.warmBorder}`, cursor: "pointer", transition: "all 0.35s" }}
-                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.06)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateY(0)"; }}>
-                <div style={{ width: 48, height: 48, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem", background: p.bg, marginBottom: "1.2rem" }}>{p.icon}</div>
-                <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.2rem", fontWeight: 600, marginBottom: "0.6rem" }}>{p.title}</h3>
-                <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: css.inkSoft }}>{p.desc}</p>
+              <div key={p.title} onClick={() => nav(p.page)} style={{ background: css.surface, borderRadius: 4, padding: "2.5rem", border: `1px solid ${css.warmBorder}`, cursor: "pointer", transition: "all 0.4s ease", position: "relative", overflow: "hidden" }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = css.navy; e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 18px 50px -25px rgba(27,40,56,0.25)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = css.warmBorder; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "0.85rem", marginBottom: "1.5rem" }}>
+                  <span style={{ fontFamily: "'Fraunces', serif", fontSize: "1rem", color: css.sage, fontWeight: 500, fontStyle: "italic", letterSpacing: "0.02em" }}>{p.num}</span>
+                  <span style={{ width: "32px", height: "1px", background: css.sage, opacity: 0.5 }} />
+                  <span style={{ fontSize: "0.62rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.muted, fontWeight: 600 }}>Service Line</span>
+                </div>
+                <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.4rem", fontWeight: 500, marginBottom: "0.85rem", color: css.navy, letterSpacing: "-0.015em", lineHeight: 1.2 }}>{p.title}</h3>
+                <p style={{ fontSize: "0.9rem", lineHeight: 1.75, color: css.inkSoft, margin: 0 }}>{p.desc}</p>
+                <div style={{ marginTop: "1.5rem", paddingTop: "1.25rem", borderTop: `1px solid ${css.warmBorder}`, fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase" as const, color: css.sage, fontWeight: 600, display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  Learn More <span style={{ fontSize: "0.9rem", lineHeight: 1 }}>→</span>
+                </div>
               </div>
             ))}
           </div>
@@ -141,7 +192,7 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       <section style={{ padding: m ? "3rem 0" : "6rem 0", background: css.surface }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "center" }}>
           <div>
-            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Partnering for Success</div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Partnering for Success</div>
             <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, color: css.ink, margin: 0 }}>
               Driving Impactful Change <strong style={{ fontWeight: 600 }}>Since 2010.</strong>
             </h2>
@@ -158,12 +209,12 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
           <div style={{ background: css.ink, color: css.bg, borderRadius: 20, padding: m ? "2rem" : "4rem" }}>
-            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Impact</div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Impact</div>
             <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Leaders across six industries <strong style={{ fontWeight: 600 }}>trust CCS.</strong></div>
             <div style={{ display: "grid", gridTemplateColumns: m ? "repeat(2, 1fr)" : "repeat(4, 1fr)", gap: "1.5rem", marginTop: "2.5rem" }}>
               {[{ num: "15+", label: "Years in Practice" }, { num: "6", label: "Industry Verticals" }, { num: "25+", label: "Yrs Sr. Leadership" }, { num: "100%", label: "Referral-Driven" }].map((s) => (
                 <div key={s.label} style={{ textAlign: "center", padding: "1.5rem", borderRadius: 12, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                  <div style={{ fontFamily: "'Fraunces', serif", fontSize: "2.2rem", fontWeight: 600, color: css.terracotta }}>{s.num}</div>
+                  <div style={{ fontFamily: "'Fraunces', serif", fontSize: "2.2rem", fontWeight: 600, color: css.sage }}>{s.num}</div>
                   <div style={{ fontSize: "0.78rem", color: "rgba(250,248,245,0.55)", marginTop: "0.3rem" }}>{s.label}</div>
                 </div>
               ))}
@@ -183,12 +234,12 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="Executive Coaching" title={<>Unlock the Potential of <strong style={{ fontWeight: 600, color: css.terracotta }}>Executive Coaching.</strong></>} desc="Experience a transformative journey with our Executive coaching services, designed to empower leaders to excel in the face of today's challenges and capitalize on future opportunities within their organizations. Our expert coaches leverage a diverse range of assessment tools and blend established methodologies with a personalized approach to cater to the unique needs, expectations, and preferences of each leader." cta={{ label: "Start a Coaching Engagement", onClick: () => nav("contact") }} bgImage="/ExecutiveCoachingImage.jpg" />
+      <PageHero m={m} overline="Executive Coaching" title={<>Unlock the Potential of <strong style={{ fontWeight: 600, color: css.sage }}>Executive Coaching.</strong></>} desc="Experience a transformative journey with our Executive coaching services, designed to empower leaders to excel in the face of today's challenges and capitalize on future opportunities within their organizations. Our expert coaches leverage a diverse range of assessment tools and blend established methodologies with a personalized approach to cater to the unique needs, expectations, and preferences of each leader." cta={{ label: "Start a Coaching Engagement", onClick: () => nav("contact") }} bgImage="/ExecutiveCoachingImage.jpg" />
 
       {/* Outcomes */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Coaching Outcomes</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Coaching Outcomes</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>This powerful fusion equips us with unparalleled capabilities to <strong style={{ fontWeight: 600 }}>elevate leadership effectiveness.</strong></div>
           <FeatureGrid m={m} items={[
             { title: "Accelerated Leadership Impact", desc: "Propel your leadership journey forward by honing the mindsets and skillsets crucial for success." },
@@ -202,7 +253,7 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       {/* Our Approach — Inside-out / Outside-in */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Approach</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Approach</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, marginBottom: "2rem" }}>
             Integrating <strong style={{ fontWeight: 600 }}>&ldquo;inside-out&rdquo;</strong> and <strong style={{ fontWeight: 600 }}>&ldquo;outside-in&rdquo;</strong> coaching.
           </div>
@@ -225,7 +276,7 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       {/* Successor and Onboarding Coaching */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Specialized Program</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Specialized Program</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Successor & <strong style={{ fontWeight: 600 }}>Onboarding Coaching.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
             Our tailored successor and onboarding coaching programs are meticulously crafted to accelerate performance and amplify the impact of new leaders during their critical initial 100 days. Whether navigating a new organizational landscape or stepping into a recent promotion, our coaching is custom-built for each leader, addressing key organizational challenges and paving the way for success.
@@ -236,7 +287,7 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       {/* Executive Team Coaching — Leadership Team Development content */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Executive Team Coaching</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Executive Team Coaching</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Unlocking <strong style={{ fontWeight: 600 }}>High Performance.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
             At CCS, we understand that executive leadership teams are the driving force behind achieving exceptional results. A high-performance leadership team doesn&apos;t just happen — it is a deliberate effort that requires the collective commitment of every team member. In an effective team, each leader is aligned with their role, possesses clear goals, and understands what is expected of them.
@@ -267,10 +318,10 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="Consulting · Est. 2010" title={<>Human Capital Strategy <strong style={{ fontWeight: 600, color: css.terracotta }}>& Solutions.</strong></>} desc="In today's fast-paced business landscape, disruption is inevitable. From digitalization to remote work arrangements, organizations are facing numerous challenges that demand innovative solutions. At Complete Career Solutions Consulting (CCS), we specialize in Human Capital strategies and solutions that empower leaders to navigate disruption effectively. Our goal is to help you drive transformation, elevate the workforce experience, and enhance the capabilities of your leadership team." cta={{ label: "Start a Consulting Engagement", onClick: () => nav("contact") }} />
+      <PageHero m={m} overline="Consulting · Est. 2010" title={<>Human Capital Strategy <strong style={{ fontWeight: 600, color: css.sage }}>& Solutions.</strong></>} desc="In today's fast-paced business landscape, disruption is inevitable. From digitalization to remote work arrangements, organizations are facing numerous challenges that demand innovative solutions. At Complete Career Solutions Consulting (CCS), we specialize in Human Capital strategies and solutions that empower leaders to navigate disruption effectively. Our goal is to help you drive transformation, elevate the workforce experience, and enhance the capabilities of your leadership team." cta={{ label: "Start a Consulting Engagement", onClick: () => nav("contact") }} />
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Consulting Offerings</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Consulting Offerings</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Embrace disruption <strong style={{ fontWeight: 600 }}>with confidence.</strong></div>
           <FeatureGrid m={m} items={[
             { title: "Outcome-Driven Human Capital Solutions", desc: "We focus on outcomes, not just outputs, to redefine the possibilities of work. Our approach involves reimagining tasks that can be automated, optimizing workforce allocation, and reshaping where and how work is performed." },
@@ -285,7 +336,7 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "start" }}>
           <div>
-            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Who We Work With</div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Who We Work With</div>
             <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.6rem,3vw,2.4rem)", fontWeight: 400, lineHeight: 1.2, margin: 0 }}>
               Leaders navigating <strong style={{ fontWeight: 600 }}>real change.</strong>
             </h2>
@@ -313,7 +364,7 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       {/* How We Engage */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>How We Engage</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>How We Engage</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>A consulting engagement that <strong style={{ fontWeight: 600 }}>actually transfers.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
             We embed alongside your team rather than handing over a deck. Every engagement is built to leave behind the people, frameworks, and decisions your team needs to keep running the new model after we&apos;ve gone. Knowledge transfer over deliverables. Long-term partnership over deal-by-deal.
@@ -326,7 +377,7 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
               { num: "04", title: "Transfer", desc: "When we leave, the team owns it. Decisions, cadences, and capability stay behind. No retainer dependency." },
             ].map((step) => (
               <div key={step.num} style={{ padding: "1.75rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}` }}>
-                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.4rem", fontWeight: 700, color: css.terracotta, marginBottom: "0.5rem" }}>{step.num}</div>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.4rem", fontWeight: 700, color: css.sage, marginBottom: "0.5rem" }}>{step.num}</div>
                 <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.1rem", fontWeight: 600, marginBottom: "0.5rem", color: css.ink }}>{step.title}</h4>
                 <p style={{ fontSize: "0.86rem", lineHeight: 1.7, color: css.inkSoft, margin: 0 }}>{step.desc}</p>
               </div>
@@ -343,13 +394,13 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="Talent Management · CCS Staffing" title={<>The right person, at the right time, for the <strong style={{ fontWeight: 600, color: css.terracotta }}>right role.</strong></>} desc="At CCS Staffing, we are your strategic partner in achieving talent management excellence. We pride ourselves on being a unique outsourced talent acquisition firm. Our full-desk recruiters focus on more than just filling positions — they aim to find the right person, at the right time, for the right role. Unlike traditional recruitment firms that simply send resumes over the wall, our team of talent acquisition professionals are deeply engaged in every step of the recruitment process. We act as an external talent acquisition arm that functions like an internal staffing team." cta={{ label: "Discuss Your Talent Needs", onClick: () => nav("contact") }} bgImage="/TalentManagementImage.jpg" />
+      <PageHero m={m} overline="Talent Management · CCS Staffing" title={<>The right person, at the right time, for the <strong style={{ fontWeight: 600, color: css.sage }}>right role.</strong></>} desc="At CCS Staffing, we are your strategic partner in achieving talent management excellence. We pride ourselves on being a unique outsourced talent acquisition firm. Our full-desk recruiters focus on more than just filling positions — they aim to find the right person, at the right time, for the right role. Unlike traditional recruitment firms that simply send resumes over the wall, our team of talent acquisition professionals are deeply engaged in every step of the recruitment process. We act as an external talent acquisition arm that functions like an internal staffing team." cta={{ label: "Discuss Your Talent Needs", onClick: () => nav("contact") }} bgImage="/TalentManagementImage.jpg" />
 
       {/* Strategic Approach */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: m ? "2rem" : "4rem", alignItems: "start" }}>
           <div>
-            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Strategic Workforce Development</div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Strategic Workforce Development</div>
             <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, margin: 0 }}>
               Talent management is the strategic approach to recruiting and developing a workforce that maximizes productivity and retains top talent for the long term. When executed effectively, this process enhances overall business performance and ensures competitiveness in the market.
             </p>
@@ -358,7 +409,7 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
             </p>
           </div>
           <div>
-            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Client Engagement</div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Client Engagement</div>
             <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, margin: 0 }}>
               Client engagement is our priority. We strive to understand every detail of your talent management goals and the objectives of your hiring managers. This client-first approach enables our recruiters to source, assess, and evaluate candidates thoroughly before presenting them to you.
             </p>
@@ -371,7 +422,7 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       {/* What We Deliver */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>What We Deliver</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>What We Deliver</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>The CCS Staffing <strong style={{ fontWeight: 600 }}>difference.</strong></div>
           <FeatureGrid m={m} items={[
             { title: "Outsourced Talent Acquisition", desc: "We function as your embedded recruitment arm — full-desk recruiters involved in every step from sourcing through onboarding, not just resume forwarding." },
@@ -385,7 +436,7 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       {/* Our Process */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Process</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Process</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>How a CCS Staffing engagement <strong style={{ fontWeight: 600 }}>actually runs.</strong></div>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(5, 1fr)", gap: "1rem", marginTop: "2.5rem" }}>
             {[
@@ -396,7 +447,7 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
               { num: "05", title: "Close & Onboard", desc: "We support offer construction, candidate close conversations, and first-100-day onboarding alignment." },
             ].map((step) => (
               <div key={step.num} style={{ padding: "1.5rem 1.25rem", borderRadius: 12, background: css.bg, border: `1px solid ${css.warmBorder}` }}>
-                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.25rem", fontWeight: 700, color: css.terracotta, marginBottom: "0.4rem" }}>{step.num}</div>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.25rem", fontWeight: 700, color: css.sage, marginBottom: "0.4rem" }}>{step.num}</div>
                 <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1rem", fontWeight: 600, marginBottom: "0.4rem", color: css.ink }}>{step.title}</h4>
                 <p style={{ fontSize: "0.82rem", lineHeight: 1.65, color: css.inkSoft, margin: 0 }}>{step.desc}</p>
               </div>
@@ -413,10 +464,10 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="AI Solutions" title={<>Building confident leaders in the <strong style={{ fontWeight: 600, color: css.terracotta }}>age of AI.</strong></>} desc="CCS helps teams use AI confidently, securely, and strategically — to save time, communicate clearly, and make smarter business decisions." cta={{ label: "Explore AI Enablement", onClick: () => nav("contact") }} />
+      <PageHero m={m} overline="AI Solutions" title={<>Building confident leaders in the <strong style={{ fontWeight: 600, color: css.sage }}>age of AI.</strong></>} desc="CCS helps teams use AI confidently, securely, and strategically — to save time, communicate clearly, and make smarter business decisions." cta={{ label: "Explore AI Enablement", onClick: () => nav("contact") }} />
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Framework</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Framework</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}><strong style={{ fontWeight: 600 }}>Assess → Implement → Optimize</strong></div>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(3, 1fr)", gap: "1.5rem", marginTop: "2.5rem" }}>
             {[
@@ -425,7 +476,7 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
               { num: "03", title: "Optimize", desc: "Deliver training and long-term enablement for sustainable adoption. AI Leadership Workshops and ongoing learning pathways." },
             ].map((phase) => (
               <div key={phase.num} style={{ padding: "2rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}`, textAlign: "center" }}>
-                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "2.5rem", fontWeight: 700, color: css.terracotta, opacity: 0.2, marginBottom: "0.5rem" }}>{phase.num}</div>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "2.5rem", fontWeight: 700, color: css.sage, opacity: 0.2, marginBottom: "0.5rem" }}>{phase.num}</div>
                 <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.1rem", fontWeight: 600, marginBottom: "0.5rem" }}>{phase.title}</h4>
                 <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: css.inkSoft }}>{phase.desc}</p>
               </div>
@@ -436,7 +487,7 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       {/* Phase Deliverables */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>What You Get</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>What You Get</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Tangible deliverables, <strong style={{ fontWeight: 600 }}>not slideware.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
             Each phase produces working artifacts your team uses immediately — not deliverables that sit on a shared drive. The goal is leaders who feel confident with AI before the engagement ends.
@@ -472,7 +523,7 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
               },
             ].map((p) => (
               <div key={p.phase} style={{ padding: "2rem", borderRadius: 12, background: css.bg, border: `1px solid ${css.warmBorder}` }}>
-                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.3rem", fontWeight: 600, marginBottom: "1rem", color: css.terracotta }}>{p.phase}</h4>
+                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.3rem", fontWeight: 600, marginBottom: "1rem", color: css.sage }}>{p.phase}</h4>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "0.6rem" }}>
                   {p.items.map((item) => (
                     <li key={item} style={{ fontSize: "0.88rem", color: css.ink, lineHeight: 1.6, display: "flex", gap: "0.6rem" }}>
@@ -491,7 +542,7 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.2fr", gap: m ? "2rem" : "4rem", alignItems: "start" }}>
           <div>
-            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Who It&apos;s For</div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Who It&apos;s For</div>
             <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.5rem,2.5vw,2rem)", fontWeight: 400, lineHeight: 1.25, marginBottom: "1.25rem" }}>
               Senior leaders who want their team focused on the work AI <strong style={{ fontWeight: 600 }}>can&apos;t replace.</strong>
             </h3>
@@ -522,13 +573,13 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (member: "tom" | "brent") => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="About CCS · Est. 2010" title={<>A dynamic blend of seasoned experts and <strong style={{ fontWeight: 600, color: css.terracotta }}>innovative thinkers.</strong></>} desc="Our team is dedicated to delivering tailored solutions that drive success. With a diverse range of backgrounds and specialties, we bring a wealth of knowledge and a fresh perspective to every project. Our collaborative approach ensures that we leverage each team member's unique strengths, fostering an environment of continuous learning and growth. Client-centric and committed to excellence, we pride ourselves on our ability to navigate complex challenges and deliver impactful results that exceed expectations." />
+      <PageHero m={m} overline="About CCS · Est. 2010" title={<>A dynamic blend of seasoned experts and <strong style={{ fontWeight: 600, color: css.sage }}>innovative thinkers.</strong></>} desc="Our team is dedicated to delivering tailored solutions that drive success. With a diverse range of backgrounds and specialties, we bring a wealth of knowledge and a fresh perspective to every project. Our collaborative approach ensures that we leverage each team member's unique strengths, fostering an environment of continuous learning and growth. Client-centric and committed to excellence, we pride ourselves on our ability to navigate complex challenges and deliver impactful results that exceed expectations." />
 
       {/* Our Story */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "start" }}>
           <div>
-            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Story</div>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Story</div>
             <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, margin: 0 }}>
               Built on one principle: <strong style={{ fontWeight: 600 }}>enabling the success of others.</strong>
             </h2>
@@ -548,7 +599,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
       </section>
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Our Values</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Values</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>More than words — the <strong style={{ fontWeight: 600 }}>foundation of everything we do.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.25rem", maxWidth: 820 }}>
             At CCS, our values shape our decisions, guide our actions, and inspire our strategies. We believe in living our values through every interaction and partnership.
@@ -562,7 +613,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
               { title: "Tenacity", desc: "Fuels our competitive spirit, resilience, and unwavering passion for success." },
             ].map((v) => (
               <div key={v.title} style={{ padding: "1.75rem 1.25rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}` }}>
-                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.05rem", fontWeight: 600, marginBottom: "0.5rem", color: css.terracotta }}>{v.title}</h4>
+                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.05rem", fontWeight: 600, marginBottom: "0.5rem", color: css.sage }}>{v.title}</h4>
                 <p style={{ fontSize: "0.85rem", color: css.inkSoft, lineHeight: 1.7, margin: 0 }}>{v.desc}</p>
               </div>
             ))}
@@ -571,7 +622,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
       </section>
       <section style={{ padding: m ? "0 0 2.5rem" : "0 0 5rem" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
-          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Leadership</div>
+          <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Leadership</div>
           <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>25 years of experience. One mission: <strong style={{ fontWeight: 600 }}>enabling your success.</strong></div>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: "2rem", marginTop: "3rem" }}>
             {(["tom", "brent"] as const).map((key) => {
@@ -587,11 +638,11 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
                     )}
                     <div>
                       <div style={{ fontFamily: "'Fraunces', serif", fontSize: "1.2rem", fontWeight: 600 }}>{person.name}</div>
-                      <div style={{ fontSize: "0.76rem", color: css.terracotta, fontWeight: 600, marginTop: "0.1rem" }}>{person.role}</div>
+                      <div style={{ fontSize: "0.76rem", color: css.sage, fontWeight: 600, marginTop: "0.1rem" }}>{person.role}</div>
                     </div>
                   </div>
                   <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: css.inkSoft }}>{person.shortBio}</p>
-                  <button onClick={() => setModal(key)} style={{ marginTop: "0.75rem", background: "none", border: "none", color: css.terracotta, fontSize: "0.82rem", fontWeight: 600, cursor: "pointer", padding: 0, fontFamily: "inherit" }}>Read Full Bio &rarr;</button>
+                  <button onClick={() => setModal(key)} style={{ marginTop: "0.75rem", background: "none", border: "none", color: css.sage, fontSize: "0.82rem", fontWeight: 600, cursor: "pointer", padding: 0, fontFamily: "inherit" }}>Read Full Bio &rarr;</button>
                 </div>
               );
             })}
@@ -606,12 +657,12 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
 function ContactPage({ m }: { m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="Contact Us" title={<>Partner <strong style={{ fontWeight: 600, color: css.terracotta }}>With Us.</strong></>} desc="We strategically partner with companies and individuals whose values align with ours. We invite you to reach out and explore how we can achieve success together." />
+      <PageHero m={m} overline="Contact Us" title={<>Partner <strong style={{ fontWeight: 600, color: css.sage }}>With Us.</strong></>} desc="We strategically partner with companies and individuals whose values align with ours. We invite you to reach out and explore how we can achieve success together." />
       <section style={{ padding: m ? "0 0 2.5rem" : "0 0 5rem" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: m ? "2rem" : "4rem" }}>
             <div>
-              <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Reach Out</div>
+              <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Reach Out</div>
               <div style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, marginBottom: "2rem" }}>We&apos;d love to hear <strong style={{ fontWeight: 600 }}>from you.</strong></div>
               {[
                 { name: "Tom Triolo — CEO & Executive Coach", email: "ttriolo@completecareersolutions.com", scope: "Executive Coaching · Consulting · AI Solutions" },
@@ -620,13 +671,13 @@ function ContactPage({ m }: { m: boolean }) {
               ].map((c) => (
                 <div key={c.name} style={{ padding: "2rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}`, marginBottom: "1rem" }}>
                   <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: "1rem", fontWeight: 600, marginBottom: "0.4rem" }}>{c.name}</h4>
-                  {c.email && <p style={{ fontSize: "0.9rem", color: css.inkSoft }}><a href={`mailto:${c.email}`} style={{ color: css.terracotta, textDecoration: "none", fontWeight: 600 }}>{c.email}</a></p>}
+                  {c.email && <p style={{ fontSize: "0.9rem", color: css.inkSoft }}><a href={`mailto:${c.email}`} style={{ color: css.sage, textDecoration: "none", fontWeight: 600 }}>{c.email}</a></p>}
                   <p style={{ fontSize: "0.9rem", color: css.inkSoft, lineHeight: 1.6, whiteSpace: "pre-line" }}>{c.scope}</p>
                 </div>
               ))}
             </div>
             <div>
-              <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.terracotta, marginBottom: "1rem", fontWeight: 700 }}>Discovery Questions</div>
+              <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Discovery Questions</div>
               <p style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, marginBottom: "1.5rem" }}>Here&apos;s what a first conversation typically covers:</p>
               {[
                 { title: "For Executive Coaching", desc: "What leadership challenges are your executives currently facing? How do you currently support the growth of your senior leaders?" },

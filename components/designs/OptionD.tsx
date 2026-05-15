@@ -15,7 +15,7 @@ export default function OptionD() {
     <div
       style={{
         fontFamily: "'Cormorant Garamond', Georgia, serif",
-        color: "#1a1f36",
+        color: "#1B2838",
         background: "#faf9f6",
         minHeight: "100vh",
       }}
@@ -49,7 +49,7 @@ export default function OptionD() {
                 fontSize: "1.1rem",
                 fontWeight: 600,
                 letterSpacing: "0.04em",
-                color: "#1a1f36",
+                color: "#1B2838",
                 fontFamily: "'Cormorant Garamond', serif",
               }}
             >
@@ -87,7 +87,7 @@ export default function OptionD() {
                 style={{
                   width: "22px",
                   height: "2px",
-                  background: "#b8a88a",
+                  background: "#B07C42",
                   transition: "all 0.3s",
                   transform: menuOpen
                     ? i === 0 ? "rotate(45deg) translate(5px, 5px)" : i === 2 ? "rotate(-45deg) translate(5px, -5px)" : "none"
@@ -125,7 +125,7 @@ export default function OptionD() {
             style={{
               textDecoration: "none",
               color: "#faf9f6",
-              background: "#1a1f36",
+              background: "#1B2838",
               padding: "0.55rem 1.4rem",
               borderRadius: "4px",
               fontSize: "0.75rem",
@@ -166,7 +166,7 @@ export default function OptionD() {
               href={item.href}
               onClick={() => setMenuOpen(false)}
               style={{
-                color: "#1a1f36",
+                color: "#1B2838",
                 textDecoration: "none",
                 fontSize: "0.9rem",
                 fontFamily: "'DM Sans', sans-serif",
@@ -184,7 +184,7 @@ export default function OptionD() {
             style={{
               marginTop: "0.5rem",
               padding: "0.75rem 1.5rem",
-              background: "#1a1f36",
+              background: "#1B2838",
               color: "#faf9f6",
               textDecoration: "none",
               fontSize: "0.8rem",
@@ -200,20 +200,53 @@ export default function OptionD() {
         </div>
       )}
 
-      {/* Hero */}
+      {/* Hero — Austin skyline as a subtle right-side backdrop */}
       <section
         style={{
           padding: m ? "5rem 1.5rem 3rem" : "8rem 4rem 6rem",
           maxWidth: "1100px",
           margin: "0 auto",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
+        {/* Austin skyline backdrop, masked into the right edge */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            top: 0,
+            right: m ? "-30%" : "-10%",
+            width: m ? "120%" : "55%",
+            height: "100%",
+            backgroundImage: "url(/HomePageBackground.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center right",
+            opacity: m ? 0.15 : 0.28,
+            maskImage:
+              "linear-gradient(270deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0.5) 65%, rgba(0,0,0,0) 100%)",
+            WebkitMaskImage:
+              "linear-gradient(270deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0.5) 65%, rgba(0,0,0,0) 100%)",
+            zIndex: 0,
+          }}
+        />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(90deg, rgba(250,249,246,0.96) 0%, rgba(250,249,246,0.7) 50%, rgba(250,249,246,0.4) 100%)",
+            zIndex: 0,
+          }}
+        />
+        <div style={{ position: "relative", zIndex: 1 }}>
         <div
           style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: "0.7rem",
             letterSpacing: "0.18em",
-            color: "#b8a88a",
+            color: "#B07C42",
             fontWeight: 500,
             marginBottom: "2rem",
           }}
@@ -225,7 +258,7 @@ export default function OptionD() {
             fontSize: m ? "2.4rem" : "4.2rem",
             fontWeight: 300,
             lineHeight: 1.1,
-            color: "#1a1f36",
+            color: "#1B2838",
             maxWidth: "880px",
             marginBottom: "2rem",
           }}
@@ -264,7 +297,7 @@ export default function OptionD() {
           }}
         >
           Positioned uniquely as an organizational consulting firm, we prioritize
-          four key pillars of success: <span style={{ color: "#1a1f36", fontWeight: 400 }}>Executive Coaching, Leadership Development, Operational Consulting,</span> and <span style={{ color: "#1a1f36", fontWeight: 400 }}>Talent Management</span> — with AI Enablement woven through every engagement. We empower superior performance through your most valuable asset: your people.
+          four key pillars of success: <span style={{ color: "#1B2838", fontWeight: 400 }}>Executive Coaching, Leadership Development, Operational Consulting,</span> and <span style={{ color: "#1B2838", fontWeight: 400 }}>Talent Management</span> — with AI Enablement woven through every engagement. We empower superior performance through your most valuable asset: your people.
         </p>
         <div style={{ display: "flex", flexDirection: m ? "column" : "row", gap: "1rem", alignItems: m ? "stretch" : "center" }}>
           <a
@@ -275,7 +308,7 @@ export default function OptionD() {
               fontWeight: 500,
               letterSpacing: "0.06em",
               padding: "1rem 2.2rem",
-              background: "#1a1f36",
+              background: "#1B2838",
               color: "#faf9f6",
               textDecoration: "none",
               borderRadius: "4px",
@@ -292,13 +325,14 @@ export default function OptionD() {
               fontWeight: 500,
               letterSpacing: "0.06em",
               padding: "1rem 2.2rem",
-              color: "#1a1f36",
+              color: "#1B2838",
               textDecoration: "none",
-              borderBottom: "1px solid #1a1f36",
+              borderBottom: "1px solid #1B2838",
             }}
           >
             Our Approach
           </a>
+        </div>
         </div>
       </section>
 
@@ -332,7 +366,7 @@ export default function OptionD() {
                 style={{
                   fontSize: "2rem",
                   fontWeight: 300,
-                  color: "#1a1f36",
+                  color: "#1B2838",
                   marginBottom: "0.3rem",
                 }}
               >
@@ -377,7 +411,7 @@ export default function OptionD() {
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: "0.65rem",
                 letterSpacing: "0.18em",
-                color: "#b8a88a",
+                color: "#B07C42",
                 fontWeight: 500,
                 marginBottom: "1.5rem",
               }}
@@ -450,7 +484,7 @@ export default function OptionD() {
                     fontSize: "0.65rem",
                     fontFamily: "'DM Sans', sans-serif",
                     letterSpacing: "0.15em",
-                    color: "#b8a88a",
+                    color: "#B07C42",
                     marginBottom: "0.75rem",
                     fontWeight: 500,
                   }}
@@ -487,7 +521,7 @@ export default function OptionD() {
       <section
         id="services"
         style={{
-          background: "#1a1f36",
+          background: "#1B2838",
           padding: m ? "3rem 1.5rem" : "7rem 4rem",
         }}
       >
@@ -497,7 +531,7 @@ export default function OptionD() {
               fontFamily: "'DM Sans', sans-serif",
               fontSize: "0.65rem",
               letterSpacing: "0.18em",
-              color: "#b8a88a",
+              color: "#B07C42",
               fontWeight: 500,
               marginBottom: "1.5rem",
             }}
@@ -551,7 +585,7 @@ export default function OptionD() {
                 key={i}
                 style={{
                   padding: "2.5rem 2rem",
-                  background: "#1a1f36",
+                  background: "#1B2838",
                 }}
               >
                 <div
@@ -559,7 +593,7 @@ export default function OptionD() {
                     fontSize: "0.6rem",
                     fontFamily: "'DM Sans', sans-serif",
                     letterSpacing: "0.15em",
-                    color: "#b8a88a",
+                    color: "#B07C42",
                     marginBottom: "1.25rem",
                     fontWeight: 500,
                   }}
@@ -621,7 +655,7 @@ export default function OptionD() {
             fontFamily: "'DM Sans', sans-serif",
             fontSize: "0.65rem",
             letterSpacing: "0.18em",
-            color: "#b8a88a",
+            color: "#B07C42",
             fontWeight: 500,
             marginBottom: "1.5rem",
           }}
@@ -671,7 +705,7 @@ export default function OptionD() {
                 fontSize: "1.6rem",
                 fontWeight: 300,
                 lineHeight: 1.5,
-                color: "#1a1f36",
+                color: "#1B2838",
                 maxWidth: "750px",
               }}
             >
@@ -712,7 +746,7 @@ export default function OptionD() {
                   style={{
                     fontSize: "1.6rem",
                     fontWeight: 300,
-                    color: "#1a1f36",
+                    color: "#1B2838",
                     marginBottom: "0.3rem",
                   }}
                 >
@@ -759,7 +793,7 @@ export default function OptionD() {
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: "0.65rem",
                 letterSpacing: "0.18em",
-                color: "#b8a88a",
+                color: "#B07C42",
                 fontWeight: 500,
                 marginBottom: "0.75rem",
               }}
@@ -813,7 +847,7 @@ export default function OptionD() {
               fontFamily: "'DM Sans', sans-serif",
               fontSize: "0.65rem",
               letterSpacing: "0.18em",
-              color: "#b8a88a",
+              color: "#B07C42",
               fontWeight: 500,
               marginBottom: "1.5rem",
             }}
@@ -869,7 +903,7 @@ export default function OptionD() {
                         width: "72px",
                         height: "72px",
                         borderRadius: "50%",
-                        background: "#1a1f36",
+                        background: "#1B2838",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -878,7 +912,7 @@ export default function OptionD() {
                     >
                       <span
                         style={{
-                          color: "#b8a88a",
+                          color: "#B07C42",
                           fontSize: "1.3rem",
                           fontWeight: 300,
                         }}
@@ -900,7 +934,7 @@ export default function OptionD() {
                     style={{
                       fontSize: "0.75rem",
                       fontFamily: "'DM Sans', sans-serif",
-                      color: "#b8a88a",
+                      color: "#B07C42",
                       letterSpacing: "0.06em",
                       fontWeight: 500,
                       marginBottom: "1.25rem",
@@ -925,7 +959,7 @@ export default function OptionD() {
                     style={{
                       background: "none",
                       border: "none",
-                      color: "#b8a88a",
+                      color: "#B07C42",
                       fontSize: "0.78rem",
                       fontFamily: "'DM Sans', sans-serif",
                       letterSpacing: "0.06em",
@@ -969,7 +1003,7 @@ export default function OptionD() {
             fontFamily: "'DM Sans', sans-serif",
             fontSize: "0.65rem",
             letterSpacing: "0.18em",
-            color: "#b8a88a",
+            color: "#B07C42",
             fontWeight: 500,
             marginBottom: "1.5rem",
           }}
@@ -1018,7 +1052,7 @@ export default function OptionD() {
                   fontSize: "1.1rem",
                   fontWeight: 400,
                   marginBottom: "0.75rem",
-                  color: "#1a1f36",
+                  color: "#1B2838",
                 }}
               >
                 {v.name}
@@ -1073,7 +1107,7 @@ export default function OptionD() {
             fontFamily: "'DM Sans', sans-serif",
             fontSize: "0.65rem",
             letterSpacing: "0.18em",
-            color: "#b8a88a",
+            color: "#B07C42",
             fontWeight: 500,
             marginBottom: "1.5rem",
           }}
@@ -1126,7 +1160,7 @@ export default function OptionD() {
               fontWeight: 500,
               letterSpacing: "0.06em",
               padding: "1rem 2.5rem",
-              background: "#1a1f36",
+              background: "#1B2838",
               color: "#faf9f6",
               textDecoration: "none",
               borderRadius: "4px",
@@ -1144,7 +1178,7 @@ export default function OptionD() {
               letterSpacing: "0.06em",
               padding: "1rem 2.5rem",
               border: "1px solid rgba(26,31,54,0.15)",
-              color: "#1a1f36",
+              color: "#1B2838",
               textDecoration: "none",
               borderRadius: "4px",
               textAlign: m ? "center" : undefined,
@@ -1172,7 +1206,7 @@ export default function OptionD() {
               style={{
                 fontSize: "0.65rem",
                 letterSpacing: "0.18em",
-                color: "#b8a88a",
+                color: "#B07C42",
                 fontWeight: 500,
                 fontFamily: "'DM Sans', sans-serif",
                 marginBottom: "0.5rem",
@@ -1183,7 +1217,7 @@ export default function OptionD() {
             <div
               style={{
                 fontSize: "0.9rem",
-                color: "#1a1f36",
+                color: "#1B2838",
                 fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 300,
                 lineHeight: 1.6,
@@ -1199,7 +1233,7 @@ export default function OptionD() {
               style={{
                 fontSize: "0.65rem",
                 letterSpacing: "0.18em",
-                color: "#b8a88a",
+                color: "#B07C42",
                 fontWeight: 500,
                 fontFamily: "'DM Sans', sans-serif",
                 marginBottom: "0.5rem",
@@ -1211,7 +1245,7 @@ export default function OptionD() {
               href="tel:5125791819"
               style={{
                 fontSize: "0.9rem",
-                color: "#1a1f36",
+                color: "#1B2838",
                 fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 300,
                 textDecoration: "none",
@@ -1225,7 +1259,7 @@ export default function OptionD() {
               style={{
                 fontSize: "0.65rem",
                 letterSpacing: "0.18em",
-                color: "#b8a88a",
+                color: "#B07C42",
                 fontWeight: 500,
                 fontFamily: "'DM Sans', sans-serif",
                 marginBottom: "0.5rem",
@@ -1237,7 +1271,7 @@ export default function OptionD() {
               href="mailto:ttriolo@completecareersolutions.com"
               style={{
                 fontSize: "0.85rem",
-                color: "#1a1f36",
+                color: "#1B2838",
                 fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 300,
                 textDecoration: "none",
