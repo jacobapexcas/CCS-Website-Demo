@@ -660,26 +660,45 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
             CCS works alongside a small network of independent specialists and partner firms that round out every engagement. Each partner is chosen for fit — culture, craft, and the same outcomes-first standard we hold ourselves to.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(2, 1fr)", gap: "1.25rem" }}>
-            {[
-              {
-                name: "JRucker",
-                role: "AI Enablement & Operations",
-                desc: "Builds the AI-powered systems and operational infrastructure that accelerate CCS engagements end-to-end.",
-              },
-              {
-                name: "Brainard Strategy",
-                role: "Strategic Consulting Partner",
-                desc: "Extends CCS's executive coaching and organizational design capacity on larger and more complex engagements.",
-              },
-            ].map((partner) => (
+            {(
+              [
+                {
+                  name: "Apex AI",
+                  role: "AI Fulfillment Partner",
+                  desc: "Builds and operates the AI-powered systems that extend CCS engagements — internal workflows, client-facing tools, and the operational infrastructure that keeps everything running.",
+                  accent: "#2BB4BD",
+                  logoBg: "rgba(43,180,189,0.10)",
+                  // Stylized "A" triangle — Apex AI brand mark recreated as SVG so the
+                  // partner card stays self-contained. To use the real PNG instead,
+                  // drop it into public/ and swap this block for an <Image /> tag.
+                  logo: (
+                    <svg viewBox="0 0 100 100" width="32" height="32" aria-hidden focusable="false">
+                      <path
+                        d="M 50 10 L 92 90 L 8 90 Z M 50 50 L 72 84 L 28 84 Z"
+                        fill="#2BB4BD"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                  ),
+                },
+                {
+                  name: "Brainard Strategy",
+                  role: "Strategic Consulting Partner",
+                  desc: "Extends CCS's executive coaching and organizational design capacity on larger and more complex engagements.",
+                  accent: css.sage,
+                  logoBg: css.terracottaLight,
+                  logo: null,
+                },
+              ] as const
+            ).map((partner) => (
               <div key={partner.name} style={{ padding: "2rem", borderRadius: 12, background: css.bg, border: `1px solid ${css.warmBorder}` }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
-                  <div style={{ width: 52, height: 52, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Petrona', Georgia, serif", fontSize: "1rem", fontWeight: 700, background: css.terracottaLight, color: css.navy, letterSpacing: "0.04em" }}>
-                    {partner.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                  <div style={{ width: 52, height: 52, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Petrona', Georgia, serif", fontSize: "1rem", fontWeight: 700, background: partner.logoBg, color: css.navy, letterSpacing: "0.04em" }}>
+                    {partner.logo ?? partner.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
                   </div>
                   <div>
                     <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "1.1rem", fontWeight: 600, color: css.navy, lineHeight: 1.1 }}>{partner.name}</div>
-                    <div style={{ fontSize: "0.72rem", color: css.sage, fontWeight: 600, marginTop: "0.3rem", letterSpacing: "0.04em" }}>{partner.role}</div>
+                    <div style={{ fontSize: "0.72rem", color: partner.accent, fontWeight: 600, marginTop: "0.3rem", letterSpacing: "0.04em" }}>{partner.role}</div>
                   </div>
                 </div>
                 <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: css.inkSoft, margin: 0 }}>{partner.desc}</p>
