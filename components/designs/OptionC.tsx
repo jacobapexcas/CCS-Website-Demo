@@ -138,7 +138,7 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
             At Complete Career Solutions, we specialize in driving impactful change that resonates throughout entire organizations, always rooted in the power of the individual. Our mission is to guide you in surpassing your business objectives.
           </p>
           <p className="animate-fade-up animate-fade-up-3" style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 720, marginTop: "1rem" }}>
-            Positioned uniquely as an organizational consulting firm, we prioritize four key pillars of success: <strong style={{ fontWeight: 600, color: css.ink }}>Executive Coaching, Leadership Development, Operational Consulting,</strong> and <strong style={{ fontWeight: 600, color: css.ink }}>Talent Management</strong> — with AI Enablement now woven through every engagement. We empower superior performance through your most valuable asset: your people.
+            Positioned uniquely as an organizational consulting firm, we prioritize four key pillars of success: <strong style={{ fontWeight: 600, color: css.ink }}>Executive Coaching, Leadership Development, Operational Consulting,</strong> and <strong style={{ fontWeight: 600, color: css.ink }}>Talent Management</strong>, with AI Enablement now woven through every engagement. We empower superior performance through your most valuable asset: your people.
           </p>
           <div className="animate-fade-up animate-fade-up-4" style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
             <button onClick={() => nav("contact")} style={{ padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 6px 20px -8px rgba(27,40,56,0.4)" }}>Schedule a Discovery Call</button>
@@ -226,7 +226,7 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
         </div>
       </section>
 
-      <CtaBanner m={m} overline="Let's Start" title={<>Ready to build leaders who build <strong style={{ fontWeight: 600 }}>what&apos;s next?</strong></>} desc="Every engagement starts with a conversation. Tell us where you are and where you need to be — we'll map the path together." onClick={() => nav("contact")} />
+      <CtaBanner m={m} overline="Let's Start" title={<>Ready to build leaders who build <strong style={{ fontWeight: 600 }}>what&apos;s next?</strong></>} desc="Every engagement starts with a conversation. Tell us where you are and where you need to be, and we'll map the path together." onClick={() => nav("contact")} />
     </>
   );
 }
@@ -268,7 +268,7 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
             </div>
           </div>
           <p style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "2rem", maxWidth: 820 }}>
-            By harmonizing these dual perspectives, we empower leaders to excel on personal, interpersonal, and organizational levels — driving holistic transformation and performance enhancement.
+            By harmonizing these dual perspectives, we empower leaders to excel on personal, interpersonal, and organizational levels, driving holistic transformation and performance enhancement.
           </p>
         </div>
       </section>
@@ -290,12 +290,12 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Executive Team Coaching</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Unlocking <strong style={{ fontWeight: 600 }}>High Performance.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
-            At CCS, we understand that executive leadership teams are the driving force behind achieving exceptional results. A high-performance leadership team doesn&apos;t just happen — it is a deliberate effort that requires the collective commitment of every team member. In an effective team, each leader is aligned with their role, possesses clear goals, and understands what is expected of them.
+            At CCS, we understand that executive leadership teams are the driving force behind achieving exceptional results. A high-performance leadership team doesn&apos;t just happen; it is a deliberate effort that requires the collective commitment of every team member. In an effective team, each leader is aligned with their role, possesses clear goals, and understands what is expected of them.
           </p>
           <div style={{ marginTop: "2rem", fontSize: "0.78rem", letterSpacing: "0.18em", textTransform: "uppercase" as const, color: css.muted, fontWeight: 600 }}>Key Offerings</div>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(2, 1fr)", gap: "1rem", marginTop: "1rem" }}>
             {[
-              { title: "Cohesive Alignment", desc: "Our coaching sessions create a space for executive teams to align on goals, strategies, and stakeholder perceptions — fostering a united front." },
+              { title: "Cohesive Alignment", desc: "Our coaching sessions create a space for executive teams to align on goals, strategies, and stakeholder perceptions, fostering a united front." },
               { title: "Reflective Dialogue", desc: "Through guided reflection and open dialogue, team members gain insights into what works well and what impedes effectiveness, driving continuous improvement." },
               { title: "Enhanced Relationships", desc: "We facilitate the development of stronger relationships, trust, and connectedness among team members, leading to greater team effectiveness." },
               { title: "Learning and Development", desc: "Team members learn and grow together, with a direct impact on organizational success and performance." },
@@ -343,7 +343,7 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
           </div>
           <div>
             <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, margin: 0 }}>
-              We partner with CEOs, CHROs, COOs, and senior operating leaders inside organizations that are scaling, restructuring, integrating an acquisition, or rebuilding a function after sustained growth. Our engagements concentrate where business performance depends on what people are actually able to do — not just what the strategy slide says.
+              We partner with CEOs, CHROs, COOs, and senior operating leaders inside organizations that are scaling, restructuring, integrating an acquisition, or rebuilding a function after sustained growth. Our engagements concentrate where business performance depends on what people are actually able to do, not just what the strategy slide says.
             </p>
             <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: m ? "1fr 1fr" : "repeat(3, 1fr)", gap: "1.25rem" }}>
               {[
@@ -372,7 +372,7 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(4, 1fr)", gap: "1rem", marginTop: "2.5rem" }}>
             {[
               { num: "01", title: "Listen", desc: "Stakeholder conversations, current-state mapping, and a candid read on what is actually getting in the way." },
-              { num: "02", title: "Design", desc: "A working model your team helps shape — not a 100-page deck. Specific deliverables, specific owners, specific timing." },
+              { num: "02", title: "Design", desc: "A working model your team helps shape, not a 100-page deck. Specific deliverables, specific owners, specific timing." },
               { num: "03", title: "Embed", desc: "We work inside the team, not over them. Senior-led, hands-on, accountable to the same outcomes your leaders are." },
               { num: "04", title: "Transfer", desc: "When we leave, the team owns it. Decisions, cadences, and capability stay behind. No retainer dependency." },
             ].map((step) => (
@@ -394,7 +394,7 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="Talent Management · CCS Staffing" title={<>The right person, at the right time, for the <strong style={{ fontWeight: 600, color: css.sage }}>right role.</strong></>} desc="At CCS Staffing, we are your strategic partner in achieving talent management excellence. We pride ourselves on being a unique outsourced talent acquisition firm. Our full-desk recruiters focus on more than just filling positions — they aim to find the right person, at the right time, for the right role. Unlike traditional recruitment firms that simply send resumes over the wall, our team of talent acquisition professionals are deeply engaged in every step of the recruitment process. We act as an external talent acquisition arm that functions like an internal staffing team." cta={{ label: "Discuss Your Talent Needs", onClick: () => nav("contact") }} bgImage="/TalentManagementImage.jpg" />
+      <PageHero m={m} overline="Talent Management · CCS Staffing" title={<>The right person, at the right time, for the <strong style={{ fontWeight: 600, color: css.sage }}>right role.</strong></>} desc="At CCS Staffing, we are your strategic partner in achieving talent management excellence. We pride ourselves on being a unique outsourced talent acquisition firm. Our full-desk recruiters focus on more than just filling positions. They aim to find the right person, at the right time, for the right role. Unlike traditional recruitment firms that simply send resumes over the wall, our team of talent acquisition professionals are deeply engaged in every step of the recruitment process. We act as an external talent acquisition arm that functions like an internal staffing team." cta={{ label: "Discuss Your Talent Needs", onClick: () => nav("contact") }} bgImage="/TalentManagementImage.jpg" />
 
       {/* Strategic Approach */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
@@ -425,10 +425,10 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>What We Deliver</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>The CCS Staffing <strong style={{ fontWeight: 600 }}>difference.</strong></div>
           <FeatureGrid m={m} items={[
-            { title: "Outsourced Talent Acquisition", desc: "We function as your embedded recruitment arm — full-desk recruiters involved in every step from sourcing through onboarding, not just resume forwarding." },
+            { title: "Outsourced Talent Acquisition", desc: "We function as your embedded recruitment arm. Full-desk recruiters involved in every step from sourcing through onboarding, not just resume forwarding." },
             { title: "Executive Search", desc: "Retained search for senior leadership roles. We sit down with candidates before they reach you and surface fit signals that a screen call won't surface." },
             { title: "Coaching-Informed Validation", desc: "Our CCS coaches assess each candidate's long-term viability and potential for success at your company before submission. The gaps a resume hides in week one, surfaced before week one." },
-            { title: "Workforce Development", desc: "Beyond the hire — pipeline planning, candidate care, and the cadences that turn one good hire into a repeatable engine." },
+            { title: "Workforce Development", desc: "Beyond the hire: pipeline planning, candidate care, and the cadences that turn one good hire into a repeatable engine." },
           ]} />
         </div>
       </section>
@@ -441,9 +441,9 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(5, 1fr)", gap: "1rem", marginTop: "2.5rem" }}>
             {[
               { num: "01", title: "Discovery", desc: "We sit down with hiring managers to understand the role, the team, and the culture beyond the JD." },
-              { num: "02", title: "Sourcing", desc: "Our recruiters work the full desk — passive candidates, network, and active pipeline simultaneously." },
+              { num: "02", title: "Sourcing", desc: "Our recruiters work the full desk: passive candidates, network, and active pipeline simultaneously." },
               { num: "03", title: "Coaching Assessment", desc: "Our CCS coaches assess each shortlisted candidate for long-term viability, not just role fit." },
-              { num: "04", title: "Submission", desc: "You receive a curated slate of qualified candidates who meet or exceed the JD — and possess the qualities of a successful hire at your company." },
+              { num: "04", title: "Submission", desc: "You receive a curated slate of qualified candidates who meet or exceed the JD and possess the qualities of a successful hire at your company." },
               { num: "05", title: "Close & Onboard", desc: "We support offer construction, candidate close conversations, and first-100-day onboarding alignment." },
             ].map((step) => (
               <div key={step.num} style={{ padding: "1.5rem 1.25rem", borderRadius: 12, background: css.bg, border: `1px solid ${css.warmBorder}` }}>
@@ -464,7 +464,7 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
   return (
     <>
-      <PageHero m={m} overline="AI Solutions" title={<>Building confident leaders in the <strong style={{ fontWeight: 600, color: css.sage }}>age of AI.</strong></>} desc="CCS helps teams use AI confidently, securely, and strategically — to save time, communicate clearly, and make smarter business decisions." cta={{ label: "Explore AI Enablement", onClick: () => nav("contact") }} />
+      <PageHero m={m} overline="AI Solutions" title={<>Building confident leaders in the <strong style={{ fontWeight: 600, color: css.sage }}>age of AI.</strong></>} desc="CCS helps teams use AI confidently, securely, and strategically, to save time, communicate clearly, and make smarter business decisions." cta={{ label: "Explore AI Enablement", onClick: () => nav("contact") }} />
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Framework</div>
@@ -490,7 +490,7 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>What You Get</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Tangible deliverables, <strong style={{ fontWeight: 600 }}>not slideware.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
-            Each phase produces working artifacts your team uses immediately — not deliverables that sit on a shared drive. The goal is leaders who feel confident with AI before the engagement ends.
+            Each phase produces working artifacts your team uses immediately, not deliverables that sit on a shared drive. The goal is leaders who feel confident with AI before the engagement ends.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(3, 1fr)", gap: "1.25rem", marginTop: "2.5rem" }}>
             {[
@@ -547,14 +547,14 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
               Senior leaders who want their team focused on the work AI <strong style={{ fontWeight: 600 }}>can&apos;t replace.</strong>
             </h3>
             <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: css.inkSoft, margin: 0 }}>
-              The leaders pulling ahead with AI aren&apos;t the ones with the best technology — they&apos;re the ones who decided what they want their teams doing instead. We coach through that question first, then deploy the tools.
+              The leaders pulling ahead with AI aren&apos;t the ones with the best technology. They&apos;re the ones who decided what they want their teams doing instead. We coach through that question first, then deploy the tools.
             </p>
           </div>
           <div style={{ display: "grid", gap: "1rem" }}>
             {[
-              { title: "CHROs and HR leaders", desc: "Looking to give the team back the hours they spend on summaries, drafts, and follow-ups — without compromising governance or candidate trust." },
+              { title: "CHROs and HR leaders", desc: "Looking to give the team back the hours they spend on summaries, drafts, and follow-ups, without compromising governance or candidate trust." },
               { title: "COOs and operating leaders", desc: "Mapping where AI can compress cycle time on internal processes (performance management, planning, reporting) before scaling broadly." },
-              { title: "Sales and revenue leaders", desc: "Looking for AI that supports the rep without replacing the relationship — call analysis, deal review, prep without the busywork." },
+              { title: "Sales and revenue leaders", desc: "Looking for AI that supports the rep without replacing the relationship: call analysis, deal review, prep without the busywork." },
             ].map((p) => (
               <div key={p.title} style={{ padding: "1.5rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}` }}>
                 <h4 style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "1.05rem", fontWeight: 600, color: css.ink, marginBottom: "0.4rem" }}>{p.title}</h4>
@@ -586,10 +586,10 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
           </div>
           <div>
             <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, margin: 0, marginBottom: "1.5rem" }}>
-              CCS was founded in 2010 in Austin, Texas. Nearly 25 years of senior-level leadership across technology, professional services, financial services, commercial development, medical devices, and consumer products went into the way we work today — and into the team we&apos;ve built around it.
+              CCS was founded in 2010 in Austin, Texas. Nearly 25 years of senior-level leadership across technology, professional services, financial services, commercial development, medical devices, and consumer products went into the way we work today, and into the team we&apos;ve built around it.
             </p>
             <p style={{ fontSize: "1rem", lineHeight: 1.85, color: css.inkSoft, margin: 0, marginBottom: "1.5rem" }}>
-              We&apos;re a consulting house. Our point of entry can be coaching, consulting, talent management, or AI enablement — the engagement looks the same once we&apos;re in. We assess the problem, we solve it in a way that fits the moment, and we leave behind the people and capability your team needs to keep running it.
+              We&apos;re a consulting house. Our point of entry can be coaching, consulting, talent management, or AI enablement. The engagement looks the same once we&apos;re in. We assess the problem, we solve it in a way that fits the moment, and we leave behind the people and capability your team needs to keep running it.
             </p>
             <p style={{ fontSize: "1rem", lineHeight: 1.85, color: css.inkSoft, margin: 0 }}>
               Our growth is 100% referral-driven. We self-select the clients we work with, and we&apos;ve built lasting partnerships with leaders across six industries who keep coming back because the work transfers.
@@ -608,7 +608,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
             {[
               { title: "Courage", desc: "Drives us to embrace trust, stay present-minded, and act with faith and vulnerability." },
               { title: "Intention & Quality", desc: "Ensure that everything we do has purpose, striving to maximize impact." },
-              { title: "Integrity", desc: "At the heart of our business — upholding the highest ethical standards with honesty, transparency, and accountability." },
+              { title: "Integrity", desc: "At the heart of our business. Upholding the highest ethical standards with honesty, transparency, and accountability." },
               { title: "Partnership", desc: "Our commitment to meaningful, long-term relationships with clients, candidates, and collaborators." },
               { title: "Tenacity", desc: "Fuels our competitive spirit, resilience, and unwavering passion for success." },
             ].map((v) => (
@@ -657,18 +657,18 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Powerful Partners</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Trusted collaborators who <strong style={{ fontWeight: 600 }}>extend what we deliver.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.25rem", maxWidth: 820, marginBottom: "2.5rem" }}>
-            CCS works alongside a small network of independent specialists and partner firms that round out every engagement. Each partner is chosen for fit — culture, craft, and the same outcomes-first standard we hold ourselves to.
+            CCS works alongside a small network of independent specialists and partner firms that round out every engagement. Each partner is chosen for fit: culture, craft, and the same outcomes-first standard we hold ourselves to.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(2, 1fr)", gap: "1.25rem" }}>
             {(
               [
                 {
                   name: "Apex AI",
-                  role: "AI Fulfillment Partner",
-                  desc: "Builds and operates the AI-powered systems that extend CCS engagements — internal workflows, client-facing tools, and the operational infrastructure that keeps everything running.",
+                  role: "Custom Business Systems",
+                  desc: "Partners with CCS to accelerate engagement outcomes through custom business system development. Builds the AI tools, internal workflows, and client-facing infrastructure that turn each strategy into measurable results.",
                   accent: "#2BB4BD",
                   logoBg: "rgba(43,180,189,0.10)",
-                  // Stylized "A" triangle — Apex AI brand mark recreated as SVG so the
+                  // Stylized "A" triangle, Apex AI brand mark recreated as SVG so the
                   // partner card stays self-contained. To use the real PNG instead,
                   // drop it into public/ and swap this block for an <Image /> tag.
                   logo: (
@@ -685,9 +685,29 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
                   name: "Brainard Strategy",
                   role: "Strategic Consulting Partner",
                   desc: "Extends CCS's executive coaching and organizational design capacity on larger and more complex engagements.",
-                  accent: css.sage,
-                  logoBg: css.terracottaLight,
-                  logo: null,
+                  accent: "#C8851A",
+                  logoBg: "rgba(245,166,35,0.10)",
+                  // Brainard Strategy mark recreated as SVG: bold "BS" letterform
+                  // with the firm's double amber-bar signature beneath. Same swap
+                  // pattern as Apex AI if a PNG ever needs to take its place.
+                  logo: (
+                    <svg viewBox="0 0 100 100" width="36" height="36" aria-hidden focusable="false">
+                      <text
+                        x="50"
+                        y="60"
+                        textAnchor="middle"
+                        fontFamily="'Inter', system-ui, sans-serif"
+                        fontSize="42"
+                        fontWeight="800"
+                        fill="#0F1820"
+                        letterSpacing="-2"
+                      >
+                        BS
+                      </text>
+                      <rect x="14" y="76" width="72" height="5" fill="#F5A623" />
+                      <rect x="14" y="87" width="72" height="5" fill="#F5A623" />
+                    </svg>
+                  ),
                 },
               ] as const
             ).map((partner) => (
