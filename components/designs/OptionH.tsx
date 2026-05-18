@@ -63,8 +63,15 @@ type Page = "home" | "coaching" | "consulting" | "talent" | "ai" | "about" | "co
 
 // Helpers ---------------------------------------------------------------
 
+// Originally inserted thin spaces (U+2009) between every letter and double
+// thin spaces between words. That competed with the CSS `letter-spacing:
+// 0.22em` on every Eyebrow — the inter-letter and inter-word gaps ended up
+// almost identical, so the home hero eyebrow read as a run-on. Returns
+// input unchanged; the CSS letter-spacing alone produces a clean spaced-caps
+// look with word boundaries 3-4× wider than letter gaps. Kept the helper
+// so the ~40 call sites don't need to be rewritten.
 function spacedCaps(text: string): string {
-  return text.split("").join(" ").replace(/   /g, "  ");
+  return text;
 }
 
 function Eyebrow({ children, onNavy = false, className }: { children: string; onNavy?: boolean; className?: string }) {
