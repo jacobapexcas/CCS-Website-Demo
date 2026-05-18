@@ -2,11 +2,11 @@
 
 import useIsMobile from "@/hooks/useIsMobile";
 
-type Design = "c" | "d";
+type Design = "a" | "b";
 
 const labels: Record<Design, { name: string; desc: string }> = {
-  c: { name: "Option 1", desc: "Multi-Page" },
-  d: { name: "Option 2", desc: "Single-Page" },
+  a: { name: "Version A", desc: "Live" },
+  b: { name: "Version B", desc: "New Direction" },
 };
 
 export default function DesignSwitcher({

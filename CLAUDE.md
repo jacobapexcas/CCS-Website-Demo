@@ -77,14 +77,15 @@ For architecturally significant decisions, ask me before committing. For everyth
 ```
 app/                    → Next.js App Router pages and global styles
   layout.tsx            → Root layout, metadata, favicon, Google Fonts
-  page.tsx              → Password gate + renders OptionC directly (the live design)
+  page.tsx              → Password gate + bottom switcher between Version A (OptionC, the current live design) and Version B (OptionH, the new direction)
   globals.css           → Tailwind import, font theme vars, fadeUp animations
 components/             → React components
-  DesignSwitcher.tsx    → No longer imported by page.tsx — kept on disk for future re-introduction of multi-option toggle
+  DesignSwitcher.tsx    → Bottom pill — toggles "Version A · Live" vs "Version B · New Direction"
   TeamModal.tsx         → Shared bio popup + centralized team data (Tom & Brent)
   designs/              → One file per design option (~800-1700 lines each)
     OptionC.tsx          → ★ The live design — Petrona serif + Inter body (matches Tom's Change Management deck), navy/cream/bronze boutique palette aligned to CCS brand colors, multi-page internal nav (Home / Coaching / Consulting / Talent / AI Solutions / About / Contact), verbatim copy from current site PDFs, Austin skyline hero
     OptionD.tsx          → Single-page alternative kept on disk after team agreed Option 1 (C) was the right direction. Cormorant Garamond + DM Sans, navy/cream/bronze.
+    OptionH.tsx          → ★ Version B — converted from the React+raw-CSS UI kit shared 2026-05-19. Dark navy hero with photo backdrop + gradient overlay, spaced-caps eyebrows, 4-column stat strip, sharper 8px card geometry, editorial italic Tom pull-quote, numbered horizontal engagement steps, navy "Let's Start" CTA at every page foot. All 7 pages built; Coaching/Talent/About filled in from Version A's verbatim content.
     OptionA.tsx, OptionB.tsx, OptionE.tsx, OptionF.tsx, OptionG.tsx → Earlier exploratory designs kept on disk for reference but no longer imported
 hooks/                  → Custom React hooks
   useIsMobile.ts        → Media query hook via useSyncExternalStore (breakpoint: 768px)
