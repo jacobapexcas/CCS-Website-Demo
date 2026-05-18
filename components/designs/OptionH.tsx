@@ -211,38 +211,14 @@ function SecondaryBtn({ children, onClick, onNavy = false }: { children: React.R
 
 function LogoMark({ size = 36 }: { size?: number }) {
   return (
-    <div
-      style={{
-        width: size,
-        height: size,
-        background: T.navy800,
-        color: T.bone50,
-        display: "grid",
-        placeItems: "center",
-        fontWeight: 700,
-        fontSize: size * 0.32,
-        letterSpacing: "0.04em",
-        borderRadius: "50%",
-        position: "relative",
-        overflow: "hidden",
-        fontFamily: T.sans,
-      }}
-      aria-label="CCS"
-    >
-      <span style={{ position: "relative", zIndex: 2 }}>CCS</span>
-      <span
-        aria-hidden
-        style={{
-          position: "absolute",
-          left: "14%",
-          right: "14%",
-          bottom: "22%",
-          height: 2,
-          background: T.teal500,
-          borderRadius: 999,
-        }}
-      />
-    </div>
+    <Image
+      src="/logo-transparent.png"
+      alt="CCS"
+      width={size}
+      height={size}
+      style={{ display: "block", width: size, height: size }}
+      priority
+    />
   );
 }
 
@@ -594,7 +570,6 @@ function Header({
     ["talent", "Talent"],
     ["ai", "AI Solutions"],
     ["about", "About"],
-    ["contact", "Contact"],
   ];
 
   return (
@@ -687,7 +662,7 @@ function Header({
                 {label}
               </a>
             ))}
-            <PrimaryBtn onClick={() => onNav("contact")}>Schedule a Call</PrimaryBtn>
+            <PrimaryBtn onClick={() => onNav("contact")}>Contact Us</PrimaryBtn>
           </nav>
         )}
       </div>
@@ -741,7 +716,7 @@ function Header({
               cursor: "pointer",
             }}
           >
-            Schedule a Call
+            Contact Us
           </button>
         </div>
       )}
@@ -978,7 +953,15 @@ function Hero({
         >
           {lede}
         </p>
-        <div style={{ display: "flex", gap: m ? "0.75rem" : "0.875rem", flexWrap: "wrap" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: m ? "column" : "row",
+            gap: m ? "0.75rem" : "0.875rem",
+            flexWrap: "wrap",
+            alignItems: m ? "stretch" : "center",
+          }}
+        >
           {ctas}
         </div>
       </div>
@@ -1818,19 +1801,49 @@ function ContactPage({ m }: { m: boolean }) {
               Here&apos;s what a first conversation typically covers.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.125rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: m ? "1.75rem" : "2.25rem" }}>
               {[
                 { label: "FOR EXECUTIVE COACHING", text: "What leadership challenges are your executives currently facing?", sub: "How do you currently support the growth of your senior leaders? What impact would stronger leadership have on your outcomes?" },
                 { label: "FOR TALENT MANAGEMENT", text: "What are your biggest challenges in hiring and retaining talent?", sub: "How do you currently assess candidate fit and performance? What would an ideal recruitment partner look like for your team?" },
                 { label: "FOR AI SOLUTIONS", text: "What role does AI currently play in your organization?", sub: "Are there specific business processes you believe could benefit from AI? How prepared is your team to adopt and scale?" },
                 { label: "FOR CONSULTING", text: "What business processes could benefit from a fresh perspective?", sub: "Where is the team currently spending time that the business hasn't yet caught up with?" },
               ].map((q) => (
-                <div key={q.label} style={{ paddingTop: "0.875rem", borderTop: `1px solid ${T.border}` }}>
-                  <div style={{ fontFamily: T.sans, fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: T.teal700, marginBottom: 8 }}>
+                <div key={q.label} style={{ paddingTop: "1.5rem", borderTop: `1px solid ${T.border}` }}>
+                  <div
+                    style={{
+                      fontFamily: T.sans,
+                      fontSize: "0.7rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase" as const,
+                      color: T.teal700,
+                      marginBottom: "1rem",
+                    }}
+                  >
                     {spacedCaps(q.label)}
                   </div>
-                  <div style={{ fontFamily: T.sans, fontSize: "0.92rem", color: T.fg, lineHeight: 1.55, fontWeight: 500 }}>{q.text}</div>
-                  <div style={{ fontFamily: T.sans, fontSize: "0.85rem", color: T.fgMuted, lineHeight: 1.55, marginTop: 4 }}>{q.sub}</div>
+                  <div
+                    style={{
+                      fontFamily: T.sans,
+                      fontSize: m ? "0.95rem" : "1rem",
+                      color: T.fg,
+                      lineHeight: 1.5,
+                      fontWeight: 500,
+                      marginBottom: "0.625rem",
+                    }}
+                  >
+                    {q.text}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: T.sans,
+                      fontSize: "0.875rem",
+                      color: T.fgMuted,
+                      lineHeight: 1.65,
+                    }}
+                  >
+                    {q.sub}
+                  </div>
                 </div>
               ))}
             </div>
