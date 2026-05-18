@@ -768,7 +768,7 @@ export default function OptionC() {
   const m = useIsMobile();
   const nav = (p: Page) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); };
 
-  const pages: Record<Page, string> = { home: "Home", coaching: "Coaching", consulting: "Consulting", talent: "Talent", ai: "AI Solutions", about: "About", contact: "Book a Call" };
+  const pages: Record<Page, string> = { home: "Home", coaching: "Coaching", consulting: "Consulting", talent: "Talent", ai: "AI Solutions", about: "About", contact: "Contact Us" };
 
   return (
     <div style={{ fontFamily: "'Inter', system-ui, sans-serif", background: css.bg, color: css.ink, minHeight: "100vh" }}>
