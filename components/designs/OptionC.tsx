@@ -754,9 +754,9 @@ Thanks,
                 const tomHref = `mailto:ttriolo@completecareersolutions.com?subject=${encodeURIComponent("Inquiry · Complete Career Solutions")}&body=${encodeURIComponent(tomBody)}`;
                 const brentHref = `mailto:brent.triolo@completecareersolutions.com?subject=${encodeURIComponent("Inquiry · CCS Staffing")}&body=${encodeURIComponent(brentBody)}`;
                 const cards = [
-                  { name: "Tom Triolo — CEO & Executive Coach", email: "ttriolo@completecareersolutions.com", scope: "Executive Coaching · Consulting · AI Solutions", href: tomHref },
-                  { name: "Brent Triolo — Co-Founder, CCS Staffing", email: "brent.triolo@completecareersolutions.com", scope: "Talent Management · Executive Search", href: brentHref },
-                  { name: "CCS Main Office", email: "", scope: "555 E 5th St\nAustin, TX 78701-4157, United States\n+1 (512) 579-1819", href: null as string | null },
+                  { name: "Tom Triolo — CEO & Executive Coach", firstName: "Tom", email: "ttriolo@completecareersolutions.com", scope: "Executive Coaching · Consulting · AI Solutions", href: tomHref },
+                  { name: "Brent Triolo — Co-Founder, CCS Staffing", firstName: "Brent", email: "brent.triolo@completecareersolutions.com", scope: "Talent Management · Executive Search", href: brentHref },
+                  { name: "CCS Main Office", firstName: "", email: "", scope: "555 E 5th St\nAustin, TX 78701-4157, United States\n+1 (512) 579-1819", href: null as string | null },
                 ];
                 return cards.map((c) => {
                   const cardStyle = { padding: "2rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}`, marginBottom: "1rem", display: "block", textDecoration: "none", color: "inherit", transition: "border-color 0.25s, transform 0.2s, box-shadow 0.25s" };
@@ -770,7 +770,24 @@ Thanks,
                       )}
                       <p style={{ fontSize: "0.9rem", color: css.inkSoft, lineHeight: 1.6, whiteSpace: "pre-line" }}>{c.scope}</p>
                       {c.href && (
-                        <p style={{ fontSize: "0.72rem", color: css.muted, letterSpacing: "0.1em", textTransform: "uppercase" as const, fontWeight: 600, marginTop: "0.75rem" }}>Click to open in your email client →</p>
+                        <span
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "0.5rem",
+                            marginTop: "1.25rem",
+                            padding: "0.7rem 1.25rem",
+                            background: css.navy,
+                            color: "#fff",
+                            borderRadius: 6,
+                            fontSize: "0.82rem",
+                            fontWeight: 600,
+                            letterSpacing: "0.03em",
+                            boxShadow: "0 4px 14px -6px rgba(27,40,56,0.4)",
+                          }}
+                        >
+                          Email {c.firstName} <span aria-hidden>→</span>
+                        </span>
                       )}
                     </>
                   );

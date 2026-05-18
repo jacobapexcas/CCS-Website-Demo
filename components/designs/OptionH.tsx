@@ -1774,8 +1774,8 @@ When would be a good time for an introductory conversation?
 Thanks,
 [your name]`;
               const cards = [
-                { role: "FOUNDER · CEO", name: "Tom Triolo", email: "ttriolo@completecareersolutions.com", svc: "Executive Coaching · Consulting · AI Solutions", subject: "Inquiry · Complete Career Solutions", body: tomBody },
-                { role: "CO-FOUNDER · CCS STAFFING", name: "Brent Triolo", email: "brent.triolo@completecareersolutions.com", svc: "Talent Management · Executive Search", subject: "Inquiry · CCS Staffing", body: brentBody },
+                { role: "FOUNDER · CEO", name: "Tom Triolo", firstName: "Tom", email: "ttriolo@completecareersolutions.com", svc: "Executive Coaching · Consulting · AI Solutions", subject: "Inquiry · Complete Career Solutions", body: tomBody },
+                { role: "CO-FOUNDER · CCS STAFFING", name: "Brent Triolo", firstName: "Brent", email: "brent.triolo@completecareersolutions.com", svc: "Talent Management · Executive Search", subject: "Inquiry · CCS Staffing", body: brentBody },
               ];
               return cards.map((c) => {
                 const href = `mailto:${c.email}?subject=${encodeURIComponent(c.subject)}&body=${encodeURIComponent(c.body)}`;
@@ -1815,8 +1815,23 @@ Thanks,
                       {c.email}
                     </span>
                     <span style={{ fontFamily: T.sans, fontSize: "0.75rem", color: T.fgSoft, marginTop: 4 }}>{c.svc}</span>
-                    <span style={{ fontFamily: T.sans, fontSize: "0.7rem", color: T.fgSoft, letterSpacing: "0.1em", textTransform: "uppercase" as const, fontWeight: 600, marginTop: 6 }}>
-                      Click to open in your email client →
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        marginTop: "1rem",
+                        padding: "0.7rem 1.25rem",
+                        background: T.navy800,
+                        color: T.bone50,
+                        borderRadius: 2,
+                        fontSize: "0.82rem",
+                        fontWeight: 600,
+                        letterSpacing: "0.03em",
+                        alignSelf: "flex-start",
+                      }}
+                    >
+                      Email {c.firstName} <span aria-hidden>→</span>
                     </span>
                   </a>
                 );
