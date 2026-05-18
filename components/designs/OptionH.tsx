@@ -1750,33 +1750,78 @@ function ContactPage({ m }: { m: boolean }) {
               We&apos;d love to hear from you.
             </p>
 
-            {[
-              { role: "FOUNDER · CEO", name: "Tom Triolo", email: "ttriolo@completecareersolutions.com", svc: "Executive Coaching · Consulting · AI Solutions" },
-              { role: "CO-FOUNDER · CCS STAFFING", name: "Brent Triolo", email: "brent.triolo@completecareersolutions.com", svc: "Talent Management · Executive Search" },
-            ].map((c) => (
-              <div
-                key={c.email}
-                style={{
-                  background: T.bone0,
-                  border: `1px solid ${T.border}`,
-                  borderRadius: 8,
-                  padding: "1.625rem 1.75rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 8,
-                  marginBottom: "0.875rem",
-                }}
-              >
-                <span style={{ fontFamily: T.sans, fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: T.navy400 }}>
-                  {spacedCaps(c.role)}
-                </span>
-                <span style={{ fontFamily: T.sans, fontSize: "1.125rem", fontWeight: 600, color: T.fg }}>{c.name}</span>
-                <a href={`mailto:${c.email}`} style={{ fontFamily: T.sans, fontSize: "0.875rem", color: T.teal700, wordBreak: "break-all" }}>
-                  {c.email}
-                </a>
-                <span style={{ fontFamily: T.sans, fontSize: "0.75rem", color: T.fgSoft, marginTop: 4 }}>{c.svc}</span>
-              </div>
-            ))}
+            {(() => {
+              const tomBody = `Hi Tom,
+
+I came across Complete Career Solutions and wanted to learn more about your work in [executive coaching / consulting / AI enablement].
+
+A little context on what we're working through:
+[your situation]
+
+When would be a good time for an introductory conversation?
+
+Thanks,
+[your name]`;
+              const brentBody = `Hi Brent,
+
+I'd like to learn more about how CCS Staffing approaches talent management and executive search.
+
+A little context on what we're hiring for:
+[role / team / timing]
+
+When would be a good time for an introductory conversation?
+
+Thanks,
+[your name]`;
+              const cards = [
+                { role: "FOUNDER · CEO", name: "Tom Triolo", email: "ttriolo@completecareersolutions.com", svc: "Executive Coaching · Consulting · AI Solutions", subject: "Inquiry · Complete Career Solutions", body: tomBody },
+                { role: "CO-FOUNDER · CCS STAFFING", name: "Brent Triolo", email: "brent.triolo@completecareersolutions.com", svc: "Talent Management · Executive Search", subject: "Inquiry · CCS Staffing", body: brentBody },
+              ];
+              return cards.map((c) => {
+                const href = `mailto:${c.email}?subject=${encodeURIComponent(c.subject)}&body=${encodeURIComponent(c.body)}`;
+                return (
+                  <a
+                    key={c.email}
+                    href={href}
+                    style={{
+                      background: T.bone0,
+                      border: `1px solid ${T.border}`,
+                      borderRadius: 8,
+                      padding: "1.625rem 1.75rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 8,
+                      marginBottom: "0.875rem",
+                      textDecoration: "none",
+                      color: "inherit",
+                      transition: "border-color 0.25s, transform 0.2s, box-shadow 0.25s",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = T.navy800;
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                      e.currentTarget.style.boxShadow = "0 12px 30px -18px rgba(14,20,28,0.25)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = T.border;
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
+                  >
+                    <span style={{ fontFamily: T.sans, fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: T.navy400 }}>
+                      {spacedCaps(c.role)}
+                    </span>
+                    <span style={{ fontFamily: T.sans, fontSize: "1.125rem", fontWeight: 600, color: T.fg }}>{c.name}</span>
+                    <span style={{ fontFamily: T.sans, fontSize: "0.875rem", color: T.teal700, wordBreak: "break-all" }}>
+                      {c.email}
+                    </span>
+                    <span style={{ fontFamily: T.sans, fontSize: "0.75rem", color: T.fgSoft, marginTop: 4 }}>{c.svc}</span>
+                    <span style={{ fontFamily: T.sans, fontSize: "0.7rem", color: T.fgSoft, letterSpacing: "0.1em", textTransform: "uppercase" as const, fontWeight: 600, marginTop: 6 }}>
+                      Click to open in your email client →
+                    </span>
+                  </a>
+                );
+              });
+            })()}
 
             <div
               style={{
