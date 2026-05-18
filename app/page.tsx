@@ -2,18 +2,32 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import DesignSwitcher from "@/components/DesignSwitcher";
 import OptionC from "@/components/designs/OptionC";
+import OptionH from "@/components/designs/OptionH";
 
-// Multi-page design (formerly "Option 1") is now the only design wired up.
-// Earlier exploratory designs (A, B, D, E, F, G) remain in components/designs/
-// for reference but are no longer imported.
+// Two finalist designs surfaced to the team:
+// - Version A (OptionC): the current live design — warm cream, multi-page editorial
+// - Version B (OptionH): the new direction — dark navy hero, spaced-caps eyebrows,
+//   sharper geometry. Built from the Version B UI kit shared 2026-05-19.
+// Other designs (A, B, D, E, F, G in the design folder) remain on disk for
+// reference but are not wired into the switcher.
+
+type Design = "a" | "b";
+
+const designs: Record<Design, React.ComponentType> = {
+  a: OptionC,
+  b: OptionH,
+};
 
 const PASSWORD = "ccsdemo";
 
 export default function Home() {
+  const [current, setCurrent] = useState<Design>("a");
   const [unlocked, setUnlocked] = useState(false);
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
+  const ActiveDesign = designs[current];
 
   if (!unlocked) {
     return (
@@ -129,5 +143,10 @@ export default function Home() {
     );
   }
 
-  return <OptionC />;
+  return (
+    <>
+      <ActiveDesign />
+      <DesignSwitcher current={current} onChange={setCurrent} />
+    </>
+  );
 }
