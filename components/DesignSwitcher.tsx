@@ -4,9 +4,12 @@ import useIsMobile from "@/hooks/useIsMobile";
 
 type Design = "a" | "b";
 
+// Order in this object controls render order in the pill. Version B is
+// listed first because it's the team's chosen direction; Version A stays
+// available on the right for side-by-side comparison.
 const labels: Record<Design, { name: string; desc: string }> = {
-  a: { name: "Version A", desc: "Live" },
   b: { name: "Version B", desc: "New Direction" },
+  a: { name: "Version A", desc: "Live" },
 };
 
 export default function DesignSwitcher({
