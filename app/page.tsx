@@ -10,6 +10,8 @@ import OptionH from "@/components/designs/OptionH";
 // - Version A (OptionC): the current live design — warm cream, multi-page editorial
 // - Version B (OptionH): the new direction — dark navy hero, spaced-caps eyebrows,
 //   sharper geometry. Built from the Version B UI kit shared 2026-05-19.
+// Version B is the default landing because the team is converging on it as
+// the chosen direction; Version A remains togglable for side-by-side review.
 // Other designs (A, B, D, E, F, G in the design folder) remain on disk for
 // reference but are not wired into the switcher.
 
@@ -23,13 +25,17 @@ const designs: Record<Design, React.ComponentType> = {
 const PASSWORD = "ccsdemo";
 
 export default function Home() {
-  const [current, setCurrent] = useState<Design>("a");
+  const [current, setCurrent] = useState<Design>("b");
   const [unlocked, setUnlocked] = useState(false);
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
   const ActiveDesign = designs[current];
 
   if (!unlocked) {
+    // Lock screen styled to match Version B's hero language: dark navy
+    // backdrop with the Austin skyline + diagonal gradient overlay, Inter
+    // typography, spaced-caps eyebrow, bone-on-navy primary button. Gives
+    // the visitor a hint of what's behind the curtain before they unlock.
     return (
       <div
         style={{
@@ -37,42 +43,99 @@ export default function Home() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#1a1f36",
-          fontFamily: "'DM Sans', sans-serif",
+          background: "#0E141C",
+          fontFamily: "'Inter', system-ui, sans-serif",
+          position: "relative",
+          overflow: "hidden",
+          padding: "1.5rem",
         }}
       >
-        <div style={{ textAlign: "center", maxWidth: "380px", padding: "2rem" }}>
+        {/* Austin skyline backdrop */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "url(/HomePageBackground.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "saturate(0.85)",
+            opacity: 0.55,
+          }}
+        />
+        {/* Diagonal gradient overlay (same recipe as Version B's hero) */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(105deg, rgba(14,20,28,0.92) 0%, rgba(14,20,28,0.78) 45%, rgba(14,20,28,0.6) 100%)",
+          }}
+        />
+
+        <div
+          style={{
+            position: "relative",
+            zIndex: 1,
+            textAlign: "center",
+            maxWidth: 440,
+            width: "100%",
+          }}
+        >
           <Image
-            src="/logo.png"
+            src="/logo-transparent.png"
             alt="CCS"
-            width={72}
-            height={72}
-            style={{
-              borderRadius: "50%",
-              marginBottom: "2rem",
-            }}
+            width={64}
+            height={64}
+            style={{ display: "inline-block", marginBottom: "1.75rem" }}
+            priority
           />
+
+          {/* Eyebrow */}
+          <div
+            style={{
+              fontSize: "0.7rem",
+              fontWeight: 600,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "#8ED6D9",
+              marginBottom: "1.25rem",
+            }}
+          >
+            Website Preview · Austin, Texas
+          </div>
+
+          {/* Display */}
           <h1
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "1.8rem",
-              fontWeight: 300,
-              color: "#faf9f6",
-              marginBottom: "0.5rem",
+              fontSize: "clamp(1.7rem, 4.5vw, 2.4rem)",
+              fontWeight: 600,
+              letterSpacing: "-0.018em",
+              lineHeight: 1.1,
+              color: "#FAF8F4",
+              marginBottom: "1rem",
             }}
           >
-            CCS Website Preview
+            Complete Career Solutions
           </h1>
+
+          {/* Lede — hints at the brand promise */}
           <p
             style={{
-              fontSize: "0.82rem",
-              color: "rgba(250,249,246,0.4)",
+              fontSize: "0.95rem",
+              lineHeight: 1.55,
+              color: "#B6C3D5",
               marginBottom: "2.5rem",
-              lineHeight: 1.6,
+              maxWidth: 360,
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
+            Empowering organizations through strategic consulting.
             Enter the password to view the redesign draft.
           </p>
+
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -83,6 +146,7 @@ export default function Home() {
                 setTimeout(() => setError(false), 1500);
               }
             }}
+            style={{ textAlign: "left" }}
           >
             <input
               type="password"
@@ -92,52 +156,82 @@ export default function Home() {
               autoFocus
               style={{
                 width: "100%",
-                padding: "0.9rem 1.2rem",
-                fontSize: "0.85rem",
+                padding: "0.95rem 1.1rem",
+                fontSize: "0.9rem",
                 fontFamily: "inherit",
-                background: "rgba(250,249,246,0.06)",
+                background: "rgba(250,248,244,0.06)",
                 border: error
-                  ? "1px solid rgba(220,80,80,0.6)"
-                  : "1px solid rgba(250,249,246,0.1)",
-                borderRadius: "6px",
-                color: "#faf9f6",
+                  ? "1px solid rgba(220,80,80,0.65)"
+                  : "1px solid rgba(250,248,244,0.18)",
+                borderRadius: 2,
+                color: "#FAF8F4",
                 outline: "none",
-                marginBottom: "1rem",
-                transition: "border-color 0.3s",
+                marginBottom: "0.875rem",
+                transition: "border-color 0.2s",
                 boxSizing: "border-box",
+                letterSpacing: "0.01em",
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = "#3AAFB5";
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = error
+                  ? "rgba(220,80,80,0.65)"
+                  : "rgba(250,248,244,0.18)";
               }}
             />
             <button
               type="submit"
               style={{
                 width: "100%",
-                padding: "0.9rem",
-                fontSize: "0.8rem",
+                padding: "0.95rem",
+                fontSize: "0.85rem",
                 fontFamily: "inherit",
-                fontWeight: 500,
-                letterSpacing: "0.06em",
-                background: "#b8a88a",
-                color: "#1a1f36",
-                border: "none",
-                borderRadius: "6px",
+                fontWeight: 600,
+                letterSpacing: "0.02em",
+                background: "#FAF8F4",
+                color: "#0E141C",
+                border: "1px solid transparent",
+                borderRadius: 2,
                 cursor: "pointer",
-                transition: "opacity 0.2s",
+                transition: "background-color 0.2s ease, transform 0.1s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#F2EEE7";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "#FAF8F4";
               }}
             >
-              View Site
+              View Site →
             </button>
           </form>
+
           {error && (
             <p
               style={{
-                marginTop: "1rem",
+                marginTop: "0.875rem",
                 fontSize: "0.78rem",
-                color: "rgba(220,80,80,0.8)",
+                color: "rgba(220,80,80,0.95)",
+                textAlign: "left",
               }}
             >
               Incorrect password
             </p>
           )}
+
+          <p
+            style={{
+              marginTop: "2.5rem",
+              fontSize: "0.68rem",
+              fontWeight: 600,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "rgba(250,248,244,0.4)",
+            }}
+          >
+            Driving Impactful Change · Since 2010
+          </p>
         </div>
       </div>
     );
