@@ -728,17 +728,61 @@ function ContactPage({ m }: { m: boolean }) {
             <div>
               <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Reach Out</div>
               <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, marginBottom: "2rem" }}>We&apos;d love to hear <strong style={{ fontWeight: 600 }}>from you.</strong></div>
-              {[
-                { name: "Tom Triolo — CEO & Executive Coach", email: "ttriolo@completecareersolutions.com", scope: "Executive Coaching · Consulting · AI Solutions" },
-                { name: "Brent Triolo — Co-Founder, CCS Staffing", email: "brent.triolo@completecareersolutions.com", scope: "Talent Management · Executive Search" },
-                { name: "CCS Main Office", email: "", scope: "555 E 5th St\nAustin, TX 78701-4157, United States\n+1 (512) 579-1819" },
-              ].map((c) => (
-                <div key={c.name} style={{ padding: "2rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}`, marginBottom: "1rem" }}>
-                  <h4 style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "1rem", fontWeight: 600, marginBottom: "0.4rem" }}>{c.name}</h4>
-                  {c.email && <p style={{ fontSize: "0.9rem", color: css.inkSoft }}><a href={`mailto:${c.email}`} style={{ color: css.sage, textDecoration: "none", fontWeight: 600 }}>{c.email}</a></p>}
-                  <p style={{ fontSize: "0.9rem", color: css.inkSoft, lineHeight: 1.6, whiteSpace: "pre-line" }}>{c.scope}</p>
-                </div>
-              ))}
+              {(() => {
+                const tomBody = `Hi Tom,
+
+I came across Complete Career Solutions and wanted to learn more about your work in [executive coaching / consulting / AI enablement].
+
+A little context on what we're working through:
+[your situation]
+
+When would be a good time for an introductory conversation?
+
+Thanks,
+[your name]`;
+                const brentBody = `Hi Brent,
+
+I'd like to learn more about how CCS Staffing approaches talent management and executive search.
+
+A little context on what we're hiring for:
+[role / team / timing]
+
+When would be a good time for an introductory conversation?
+
+Thanks,
+[your name]`;
+                const tomHref = `mailto:ttriolo@completecareersolutions.com?subject=${encodeURIComponent("Inquiry · Complete Career Solutions")}&body=${encodeURIComponent(tomBody)}`;
+                const brentHref = `mailto:brent.triolo@completecareersolutions.com?subject=${encodeURIComponent("Inquiry · CCS Staffing")}&body=${encodeURIComponent(brentBody)}`;
+                const cards = [
+                  { name: "Tom Triolo — CEO & Executive Coach", email: "ttriolo@completecareersolutions.com", scope: "Executive Coaching · Consulting · AI Solutions", href: tomHref },
+                  { name: "Brent Triolo — Co-Founder, CCS Staffing", email: "brent.triolo@completecareersolutions.com", scope: "Talent Management · Executive Search", href: brentHref },
+                  { name: "CCS Main Office", email: "", scope: "555 E 5th St\nAustin, TX 78701-4157, United States\n+1 (512) 579-1819", href: null as string | null },
+                ];
+                return cards.map((c) => {
+                  const cardStyle = { padding: "2rem", borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}`, marginBottom: "1rem", display: "block", textDecoration: "none", color: "inherit", transition: "border-color 0.25s, transform 0.2s, box-shadow 0.25s" };
+                  const inner = (
+                    <>
+                      <h4 style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "1rem", fontWeight: 600, marginBottom: "0.4rem" }}>{c.name}</h4>
+                      {c.email && (
+                        <p style={{ fontSize: "0.9rem", color: css.inkSoft }}>
+                          <span style={{ color: css.sage, fontWeight: 600 }}>{c.email}</span>
+                        </p>
+                      )}
+                      <p style={{ fontSize: "0.9rem", color: css.inkSoft, lineHeight: 1.6, whiteSpace: "pre-line" }}>{c.scope}</p>
+                      {c.href && (
+                        <p style={{ fontSize: "0.72rem", color: css.muted, letterSpacing: "0.1em", textTransform: "uppercase" as const, fontWeight: 600, marginTop: "0.75rem" }}>Click to open in your email client →</p>
+                      )}
+                    </>
+                  );
+                  return c.href ? (
+                    <a key={c.name} href={c.href} style={cardStyle} onMouseEnter={(e) => { e.currentTarget.style.borderColor = css.navy; e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 12px 30px -18px rgba(27,40,56,0.25)"; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = css.warmBorder; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
+                      {inner}
+                    </a>
+                  ) : (
+                    <div key={c.name} style={cardStyle}>{inner}</div>
+                  );
+                });
+              })()}
             </div>
             <div>
               <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Discovery Questions</div>
