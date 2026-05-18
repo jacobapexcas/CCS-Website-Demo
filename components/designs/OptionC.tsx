@@ -51,12 +51,12 @@ function PageHero({ overline, title, desc, cta, bgImage, m }: { overline: string
       ) : (
         <div style={{ position: "absolute", top: 0, right: 0, width: "40%", height: "100%", background: `radial-gradient(ellipse at 60% 40%, ${css.terracottaLight} 0%, transparent 70%)`, zIndex: 0 }} />
       )}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", position: "relative", zIndex: 1 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem", position: "relative", zIndex: 1 }}>
         <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>{overline}</div>
-        <h1 style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(2rem,4vw,3.2rem)", fontWeight: 400, lineHeight: 1.15, maxWidth: 650 }}>{title}</h1>
-        <p style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 640, marginTop: "1.5rem" }}>{desc}</p>
+        <h1 style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.9rem,4vw,3.2rem)", fontWeight: 400, lineHeight: 1.15, maxWidth: 650 }}>{title}</h1>
+        <p style={{ fontSize: m ? "0.95rem" : "1rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 640, marginTop: "1.5rem" }}>{desc}</p>
         {cta && (
-          <button onClick={cta.onClick} style={{ marginTop: "2rem", display: "inline-block", padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 6px 20px -8px rgba(27,40,56,0.4)" }}>
+          <button onClick={cta.onClick} style={{ marginTop: "2rem", display: "inline-block", padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 6px 20px -8px rgba(27,40,56,0.4)", width: m ? "100%" : "auto" }}>
             {cta.label}
           </button>
         )}
@@ -126,25 +126,25 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
             zIndex: 0,
           }}
         />
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem", position: "relative", zIndex: 1 }}>
           <div className="animate-fade-up animate-fade-up-1" style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "0.45rem 1rem", background: css.terracottaLight, borderRadius: 100, fontSize: "0.76rem", fontWeight: 600, color: css.sage, marginBottom: "2rem" }}>
             <span style={{ width: 6, height: 6, background: css.terracotta, borderRadius: "50%", display: "inline-block" }} />
             Driving Impactful Change Since 2010 · Austin, Texas
           </div>
-          <h1 className="animate-fade-up animate-fade-up-2" style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(2.4rem,5vw,4.2rem)", fontWeight: 400, lineHeight: 1.12, maxWidth: 820 }}>
+          <h1 className="animate-fade-up animate-fade-up-2" style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(2.2rem,5vw,4.2rem)", fontWeight: 400, lineHeight: 1.12, maxWidth: 820 }}>
             Empowering Organizations through <strong style={{ fontWeight: 600, color: css.sage, textDecoration: "underline", textDecorationColor: css.terracottaMid, textUnderlineOffset: "5px", textDecorationThickness: "3px" }}>Strategic Consulting.</strong>
           </h1>
-          <p className="animate-fade-up animate-fade-up-3" style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 720, marginTop: "1.5rem" }}>
+          <p className="animate-fade-up animate-fade-up-3" style={{ fontSize: m ? "1rem" : "1.05rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 720, marginTop: "1.5rem" }}>
             At Complete Career Solutions, we specialize in driving impactful change that resonates throughout entire organizations, always rooted in the power of the individual. Our mission is to guide you in surpassing your business objectives.
           </p>
-          <p className="animate-fade-up animate-fade-up-3" style={{ fontSize: "1rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 720, marginTop: "1rem" }}>
+          <p className="animate-fade-up animate-fade-up-3" style={{ fontSize: m ? "0.95rem" : "1rem", lineHeight: 1.8, color: css.inkSoft, maxWidth: 720, marginTop: "1rem" }}>
             Positioned uniquely as an organizational consulting firm, we prioritize four key pillars of success: <strong style={{ fontWeight: 600, color: css.ink }}>Executive Coaching, Leadership Development, Operational Consulting,</strong> and <strong style={{ fontWeight: 600, color: css.ink }}>Talent Management</strong>, with AI Enablement now woven through every engagement. We empower superior performance through your most valuable asset: your people.
           </p>
-          <div className="animate-fade-up animate-fade-up-4" style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+          <div className="animate-fade-up animate-fade-up-4" style={{ display: "flex", flexDirection: m ? "column" : "row", gap: m ? "0.75rem" : "1rem", marginTop: "2rem", alignItems: m ? "stretch" : "center" }}>
             <button onClick={() => nav("contact")} style={{ padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.terracotta, color: "white", border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 6px 20px -8px rgba(27,40,56,0.4)" }}>Schedule a Discovery Call</button>
             <button onClick={() => nav("coaching")} style={{ padding: "0.85rem 2rem", fontSize: "0.88rem", fontWeight: 600, borderRadius: 8, background: css.surface, color: css.ink, border: `1px solid ${css.warmBorder}`, cursor: "pointer", fontFamily: "inherit" }}>See How We Work</button>
           </div>
-          <div className="animate-fade-up animate-fade-up-5" style={{ display: "flex", gap: "3rem", marginTop: "4rem", paddingTop: "2.5rem", borderTop: `1px solid ${css.warmBorder}` }}>
+          <div className="animate-fade-up animate-fade-up-5" style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(3, auto)", gap: m ? "1rem" : "3rem", marginTop: m ? "3rem" : "4rem", paddingTop: m ? "2rem" : "2.5rem", borderTop: `1px solid ${css.warmBorder}`, justifyContent: m ? "stretch" : "start" }}>
             {[{ num: "25+", label: "Years Leadership Experience" }, { num: "6", label: "Industries Served" }, { num: "100%", label: "Referral-Driven Growth" }].map((t) => (
               <div key={t.label} style={{ display: "flex", alignItems: "center", gap: "0.7rem" }}>
                 <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "1.4rem", fontWeight: 700 }}>{t.num}</div>
@@ -157,7 +157,7 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* Four Pillars */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>What We Do</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>
             Four integrated pillars that meet leaders <strong style={{ fontWeight: 600 }}>where they are.</strong>
@@ -190,7 +190,7 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* Partnering for Success */}
       <section style={{ padding: m ? "3rem 0" : "6rem 0", background: css.surface }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "center" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "center" }}>
           <div>
             <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Partnering for Success</div>
             <h2 style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, color: css.ink, margin: 0 }}>
@@ -207,7 +207,7 @@ function HomePage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* Social Proof */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ background: css.ink, color: css.bg, borderRadius: 20, padding: m ? "2rem" : "4rem" }}>
             <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Impact</div>
             <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Leaders across six industries <strong style={{ fontWeight: 600 }}>trust CCS.</strong></div>
@@ -238,7 +238,7 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* Outcomes */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Coaching Outcomes</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>This powerful fusion equips us with unparalleled capabilities to <strong style={{ fontWeight: 600 }}>elevate leadership effectiveness.</strong></div>
           <FeatureGrid m={m} items={[
@@ -252,7 +252,7 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* Our Approach — Inside-out / Outside-in */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Approach</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, marginBottom: "2rem" }}>
             Integrating <strong style={{ fontWeight: 600 }}>&ldquo;inside-out&rdquo;</strong> and <strong style={{ fontWeight: 600 }}>&ldquo;outside-in&rdquo;</strong> coaching.
@@ -275,7 +275,7 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* Successor and Onboarding Coaching */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Specialized Program</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Successor & <strong style={{ fontWeight: 600 }}>Onboarding Coaching.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
@@ -286,7 +286,7 @@ function CoachingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* Executive Team Coaching — Leadership Team Development content */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Executive Team Coaching</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Unlocking <strong style={{ fontWeight: 600 }}>High Performance.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
@@ -320,7 +320,7 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
     <>
       <PageHero m={m} overline="Consulting · Est. 2010" title={<>Human Capital Strategy <strong style={{ fontWeight: 600, color: css.sage }}>& Solutions.</strong></>} desc="In today's fast-paced business landscape, disruption is inevitable. From digitalization to remote work arrangements, organizations are facing numerous challenges that demand innovative solutions. At Complete Career Solutions Consulting (CCS), we specialize in Human Capital strategies and solutions that empower leaders to navigate disruption effectively. Our goal is to help you drive transformation, elevate the workforce experience, and enhance the capabilities of your leadership team." cta={{ label: "Start a Consulting Engagement", onClick: () => nav("contact") }} />
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Consulting Offerings</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Embrace disruption <strong style={{ fontWeight: 600 }}>with confidence.</strong></div>
           <FeatureGrid m={m} items={[
@@ -334,7 +334,7 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       </section>
       {/* Who We Work With */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "start" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "start" }}>
           <div>
             <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Who We Work With</div>
             <h2 style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.6rem,3vw,2.4rem)", fontWeight: 400, lineHeight: 1.2, margin: 0 }}>
@@ -363,7 +363,7 @@ function ConsultingPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* How We Engage */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>How We Engage</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>A consulting engagement that <strong style={{ fontWeight: 600 }}>actually transfers.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
@@ -398,7 +398,7 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* Strategic Approach */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: m ? "2rem" : "4rem", alignItems: "start" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: m ? "2rem" : "4rem", alignItems: "start" }}>
           <div>
             <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Strategic Workforce Development</div>
             <p style={{ fontSize: "1.05rem", lineHeight: 1.85, color: css.inkSoft, margin: 0 }}>
@@ -421,7 +421,7 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       </section>
       {/* What We Deliver */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>What We Deliver</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>The CCS Staffing <strong style={{ fontWeight: 600 }}>difference.</strong></div>
           <FeatureGrid m={m} items={[
@@ -435,7 +435,7 @@ function TalentPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* Our Process */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Process</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>How a CCS Staffing engagement <strong style={{ fontWeight: 600 }}>actually runs.</strong></div>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(5, 1fr)", gap: "1rem", marginTop: "2.5rem" }}>
@@ -466,7 +466,7 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
     <>
       <PageHero m={m} overline="AI Solutions" title={<>Building confident leaders in the <strong style={{ fontWeight: 600, color: css.sage }}>age of AI.</strong></>} desc="CCS helps teams use AI confidently, securely, and strategically, to save time, communicate clearly, and make smarter business decisions." cta={{ label: "Explore AI Enablement", onClick: () => nav("contact") }} />
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Framework</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}><strong style={{ fontWeight: 600 }}>Assess → Implement → Optimize</strong></div>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(3, 1fr)", gap: "1.5rem", marginTop: "2.5rem" }}>
@@ -486,7 +486,7 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
       </section>
       {/* Phase Deliverables */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>What You Get</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Tangible deliverables, <strong style={{ fontWeight: 600 }}>not slideware.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.5rem", maxWidth: 820 }}>
@@ -540,7 +540,7 @@ function AIPage({ nav, m }: { nav: (p: Page) => void; m: boolean }) {
 
       {/* Who It's For */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.2fr", gap: m ? "2rem" : "4rem", alignItems: "start" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.2fr", gap: m ? "2rem" : "4rem", alignItems: "start" }}>
           <div>
             <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Who It&apos;s For</div>
             <h3 style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.5rem,2.5vw,2rem)", fontWeight: 400, lineHeight: 1.25, marginBottom: "1.25rem" }}>
@@ -577,7 +577,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
 
       {/* Our Story */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "start" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.4fr", gap: m ? "2rem" : "5rem", alignItems: "start" }}>
           <div>
             <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Story</div>
             <h2 style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2, margin: 0 }}>
@@ -598,7 +598,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
         </div>
       </section>
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Our Values</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>More than words — the <strong style={{ fontWeight: 600 }}>foundation of everything we do.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.25rem", maxWidth: 820 }}>
@@ -621,7 +621,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
         </div>
       </section>
       <section style={{ padding: m ? "0 0 2.5rem" : "0 0 5rem" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Leadership</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>25 years of experience. One mission: <strong style={{ fontWeight: 600 }}>enabling your success.</strong></div>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: "2rem", marginTop: "3rem" }}>
@@ -653,7 +653,7 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
           Edit the partners array below to add/remove. Names and short
           descriptions only; full bios live with each partner separately. */}
       <section style={{ padding: m ? "2.5rem 0" : "5rem 0", background: css.surface }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Powerful Partners</div>
           <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 400, lineHeight: 1.2 }}>Trusted collaborators who <strong style={{ fontWeight: 600 }}>extend what we deliver.</strong></div>
           <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: css.inkSoft, marginTop: "1.25rem", maxWidth: 820, marginBottom: "2.5rem" }}>
@@ -689,18 +689,18 @@ function AboutPage({ nav, setModal, m }: { nav: (p: Page) => void; setModal: (me
               <div key={partner.name} style={{ borderRadius: 12, background: css.surface, border: `1px solid ${css.warmBorder}`, overflow: "hidden", display: "flex", flexDirection: "column" }}>
                 {/* Logo band — keeps a consistent visual frame across partners while
                     each logo retains its native dimensions */}
-                <div style={{ height: 110, display: "flex", alignItems: "center", justifyContent: "center", padding: "1rem 2rem", borderBottom: `1px solid ${css.warmBorder}`, background: css.surface }}>
+                <div style={{ height: m ? 90 : 110, display: "flex", alignItems: "center", justifyContent: "center", padding: m ? "0.75rem 1.25rem" : "1rem 2rem", borderBottom: `1px solid ${css.warmBorder}`, background: css.surface }}>
                   <Image
                     src={partner.logoSrc}
                     alt={partner.logoAlt}
                     width={partner.logoNaturalWidth}
                     height={partner.logoNaturalHeight}
-                    style={{ height: "auto", width: "auto", maxHeight: partner.logoMaxHeight, maxWidth: "100%", display: "block" }}
+                    style={{ height: "auto", width: "auto", maxHeight: m ? partner.logoMaxHeight * 0.85 : partner.logoMaxHeight, maxWidth: "100%", display: "block" }}
                     sizes="(max-width: 768px) 90vw, 400px"
                   />
                 </div>
                 {/* Content block */}
-                <div style={{ padding: "1.75rem 2rem 2rem", flex: 1, display: "flex", flexDirection: "column" }}>
+                <div style={{ padding: m ? "1.5rem 1.5rem 1.75rem" : "1.75rem 2rem 2rem", flex: 1, display: "flex", flexDirection: "column" }}>
                   <div>
                     <div style={{ fontFamily: "'Petrona', Georgia, serif", fontSize: "1.2rem", fontWeight: 600, color: css.navy, lineHeight: 1.1 }}>{partner.name}</div>
                     <div style={{ fontSize: "0.72rem", color: partner.accent, fontWeight: 600, marginTop: "0.35rem", letterSpacing: "0.04em" }}>{partner.role}</div>
@@ -723,7 +723,7 @@ function ContactPage({ m }: { m: boolean }) {
     <>
       <PageHero m={m} overline="Contact Us" title={<>Partner <strong style={{ fontWeight: 600, color: css.sage }}>With Us.</strong></>} desc="We strategically partner with companies and individuals whose values align with ours. We invite you to reach out and explore how we can achieve success together." />
       <section style={{ padding: m ? "0 0 2.5rem" : "0 0 5rem" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: m ? "0 1.25rem" : "0 2rem" }}>
           <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: m ? "2rem" : "4rem" }}>
             <div>
               <div style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase" as const, color: css.sage, marginBottom: "1rem", fontWeight: 700 }}>Reach Out</div>
